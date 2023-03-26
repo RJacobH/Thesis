@@ -49,7 +49,92 @@ boolean overRect(float X, float Y, float w, float h, PApplet W) {
   return xgood && ygood;
 }
 
-
+class Slider {
+  int x, y, xmin, xmax, swidth, sheight;
+  float slideFraction;
+  boolean over, press;
+  boolean locked = false;
+  int col = 120;
+  boolean firstMousePress = false;
+  PApplet w;
+  
+  Slider(int iy, int min, int max, int sw, int sh, PApplet W) {
+    y = iy;
+    xmin = min;
+    xmax = max;
+    swidth = sw;
+    sheight = sh;
+    w = W;
+    
+    print(x);
+    
+  }
+  
+  void update() {
+    overEvent();
+    pressEvent();
+    if (press) {
+      x = (int) lock(mouseX - swidth/2, xmin, xmax - swidth);
+      
+    }
+    slideFraction = (float)(x-xmin)/ (float)(xmax-swidth-xmin);
+  }
+  
+  void overEvent() {
+    if (overRect(x, y-sheight/2, swidth, sheight, w)) {
+      over = true;
+    } else {
+      over = false;
+    }
+  }
+  
+  void pressEvent() {
+    if (over && firstMousePress || locked) {
+      press = true;
+      locked = true;
+    } else {
+      press = false;
+    }
+  }
+  
+  void releaseEvent() {
+    locked = false;
+  }
+  
+  void setFirstMousePress(boolean B) {
+    firstMousePress = B;
+  }
+  
+  void move(int newmin, int newmax, int newy) {
+    xmin = newmin;
+    xmax = newmax;
+    y = newy;
+    x = xmin + (xmax - xmin)/2 - swidth/2;
+  }
+  
+  void slide(int newx) {
+    x = newx;
+  }
+  
+  void display() {
+    x = (int) lock(x, xmin, xmax - swidth);
+    w.fill(0);
+    w.stroke(0);
+    w.strokeWeight(3);
+    w.line(xmin + swidth/2, y, xmax - swidth/2, y); 
+    
+    float fill = col;
+    if (over || press) {
+      fill = col + 50;
+    }
+    
+    w.stroke(0);
+    w.strokeWeight(1);
+    w.fill(fill);
+    w.rect(x, y-sheight/2, swidth, sheight);
+  }
+}
+  
 
 class Triangle {
   float x1, y1, x2, y2, x3, y3;
