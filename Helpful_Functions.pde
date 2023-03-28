@@ -66,7 +66,7 @@ class Slider {
     sheight = sh;
     w = W;
     
-    print(x);
+    //print(x);
     
   }
   
@@ -453,12 +453,13 @@ void drawLSystem(String LSystem, PApplet Window, int startX, int startY, float a
   float Dtheta = angle;
   char C;
   ArrayList<State> Stack = new ArrayList<State>();
-  State tempState = new State(currentX, currentY, theta);
+  
   Window.fill(0);
   Window.strokeWeight(1);
   Window.stroke(0);
   for (int i = 0; i < LSystem.length(); i++) {
     C = LSystem.charAt(i);
+    State tempState = new State(currentX, currentY, theta);
     if (C == 'F') {
       int newX = (int) (currentX + 20 * -sin(theta)); // was cos
       int newY = (int) (currentY + 20 * -cos(theta)); // was -sin
@@ -480,5 +481,6 @@ void drawLSystem(String LSystem, PApplet Window, int startX, int startY, float a
       currentY = tempState.getY();
       theta = tempState.getTheta();
     }
+    //print(Stack.size());
   }
 }

@@ -175,7 +175,7 @@ void pre() {
             w - edge - RW/2 + 40, h - edge - RH/2 + 10 - RH - edge,
             w - edge - RW/2 + 15, h - edge - RH/2 + 25 - RH - edge);
             
-    AngleSlider.move(w - edge - RW/2 - 40, w - edge - RW/2 + 40, (int) (h - 2*edge - 1.5*RH));
+    AngleSlider.move(w - edge - RW/2 - 69, w - edge - RW/2 + 69, (int) (h - 2*edge - 1.5*RH));
             
     //StartTriangle.adjust(lims);
   }
