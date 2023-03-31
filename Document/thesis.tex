@@ -7,7 +7,8 @@
 \usepackage[hyphens]{url}
 \usepackage{rotating}
 \usepackage{natbib}
-\usepackage{xcolor}
+%\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 % Comment out the natbib line above and uncomment the following two lines to use the new 
 % biblatex-chicago style, for Chicago A. Also make some changes at the end where the 
 % bibliography is included. 
@@ -40,7 +41,6 @@
 	Thanks to my roommates, Henry Wilson, Brent Ellis, and especially Gabe Fish for the late night conversations that led to some of the more interesting choices made and questions raised throughout this document.
 
 
-
     \tableofcontents
 % if you want a list of tables, optional
    % \listoftables
@@ -49,27 +49,30 @@
 
 % The abstract is not required if you're writing a creative thesis (but aren't they all?)
 % If your abstract is longer than a page, there may be a formatting issue.
-    \chapter*{Abstract}
+\chapter*{Abstract}
 	The world is a mess of systems. I hope to establish the context for one system that interests me particularly, and build it up for you so that you may be as interested in it as I have been.
 	
-    \chapter*{Dedication}
+\chapter*{Dedication}
 	This thesis is dedicated to the worms in the ground and the trees waving in the wind.
 
   \mainmatter % here the regular arabic numbering starts
   \pagestyle{fancyplain} % turns page numbering back on
 
-\chapter*{Introduction: The }
+\chapter*{Introduction: }
 	\addcontentsline{toc}{chapter}{Introduction}
 	\chaptermark{Introduction}
 	\markboth{Introduction}{Introduction}
 	
 \textcolor{blue}{[Illustration of a simple L-System, perhaps just a fractal tree]}
-	
+
 The world of Computer Science can seem like a wilderness, teeming with frightening phrases like Zero-knowledge proofs, NP-Completeness, Finite State Machines, and the Halting Problem, but I hope to open up this world as one worthy of exploration. Specifically exploration at the hands of those from distant disciplines, like Anthropology, Economics, and Psychology, as well as the locals, pure Math, Bio, Chem, and Physics. The tool I will show you and give to you will demonstrate the accessibility of one of the most powerful, subtle, and yet strangely familiar disciplines: Computer Science. These tools have been given the name L-Systems, and their capabilities and beauty can astound.
 	
 Before we jump in, there are some things that must be said. This is a Computer Science Thesis, and so (essentially by necessity,) there will be code. I would like to keep this Thesis as accessible as possible to those who don’t code, and so I have tried to design it so that anyone with the ability to feel wonder and joy can find something of value between these covers. The code will be accessible on my github page (github.com/JacobHoopes/Thesis) and hosted at at least one other location if possible. The code of the central project will also be accessible in the last pages of the Thesis document itself. However! I have included pictures on every page I could, and I’d like to imagine that they tell enough of a story by themselves that the words are only a lovingly crafted garnish. I suppose we’ll see if I’m right. 
-	
+
+Lindenmayer Systems, usually called L-Systems, are a type of ``rewriting" system that have a distinct visual and 
+
 \textcolor{blue}{[Illustration of an L-System, something that parallels the first one, and yet does something dramatically different (maybe the same image, just upside down? Inverted somehow?) Maybe just another cool L-System.]}
+
 
 \section{Motivations}
 	
@@ -80,10 +83,13 @@ There are several motivations for this thesis, each which I hope will appeal to 
 	The third motivation is interested in a philosophical perception of these structures. I am not a trained philosopher, and I would not be surprised to learn if many of the questions that I ask as a part of my exploration are in well-tread ground. It’s possible the questions I ask in this thesis will contribute to the conversations where I imagine they might find a home. Some of the questions I ask address larger issues of the place of machines in the creation of art and the creative process. These questions feel to me to be inseparable from the rest of the work.
 	
 	I hope that there will be future interest in L-Systems, either as a result of the work that I’ve done here or as part of some other popular exploration of their capabilities. This came to be a motivating project for me for more reasons beyond the three outlined above, and I imagine that someone who sets new eyes on this work could see it in a way I’d never could have foreseen. I go into more detail near the end of the paper about what I believe I have contributed to the conversation around L-Systems and their relatives, as well as what I believe this tool to be capable of with the proper aid.
+	
+	Outline of the Thesis - Describe the path that I will take
 
 	
+	
 \chapter{What is an L-System?}
-    	(What are we talking about? What have I dedicated months of my time and energy to communicating about as best I can? The answer feels complicated after having delved into the depths for a while, but an introduction should be shallow, and so I’ll do that now. L-Systems are recursive replacement system with a unique visual identity. What is a recursive replacement systems? [Perhaps explain in detail, perhaps not - remember, I want to keep this accessible])
+(What are we talking about? What have I dedicated months of my time and energy to communicating about as best I can? The answer feels complicated after having delved into the depths for a while, but an introduction should be shallow, and so I’ll do that now. L-Systems are recursive replacement system with a unique visual identity. What is a recursive replacement systems? [Perhaps explain in detail, perhaps not - remember, I want to keep this accessible])
 
 —————
 
@@ -95,48 +101,124 @@ Well, it would be more right to say that this is the \textit{output} of an L-Sys
 
 There are a couple effective ways I've found to introduce L-Systems to people. I'll go through each of these different strategies to give you some solid footing before we start to start to delve into the more complicated material. 
 
+
 \section{Understanding through Definitions}
-L-Systems have three main parts. The first part is the "start" variable. It is usually just a character, we'll call it ``A" here. The second part is a set of rules that describe how the L-System changes. These are usually written like ``A \rightarrow AB" or ``B \rightarrow AA", where each of these is a different rule. There are different names for what ``A" and ``B" are, but in this thesis I will call them ``Productions". In a similar fashion, each of these rules is called a ``Production Rule". (Any character without a corresponding production rule is therefore not a production. This will be relevant later.) The third part of an L-System is a list of other information that is used when it is being constructed. For most of the L-Systems discussed in this thesis, there are only two pieces of information in this list, a value \theta which is read as the "angle" and a value ``Iterations" which is read as the number of times the system is generated. Alternatives are discussed in Chapter 4.
+
+L-Systems have three main parts. The first part is the "start" variable. It is usually just a character, we'll call it ``A" here. The second part is a set of rules that describe how the L-System changes. These are usually written like ``A $\rightarrow$ AB" or ``B $\rightarrow$ AA", where each of these is a different rule. There are different names for what ``A" and ``B" are, but in this thesis I will call them ``Productions". In a similar fashion, each of these rules is called a ``Production Rule". (Any character without a corresponding production rule is therefore not a production. This will be relevant later.) The third part of an L-System is a list of other information that is used when it is being constructed. For most of the L-Systems discussed in this thesis, there are two pieces of information in this list, a value $\theta$ which is read as the ``angle" and a value ``Iterations" which is the number of times the system is generated. Alternatives are discussed in Chapter 4. 
+
 
 \section{Understanding through Images}
 By using this sort of image to describe these structures, I define the dimensions in which they operate and therefore lose access to some of their possible complexity. I suggest alternative visualization strategies in Chapter 4.
-\colortext{blue}{[A series of images that show the progression of an L-System through multiple generations. Each of the images is labelled with a short description that explains the process shown in that image.]}
+\textcolor{blue}{[A series of images that show the progression of an L-System through multiple generations. Each of the images is labelled with a short description that explains the process shown in that image.]}\\
 
-This set of images is generated with the parameters, start: A; rules: A \rightarrow AB, B \rightarrow AA; \theta: 45\degree. Different values for iterations are displayed in each image. ``A" is drawn as a line going upward and ``B" is drawn as a line going to the right. Each new line starts from where the last line left off.
-\colortext{blue}{Image A0}: Iterations = 0, current string: A
-\colortext{blue}{Image A1}: Iterations = 1, current string: AB
-\colortext{blue}{Image A2}: Iterations = 2, current string: ABAA
-\colortext{blue}{Image A3}: Iterations = 3, current string: ABAAABAB
+This set of images is generated with the parameters, [start: A; rules: A $\rightarrow$ AB, B $\rightarrow$ AA; $\theta$ : 45$^{\circ}$]. Different values for iterations are displayed in each image. ``A" is drawn as a line going upward and ``B" is drawn as a line going to the right. Each new production starts from where the last one left off. 
+\\\textcolor{blue}{[Image A0]}: Iterations = 0, current string: A
+\\\textcolor{blue}{[Image A1]}: Iterations = 1, current string: AB
+\\\textcolor{blue}{[Image A2]}: Iterations = 2, current string: ABAA
+\\\textcolor{blue}{[Image A3]}: Iterations = 3, current string: ABAAABAB \\
 
+Here is a different set of images with the same start variable and extra information, but alternative production rules. These rules are: A $\rightarrow$ BAB, B $\rightarrow$ A.
+\\\textcolor{blue}{[Image B0]}: Iterations = 0, current string: A
+\\\textcolor{blue}{[Image B1]}: Iterations = 1, current string: BAB
+\\\textcolor{blue}{[Image B2]}: Iterations = 2, current string: ABABA
+\\\textcolor{blue}{[Image B3]}: Iterations = 3, current string: BABABABABAB
 
-Here is a different set of images with the same start variable and extra information, but alternative production rules. These rules are: A 
-\colortext{blue}{Image B0}: Iterations = 0, current 
-\colortext{blue}{Image B1}: Iterations = 1;
-\colortext{blue}{Image B2}: Iterations = 2;
-\colortext{blue}{Image B3}: Iterations = 3;
+\subsection{Turtle}
+Introduce Turtle. Demonstrate its abilities and ways in which it is especially powerful at drawing L-Systems. Show how it takes advantage of the idea of ``state" to 
+\subsection{Not Changing Position}
+Introduce the idea of the ``state" of the turtle. Introduce the idea that a production is able to change parts of the state 
+
 
 \section{Understanding through Big Words}
-L-Systems are what we in CS would call a \textit{Recursive Replacement structure}. This describes the way in which an L-System makes more of itself. The recursive aspect comes from how 
+
+L-Systems are what we in CS would call a \textit{Recursive Replacement structure}. This describes the way in which an L-System makes more of itself. 
+
+
+
+
 
 \chapter{Explaining the Program}
 
+The program that I've created for this thesis demonstrates the structure of an L-System and allows the user to interact with the parameters to dynamically adjust the displayed content. This ``L-System Illustrator" 
 
 
 L-Systems are a way to see every stage of the life-cycle of a tree simultaneously. There are limitations to this metaphor, but the freedom of understanding that is gained with the metaphor more than makes up for the rough patches. It’s also accurate especially by the use of the “tree” metaphor. 
 
 \chapter{Contribution}
-	A primary goal of this work is to make L-Systems, and by extension, generative art, and even further, Computer Science as a discipline, less frightening. I want people who had no intention of getting involved in the intricacies of 1s and 0s begin to see beauty in the geometry. I want folks who have never used computers used to create things on their own initiative to be amazed and inspired by the possibilities of this program and others like it. I even want my peers, who have been immersed in the depths of CS for years, to be able to approach the discipline which they’ve sunk their whole minds into, with a fresh awe and understanding that the possibilities are as boundless as they’ve dreamed and perhaps even more so. There are grand dreams, to be sure, but computers take the largest of tasks with little more difficulty than the smallest, and art can inspire us to do great things. I hope that this will spark something like that in my readers, though even just using the resources I’ve collected and attach to pursue your own interests is a dreamy enough prospect.
+	A primary goal of this work is to make L-Systems, and by extension, generative art and even Computer Science as a whole, less frightening. I want people who had no intention of getting involved in the intricacies of 1s and 0s begin to see beauty in the geometry. I want folks who have never used computers become able to create things on their own initiative to be amazed and inspired by the possibilities. I even want my peers, who have been immersed in the depths of CS for years, to be able to approach the discipline which they’ve sunk their whole minds into with a fresh awe and understanding that the possibilities are as boundless as they’ve dreamed and perhaps even more so. These are grand dreams, to be sure, but computers take the largest of tasks with little more difficulty than the smallest, and art can inspire us to do great things. I hope that this will spark something like that in my readers, though even just using the resources I’ve collected and attach to pursue your own interests is a dreamy enough prospect.
 	
-	A more humble contribution of this thesis is the raising of awareness of L-Systems and their capabilities. These are tools which I believe to have great power, and I hope that I’ve convinced you that they’re worth further investigation. 
+	I am fully aware that L-Systems have been around for 55 years, since they were proposed back in 1968 by Lindenmayer, and for a time I was worried that with 55 years to develop these ideas I wouldn't be able to tread on any new ground. This is true in many respects, and I re-emphasize that another major goal of this work is to raise awareness of L-Systems and their capabilities as well as to bring together as many sources as possible that discuss these ideas. However, this work goes beyond that. There are 
 	
-	I hope to have used these structures to lower the bound for entry, or at least increase my readers’ enthusiasm for the realm of Computer Science. The field is clearly much more than pretty pictures, but as with many things I feel that a warm welcome will help those who were once strangers come into this place as their home. These pictures are my attempt at a warm welcome. 
+	No one has made L-Systems this easy to play with - so few characters, and yet there's been no way for people to engage with them easily. How to gain an intuition.
+	
+	A central contribution of my own has been the development of the interactive L-System Illustrator
+	
+	%These are tools which I believe to have great power, and I hope that I’ve convinced you that they’re worth further investigation. 
+	
+	%I hope to have used these structures to lower the bound for entry, or at least increase my readers’ enthusiasm for the realm of Computer Science. The field is clearly much more than pretty pictures, but as with many things I feel that a warm welcome will help those who were once strangers come into this place as their home. These pictures are my attempt at a warm welcome. 
 
 \section{Related Work}
+Go into depth about different implementations of this work that I've found. Advertise resources that I found useful in the development of my understanding about these topics.
+\section{Generative Art}
+Include references to some of the numerous types of generative art that I've come across during my research. 
+\subsection{My Explorations}
+Show some of the different projects that I worked on in the build-up to this thesis. Explain how they led into L-Systems or any other part of my work that eventually coalesced into this thesis.
+
+\section{Philosophical Quandaries}
+Here is where I feel it's appropriate to ask some of the big questions. Start with an intro explaining and defending the existence of this section, 
+\subsection{Is Math Art?}
+Is this art? Where do we draw the line between art and math?
+\subsection{The Times We Live In}
+What does it mean for a machine to make art?
 
 
-\chapter{Next Steps}
+
+\chapter{Past, Present, Future}
+\section{Extending the Program}
+Talk briefly about different ways in which the program could be extended to address what I perceive to be flaws or oversights. Mention things that I wished I had time to change, but go beyond this to discuss features that might deserve their own program. Include a lead-in to the next section
+
+\section{The work of Przemyslaw Prusinkiewicz and Aristid Lindenmayer}
+
+Use this section to talk about the wide variety of other forms of L-Systems that I have not investigated in this Thesis. I will make mention of parametric L-Systems, stochastic L-Systems, context-dependent L-Systems, and L-Systems that are used for a wide variety of other uses. From tree-modeling at Pixar to demonstrating cell-growth in biology labs.
+Say essentially that \textit{The Algorithmic Beauty of Plants} has an abundance of thoughtfully demonstrated resources and examples, as well as many compelling pictures.
+
+\subsection{Origins}
+Discuss the origins of L-Systems. Why they were thought up, what they were originally used for. Talk about other early uses.
 
 \section{Generalizing L-Systems}
+So far, we've only been looking at L-Systems that fall into a very narrow category. In addition to the types of L-Systems explored by Prusinkiewicz and Lindenmayer, there is an opportunity that I feel is extremely untapped to explore what it would mean if we change the dimensions of an L-System. 
+
+\subsection{What does it \textit{Mean} to Change Dimensions}
+When the state at a particular point in the construction of an L-System changes, it alters the way that the L-System is displayed. This can be especially obvious and dramatic if the part of the state that is changed is the angle. By changing the angle by only a small amount, let's say a degree, we affect the position and rotation of every following node. Changing the position part of the state will only change the position of later nodes. This seems to suggest that somehow, changing the angle is a \textit{more powerful} alteration than changing the position. Looking more closely at what actually separates changing position from changing angle, we can see that the angle never actually draws anything. The value that draws things is always F. We can take our simplified L-System and see that there is a depth of nuance to the values we implicitly chose to use at the beginning of this process. The following table shows the differences between these two operations, the rotate operation and the forward operation.
+
+\begin{longtable}{|c||c|c|c|}
+	 	\caption[Rotate vs Forward Atomization]{Rotate vs Forward Atomization}\\ \hline
+		    	      & Following Node has & Following Node has &  \\  
+		   Attribute & the Same Position &  the Same Orientation & Draws \\\hline%\hline
+		  \endfirsthead
+		    \endhead
+
+	    Rotate & \textcolor{ForestGreen}{Y} & \textcolor{WildStrawberry}{N} & \textcolor{WildStrawberry}{N}  \\\hline
+	    Forward & \textcolor{WildStrawberry}{N} & \textcolor{ForestGreen}{Y} & \textcolor{ForestGreen}{Y}  \\\hline
+
+\end{longtable}
+
+Every time the Forward operation is read, two things happen, while when the Rotate operation is read, only one thing happens. It seems like it might be possible to create a more specific operation for forward that breaks it up into its two parts. The way that people have found to get around this problem is by introducing a second type of Forward operation that changes position but doesn't draw. Usually this is notated by a lowercase f instead of the usual capital F for the regular Forward operation. We could approach the forward operation in a different way - perhaps it would be more right to call it a ``draw" command, and the way it draws is governed by either the state of the L-System at the moment when the operation is read or the parameters of the L-System at the outset, or both. If we begin to think about the forward command as a draw command instead, a new world of possibilities opens to us.
+
+Imperative vs declarative (turtles are the ultimate imperative thing) 
+L-Systems are fundamentally declarative - just the replacement system
+Don't think about going through the string piece by piece, instead just showing the before and the after
+
+Declarative language "prologue" - rules are defined & a hidden engine solves with attention to those restraints
+
+
+
+\subsection{Alternative Dimensions}
+What if we choose to change our chosen dimensions to display the same L-System in a different way? There are a few ways to do this \textit{I think)}. First, we must figure out possible alternative dimensions. Beyond the basic three spatial dimensions, a classic dimension is time. This suggests that there might be a way to display L-Systems with variations in time, perhaps in the form of an animation. Some other classic dimensions that people have used with L-Systems are width and length, determining how wide or long a line is drawn when the Forward operation is read. We could change the color of the line, so that it changes hue, saturation, or opacity according to some color space. We could alter the curvature of the line, perhaps in such a way that the Forward operation changes ...
+
+\subsection{The Problem of Depiction}
+
+Some dimensions lend themselves more easily to being displayed. For example, if we try to display an L-System in which the dimension that 
 
 
 \chapter*{Conclusion}
