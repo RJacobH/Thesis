@@ -61,6 +61,9 @@ ArrayList<String> WindowProds = new ArrayList<String>(); // WindowProds
 
 String LSystem;
 
+
+int SliderBounds = 185;
+
 void settings() {
   size(displayWidth/2, displayHeight);
   windowButtons.add(new Rectangle(0, 0, buttonSize, buttonSize, "+", this));
@@ -175,7 +178,7 @@ void pre() {
             w - edge - RW/2 + 40, h - edge - RH/2 + 10 - RH - edge,
             w - edge - RW/2 + 15, h - edge - RH/2 + 25 - RH - edge);
             
-    AngleSlider.move(w - edge - RW/2 - 69, w - edge - RW/2 + 69, (int) (h - 2*edge - 1.5*RH));
+    AngleSlider.move(w - edge - RW/2 - SliderBounds, w - edge - RW/2 + SliderBounds, (int) (h - 2*edge - 1.5*RH));
             
     //StartTriangle.adjust(lims);
   }
@@ -318,7 +321,7 @@ void draw() {
     w.setAngle(angle);
   }
   
-  drawLSystem(LSystem, this, w/2, 5*h/6, radians(angle));
+  drawLSystem(LSystem, this, w/2, h/2, radians(angle)); // w/2, 5*h/6
   //print(angle);
 }
 

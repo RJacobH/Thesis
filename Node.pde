@@ -316,28 +316,6 @@ class Node {
       }
     }
   }
-    
-  //void rotateSubNodes() {
-  //  float oX = x;
-  //  float oY = y;
-  //  if (nodeType != "option") {
-  //    if (nodeType == "forward") {
-  //      theta = before.theta;
-  //      x = before.x + Len*(-sin(theta));
-  //      y = before.y + Len*(-cos(theta));
-  //    } else {
-  //      //move(x - oX,
-  //    }
-  //    for (Node a : after) {
-  //      a.rotateSubNodes();
-  //    }
-  //  } else if (nodeType == "option") {
-  //    move(x - oX, y - oY);
-  //  }
-  //  for (Node o : options) {
-  //    o.rotateSubNodes();
-  //  }
-  //}
   
   void overEvent() {
     if (isOver()/* && nodeType == "option"*/) {
@@ -376,9 +354,6 @@ class Node {
   }
   
   void releaseEvent() {
-    //if (locked) {
-    //  activated = false;
-    //}
     locked = false;
     for (Node o : options) {
       o.releaseEvent();
@@ -388,7 +363,6 @@ class Node {
         a.releaseEvent();
       }
     }
-    //activated = false;
   }
   
   void move(float Dx, float Dy) {
@@ -404,14 +378,14 @@ class Node {
     }
   }
   
-  int getPlusIndex() {
-    for (int i = 0; i < options.size(); i++) {
-      if (options.get(i).t == "+") {
-        return i;
-      }
-    }
-    return -1;
-  }
+  //int getPlusIndex() {
+  //  for (int i = 0; i < options.size(); i++) {
+  //    if (options.get(i).t == "+") {
+  //      return i;
+  //    }
+  //  }
+  //  return -1;
+  //}
   
   void fixWindowProds() {
     if (nodeType == "option" && t == "add") {

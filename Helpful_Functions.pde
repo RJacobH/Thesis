@@ -245,6 +245,7 @@ class Triangle {
     WindowProds = WP;
   }
   
+  
   void shift(float x, float y) {
     float xChange = x - x1;
     float yChange = y - y1;
@@ -386,27 +387,27 @@ float distance(float x1, float y1, float x2, float y2) {
 
 
 class State {
-  int X;
-  int Y;
+  float X;
+  float Y;
   float theta;
   
-  State(int x, int y, float t) {
+  State(float x, float y, float t) {
     X = x;
     Y = y;
     theta = t;
   }
   
-  void changeData(int x, int y, float t) {
+  void changeData(float x, float y, float t) {
     X = x;
     Y = y;
     theta = t;
   }
   
-  int getX() {
+  float getX() {
     return X;
   }
   
-  int getY() {
+  float getY() {
     return Y;
   }
   
@@ -446,9 +447,9 @@ String combineLSystem(String Start, String Productions, StringList Replacements,
   return phrase;
 }
 
-void drawLSystem(String LSystem, PApplet Window, int startX, int startY, float angle) {
-  int currentX = startX;
-  int currentY = startY;
+void drawLSystem(String LSystem, PApplet Window, float startX, float startY, float angle) {
+  float currentX = startX;
+  float currentY = startY;
   float theta = 0;
   float Dtheta = angle;
   char C;
@@ -461,9 +462,11 @@ void drawLSystem(String LSystem, PApplet Window, int startX, int startY, float a
     C = LSystem.charAt(i);
     State tempState = new State(currentX, currentY, theta);
     if (C == 'F') {
-      int newX = (int) (currentX + 20 * -sin(theta)); // was cos
-      int newY = (int) (currentY + 20 * -cos(theta)); // was -sin
+      float newX = (currentX + 20 * -sin(theta)); // was cos
+      float newY = (currentY + 20 * -cos(theta)); // was -sin
       Window.strokeWeight(1);
+      //float
+      //Window.stroke(255* (currentX-newX)/, random(255), random(255));
       Window.line(currentX, currentY, newX, newY);
       currentX = newX;
       currentY = newY;
