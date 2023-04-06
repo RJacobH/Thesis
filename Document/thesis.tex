@@ -40,6 +40,8 @@
 % So are Acknowledgments (proper English spelling)
     \chapter*{Acknowledgements}
 	Thanks to my roommates, Henry Wilson, Brent Ellis, and especially Gabe Fish for the late night conversations that led to some of the more interesting choices made and questions raised throughout this document.
+	
+	This thesis has been a joy to put together. I've reveled in each opportunity to engage with the material and explore more about this idea whose depth I feel I have only begun to understand. Engaging with my peers and mentors about L-Systems and Generative Art has opened my mind to new ways of thinking about these ideas, not to mention the joy I feel when they respond with their interests in kind. I've attempted to make this thesis multidisciplinary, in the spirit of L-Systems as a child of both art and computer science but also in the spirit of Reed College as a Liberal Arts institution. For this, and in all things, I have found that no idea is complete without a range of perspectives.\\
 
 
     \tableofcontents
@@ -156,28 +158,32 @@ Here is a different set of images with the same start variable and extra informa
 \\\textcolor{blue}{[Image B2]}: Iterations = 2, current string: ABABA
 \\\textcolor{blue}{[Image B3]}: Iterations = 3, current string: BABABABABAB\\
 
-These sets of images show the progression of an L-System between different iteration values. There is a sense that the L-System is ``growing" here, fittingly tied to their origin as plant-modeling software. |||| ——
+These sets of images show the progression of an L-System between different iteration values. There is a sense that the L-System is ``growing" here, fittingly tied to their origin as plant-modeling software. 
 
 \subsection{Turtle}
 
-	The programming language Python has a built-in library called ``Turtle" that enables users to easily write code that draws simple diagrams. There isn't much overhead required to begin experimenting with Turtle, a fact which is reflected in how often it is used in introductory computer science courses to get new computer scientists used to the idea of creating images with code. It is also particularly effective at teaching people about the results of changing their code. Part of its quality in this regard is how it animates its drawing. Turtle was one of the early methods I used to experiment with L-Systems. The images in the rest of this section show different L-Systems that I've drawn with Turtle.\\
+	The programming language Python has a built-in library called ``Turtle" that enables users to easily write code that draws simple diagrams. There isn't much overhead required to begin experimenting with Turtle, a fact which is reflected in how often it is used in introductory computer science courses to get novices comfortable with creating images with code. It is also particularly effective at teaching people about the results of changing their code. Part of its quality in this regard is how it animates its drawing. Each step is seemingly taken with intention. Turtle was one of the early methods I used to experiment with L-Systems. The images in this chapter show different L-Systems that I've drawn with my first reliable implementation of Turtle.\\
 	
-	The essential feature that Turtle uses to great effect is ``state". ``State" here means ``condition" or ``status". The Turtle keeps track of a few attributes as it goes through drawing the image described by the code. The attributes that are essential and which I will focus on here in my larger discussion of L-Systems are the Turtle's position and its rotation. With an x-position, a y-position, and an angle, the Turtle is uniquely placed in its window. By manipulating these values with the code and choosing whether to draw or not draw between positions, the Turtle is able to draw a single path through every line that it draws.\\
+	The central feature that Turtle uses to great effect is ``state". ``State" here means ``condition" or ``status". The Turtle keeps track of a few attributes as it goes through drawing the image described by the code. The attributes I focus on here are the Turtle's position and its rotation. With an x-position, a y-position, and an angle, the Turtle is uniquely placed in its window. By manipulating these values with the code and choosing whether to draw or not draw between positions, the Turtle is able to draw a single path through every line that it draws. There is a sense that the state of the turtle is all that it is.\\
 
 
 \chapter{Explaining the Program}
 
-	In order to share my understanding about and my excitement for L-Systems, I wrote a program that allows users to directly change the parameters of the system without having to directly engage with any code. My central goal was to create a program that would reduce the barrier to entry. My first explorations into making this space more accessible were done through turtle implementations in a basic python program and later in a blender program. Both of these strategies still heavily relied on the user to type input that might as well be code. It became clear that if I was to create something that actually met my goals that I would have to change my approach. In conversation with my advisor and through resources online for projects like mine, I came across \textit{Processing}.\\
+	In order to share my understanding about and my excitement for L-Systems, I wrote a program that allows users to directly change the parameters of the system without having to directly engage with any code. My central goal was to create a program that would reduce the barrier to entry of understanding these systems, and of CS as a whole. My first explorations into making this space more accessible were done through turtle implementations in a basic python program and later in a blender program. I'll talk about these in more detail later in the thesis. Both of these strategies still heavily relied on the user to type input that might as well be code. It became clear that if I was to create something that actually met my goals that I would have to change my approach. In conversation with my advisor and through resources online for projects like mine, I came across \textit{Processing}.\\
 
 \section{What is \textit{Processing}?}
 
-	\textit{Processing} is a programming language built off of Java that has been made especially to work with image generation. It was released by Casey Reas and Ben Fry in 2001. I chose to work with Processing because it was easy to use and\\
+	\textit{Processing} is a programming language built off of Java that has been made especially to work with image generation. It was released by Casey Reas and Ben Fry in 2001. I chose to work with Processing because it was easy to use and appealed to my sensibilities as it is an open-source, free software. It also chose to engage with the act of coding in the same way that artists have traditionally engaged with their mediums. In other programming languages, it often takes some time to go beyond just printing simple messages to the screen; messages like ``hello world". The first programs that people write in Processing produce concrete images. In Processing, coding \textit{is} art. \\
+	
+	To download and experiment with Processing yourself, go to Processing.org and click the download button. There is an expansive part of the website dedicated to introducing newcomers to this art form, which you can access from the tab titled ``Learn" near the top of the page.\\
 
 \section{Program Development}
-	The development of the program that I would eventually come to call the L-System Builder started with a series of drawings describing the different functionalities I was aiming to include.\\
+
+	The development of the program that I would eventually come to call the L-System Builder started with a series of drawings describing the different functionalities I was aiming to include. I wanted everything to be able to be accessed without touching the keyboard. There has been a few moments since I started development on this project where things could have been easier if typing was allowed, but so far I only expect one of those uses to actually need the keyboard. I was imagining that if someone wanted to input an L-System that they already had on hand, it would make sense for them to be able to type it in.\\
+	
+	I built the windows first. In the basic processing version of the Builder, the windows for the productions are able to be moved independently from the main display window. This 
 
 \section{Access and Use}
-
 
 The program that I've created for this thesis demonstrates the structure of an L-System and allows the user to interact with the parameters to dynamically adjust the displayed content. This ``L-System Illustrator"\\
 
@@ -216,6 +222,7 @@ Show some of the different projects that I worked on in the build-up to this the
 Here is where I feel it's appropriate to ask some of the big questions. Start with an intro explaining and defending the existence of this section,\\
 \subsection{Is Math Art?}
 Is this art? Where do we draw the line between art and math?\\
+Where does the simulation of life fall into this?
 \subsection{The Times We Live In}
 What does it mean for a machine to make art?\\
 
@@ -223,7 +230,19 @@ What does it mean for a machine to make art?\\
 
 \chapter{Past, Present, Future}
 
-	L-Systems were introduced in 1968 in a paper by Aristid Lindenmayer, where he suggested how one could construct a mathematical model of the structure of simple cells. Even in their introductory paper, L-Systems were deeply tied to the modeling of life.\\
+	L-Systems were introduced in 1968 in a paper by Aristid Lindenmayer, where he suggested how one could construct a mathematical model of the structure of simple cells. Even in their introductory paper, L-Systems were deeply tied to the modeling of life. As could be expected, the early models generated by the first L-Systems were extremely simple. They laid the foundation for what was to come, but did not investigate the larger world of possibilities that these structures could make real. In the last 55 years, there have been many developments in this area, most of which have been deeply attached to the development of fast computer graphics. By bringing these systems onto a screen where users could more easily engage with them, there was increased interest in making them more accurately reflect the growth of actual plants. L-Systems have played an essential role in film animations for years, with some notable mentions as the thing responsible for the forests in Shrek, the opening sequence in Fight Club, and  \\
+	
+	Lindenmayer was in part concerned with the creation of axioms of biological knowledge. In the years before his 1968 paper, he approached discussions about the 
+	
+	He discussed the inseparability of theories from languages (Kelty and Landecker 46). ``Theories become like the biology they purport to describe: natural, evolving forms with dynamics and feature all their own." (46)
+	
+	``Logical, computing machines help \textit{figure out} what a theory looks like." (46)
+	
+	
+	Apparently, some 5000 articles were published by 1996 about these ideas - the ``productivity of the mathematical formalism would eventually overwhelm its usefulness as a biological theory"
+	
+	An L-System is a ``formal language"
+	
 
 
 \section{The work of Przemyslaw Prusinkiewicz and Aristid Lindenmayer}
@@ -233,23 +252,36 @@ Say essentially that \textit{The Algorithmic Beauty of Plants} has an abundance 
 
  There are some compelling parts of the book that go well beyond what I discuss in this thesis, specifically regarding extensions to L-Systems that dramatically increase their capabilities and functionality.\\
 
-	\textit{The Algorithmic Beauty of Plants} 
-
-\subsection{Early Uses}
-
+	
+	
+	
+	As I've mentioned before, the book that brought me into awareness of these systems was \textit{The Algorithmic Beauty of Plants}
 
 \section{Extending the Program}
-Talk briefly about different ways in which the program could be extended to address what I perceive to be flaws or oversights. Mention things that I wished I had time to change, but go beyond this to discuss features that might deserve their own program. Include a lead-in to the next section\\
+
+	There are so many extensions that I envision for the L-System Builder. An early change would be to finish porting the processing version of the code to p5.js, so that it can be hosted on a website and accessed easily without needing to download anything. Another general improvement along the same lines would be to integrate the system into its host website as much as possible. I'd also like to shift my attention from the processing version to the new javascript version, and develop the program in that language instead.\\
+	
+	Beyond just those porting considerations, I'd like to make a number of improvements to the program itself. There are a few attributes that I haven't given the user control over which I believe could be done without too much heavy lifting. These would be things like color, line width and length, and line waviness. I'd also like to enable the user to move around the final production screen and zoom in and out to some extent. Another early addition would be a handful of safeguards to make sure that the program doesn't go out of control if someone tries to simulate an L-System that the program can't handle. It would also be nice to have the ability to print out the final system to either an SVG file or a PDF. I'd also like to make it possible for users to type in the production rules for an L-System directly and bypass the drawing process. While I see the drawing process as the main attraction of my program, I understand that it would be extremely useful to be able to copy and paste someone else's productions directly into your own instance of the Builder. It would also be nice to have a small library of cool L-Systems that others have made that could be hosted in such a way that every user of the Builder would be able to access them. On that note, it would be good to make some sort of tutorial about how to work the program.\\
+	
+	Of course, I hope to also resolve whatever bugs I come across. There are a few features that I've discovered problems with that also go beyond just being bugs. One such problem is the overlap of nodes. When one production node is selected immediately after another production node, it's impossible to select the earlier of those production nodes. The problem also exists when the more-recently placed node is a rotation node. I might resolve this by making the earlier node larger than the more recent node, but then it might make it difficult to select the most recently placed node. This solution would spiral into a dramatically worse situation the more production nodes are put directly on top of one another. With 5 such nodes, it might be nearly impossible to access the middle one. Another solution to this problem could come from making a list of nodes pop up whenever the mouse is hovering over their stack. This would look very much like the menu for adding a node, but perhaps vertically so the two systems could co-exist.\\
+	
+	A set of further extensions fall into the category of significantly extending the functionality of the Builder. These are methods that are fascinating and powerful, but generally beyond the scope of this thesis. 
+	
+	Lead-in to next section
 
 \section{Generalizing L-Systems}
-So far, we've only been looking at L-Systems that fall into a very narrow category. Prusinkiewicz and Lindenmayer go into detail about a number of variations on L-Systems that increase their complexity but also their capabilities. I've avoided these extensions for two reasons, one reason being time and the other being a desire to keep the complexity of this thesis low so as to invite people in who might otherwise feel intimidated. I'll focus on three main variations that were discussed in length in \textit{ABOP}, and I invite the reader to explore them if you feel so led.\\
+So far, we've only been looking at L-Systems that fall into a very narrow category. Prusinkiewicz and Lindenmayer go into detail about a number of variations on L-Systems that increase not only their complexity but also their capabilities. I've avoided these extensions for two reasons, one reason being time and the other being a desire to keep the complexity of this thesis low so as to invite people in who might otherwise feel intimidated. I'll focus on three main variations that were discussed in length in \textit{ABOP}, and I invite the reader to explore them if you feel so led.\\
 
 	The first of these systems is context-sensitive L-Systems. In the L-Systems that I've shown up until this point, each production variable does not depend on the surrounding values when determining what its production will be. If we choose to explore what L-Systems can look like when they are context-sensitive, we can see straightaway that the possibilities will be more expansive than with the context-free L-Systems we've been seeing up to this point. Any basic context-free L-System can be made by a context-sensitive L-System where none of the productions actually depend on context. This type of L-System can build structures that look more like something you might expect from a cellular automata, like John Conway's Game of Life.\\
+	\textcolor{blue}{[A context sensitive L-System or two]}\\
 	
-	Stochastic L-Systems are a type of L-System that use randomness to construct different structures each time a particular L-System is drawn. These are interesting in a couple ways, but I find it most interesting that they seem to contradict the fundamental argument for why L-Systems are compelling. That reason being the rise of apparent complexity out of a set of simple rules, and specifically complexity that is deterministic. There is something interesting about how these might demonstrate the effects of mutation in an organism, though I'm sure that\\
+	Stochastic L-Systems are a type of L-System that use randomness to construct different structures each time a particular L-System is drawn. These are interesting in a couple ways, but I find it most interesting that they seem to contradict the fundamental argument for why L-Systems are compelling. That reason being the rise of apparent complexity out of a set of simple rules, and specifically complexity that is deterministic. There is something interesting about how these might demonstrate the effects of mutation in an organism. These are the L-Systems that often look most natural, as a random factor can sometimes imitate the near infinite complex factors that affect plant structures out in the world.\\
+	\textcolor{blue}{[A stochastic L-System or two]}\\
 	
-	Parametric L-Systems are one of the most personally appealing and powerful variations on this\\
-
+	Parametric L-Systems are one of the most personally appealing and powerful variations on the L-System formula. They allow the different operations that the L-System does to no longer have to be discrete. It does this by allowing the parameters to be defined in terms of mathematical equations. They also can include logical operators like ``and" and ``or" as parts of conditions that must be satisfied for some part of the L-System to be created. This freedom of expression allows the width and length of the lines drawn to be dynamically changed \textit{partway through} the drawing of the L-System. A parametric L-System allows for some fantastically organic-looking images to be generated.\\
+	\textcolor{blue}{[A parametric L-System or two (probably the set of images from Prusinkieweicz 1997 paper)]}\\
+	
+	Limited-Propagation L-Systems can be classified as those systems which encode the removal of parts of productions into the productions themselves. There are a few types of these L-Systems. Non-propagating L-Systems use productions which \textit{erase} themselves. The production rules for these productions look like ``A $\rightarrow \varepsilon$". This character, $\varepsilon$, symbolizes \textit{nothing}. If 0 is nothing among numbers, $\varepsilon$ is nothing among strings. This production simply erases itself whenever it is called. These are actually implicitly included in the L-System Builder, as if a production is referenced and its production rule doesn't contain any other symbols, then that production is just erased whenever it is read. 
 % In addition to the types of L-Systems explored by Prusinkiewicz and Lindenmayer, there is an opportunity that I feel is extremely untapped to explore what it would mean if we change the dimensions of an L-System. 
 
 \subsection{What does it \textit{Mean} to Change Dimensions}
@@ -294,9 +326,10 @@ What if we choose to change our chosen dimensions to display the same L-System i
 %	\setcounter{chapter}{4}
 	\setcounter{section}{0}
 	
-	This thesis has been a joy to put together. I've reveled in each opportunity to engage with the material and explore more about this idea whose depth I feel I have only begun to understand. Engaging with my peers and mentors about L-Systems and Generative Art has opened my mind to new ways of thinking about these ideas, not to mention the joy I feel when they respond with their interests in kind. I've attempted to make this thesis multidisciplinary, in the spirit of L-Systems as a child of art and computer science but also in the spirit of Reed College as a Liberal Arts institution. I have found that no idea is complete without a range of perspectives.\\
+	L-Systems!!!
 	
-	L-Systems are 
+	
+
 
     \appendix
       \chapter{Extra Images}
