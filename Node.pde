@@ -150,7 +150,6 @@ class Node {
       } else if (t == "-") {
         theta = before.theta - radians(angle);
       }
-      //rotateSubNodes();
     }
     float Ox = x;
     float Oy = y;
@@ -291,6 +290,8 @@ class Node {
       somethingActivated = B;
     } else if (nodeType != "option") {
       before.globalActivation(B);
+    } else {
+      optionParent.globalActivation(B);
     }
     //print("how did you get here? An option is globally activating");
   }
@@ -363,6 +364,9 @@ class Node {
         a.releaseEvent();
       }
     }
+    //if (options.size() == 0 && over) {
+    //  globalActivation(false);
+    //}
   }
   
   void move(float Dx, float Dy) {
@@ -391,16 +395,15 @@ class Node {
     if (nodeType == "option" && t == "add") {
       if (WindowProds.size() < options.size()-3) { // An option node needs to be removed
         for (int i = 0; i < options.size(); i++) { // to determine which option node should be removed
-          if (WindowProds.get(min(i, WindowProds.size()-1)) != options.get(i+3).t) {
+          if (WindowProds.size() > 0 && (WindowProds.get(min(i, WindowProds.size()-1)) != options.get(i+3).t)) {
             options.get(i+3).removeOption(); // remove the node that is no longer represented in the WindowProds array
             break;
           }
         }
       } else if (WindowProds.size() > options.size()-3) { // an option node needs to be added
         for (int i = 0; i < WindowProds.size(); i++) {
-          if (options.get(min(i, options.size()-4)).t != WindowProds.get(i)) {
-            String newProd = WindowProds.get(i);
-            options.add(i + 3, new Node(x + 2*r*(i+1) + 5, y, 0, "option", newProd, this, w, lims));
+          if (options.get(min(i+3, options.size()-1)).t != WindowProds.get(i)) {
+            options.add(i + 3, new Node(x + 2*r*(i+1) + 5, y+r, 0, "option", WindowProds.get(i), this, w, lims));
             break;
           }
         }
@@ -497,6 +500,8 @@ class Node {
   
   void createNode(String t) {
     //print(OGWindowProds);
+    activated = false;
+    globalActivation(false);
     
     if (WindowProds.indexOf(t) != -1) { 
       //print(t + " is in the list. ");

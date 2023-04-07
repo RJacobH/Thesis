@@ -50,7 +50,9 @@ boolean overRect(float X, float Y, float w, float h, PApplet W) {
 }
 
 class Slider {
-  int x, y, xmin, xmax, swidth, sheight;
+  int xmin, xmax, ymin, ymax, swidth, sheight;
+  float x, y;
+  float angle;
   float slideFraction;
   boolean over, press;
   boolean locked = false;
@@ -58,30 +60,38 @@ class Slider {
   boolean firstMousePress = false;
   PApplet w;
   
-  Slider(int iy, int min, int max, int sw, int sh, PApplet W) {
-    y = iy;
-    xmin = min;
-    xmax = max;
-    swidth = sw;
-    sheight = sh;
+  Slider(int Xmin, int Xmax, int Ymin, int Ymax, int wid, int hei, PApplet W) {
+    xmin = Xmin;
+    xmax = Xmax;
+    ymin = Ymin;
+    ymax = Ymax;
+    x = (float) xmin + ((float)(xmax - xmin))/2;
+    y = (float) ymin + ((float)(ymax - ymin))/2;
+    swidth = wid;
+    sheight = hei;
+    angle = 0;
+    if (xmax - xmin != 0) {
+      angle = PI/2 + atan((float)(ymax-ymin) / (float)(xmax-xmin));
+    }
     w = W;
-    
-    //print(x);
-    
   }
   
   void update() {
     overEvent();
     pressEvent();
     if (press) {
-      x = (int) lock(mouseX - swidth/2, xmin, xmax - swidth);
+      x = lock(mouseX, xmin, xmax);
+      y = lock(mouseY, ymin, ymax);
       
     }
-    slideFraction = (float)(x-xmin)/ (float)(xmax-swidth-xmin);
+    slideFraction = dist(xmin, ymin, x, y) / dist(xmin, ymin, xmax, ymax);
   }
   
   void overEvent() {
-    if (overRect(x, y-sheight/2, swidth, sheight, w)) {
+    
+    float s = sin(angle);
+    float c = cos(angle);
+    if (overQuad(x-swidth/2, y-sheight/2, x-swidth/2, y+sheight/2, x+swidth/2, y+sheight/2, x+swidth/2, y-sheight/2, w)) {
       over = true;
     } else {
       over = false;
@@ -117,11 +127,12 @@ class Slider {
   }
   
   void display() {
-    x = (int) lock(x, xmin, xmax - swidth);
+    x = (int) lock(x, xmin, xmax);
+    y = (int) lock(y, ymin, ymax);
     w.fill(0);
     w.stroke(0);
     w.strokeWeight(3);
-    w.line(xmin + swidth/2, y, xmax - swidth/2, y); 
+    w.line(xmin, ymin, xmax, ymax); 
     
     float fill = col;
     if (over || press) {
@@ -131,7 +142,11 @@ class Slider {
     w.stroke(0);
     w.strokeWeight(1);
     w.fill(fill);
-    w.rect(x, y-sheight/2, swidth, sheight);
+    float s = sin(angle);
+    float c = cos(angle);
+    //print("angle: " + degrees(angle));
+    w.quad(x-swidth/2, y-sheight/2, x-swidth/2, y+sheight/2, x+swidth/2, y+sheight/2, x+swidth/2, y-sheight/2);
+    //w.quad(x-s*swidth/2, y-c*sheight/2, x-s*swidth/2, y+c*sheight/2, x+s*swidth/2, y+c*sheight/2, x+s*swidth/2, y-c*sheight/2);
   }
 }
   

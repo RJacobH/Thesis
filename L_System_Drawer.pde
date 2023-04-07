@@ -103,7 +103,6 @@ void settings() {
   RGen = new Triangle(0, 0, 0, 0, 0, 0, this, windowBounds, OGWindowProds);
   LAng = new Triangle(0, 0, 0, 0, 0, 0, this, windowBounds, OGWindowProds);
   RAng = new Triangle(0, 0, 0, 0, 0, 0, this, windowBounds, OGWindowProds);
-  AngleSlider = new Slider(0, 0, 0, 10, 25, this);
             
   //startX = w/2;
   //startY = h/2;
@@ -178,7 +177,11 @@ void pre() {
             w - edge - RW/2 + 40, h - edge - RH/2 + 10 - RH - edge,
             w - edge - RW/2 + 15, h - edge - RH/2 + 25 - RH - edge);
             
-    AngleSlider.move(w - edge - RW/2 - SliderBounds, w - edge - RW/2 + SliderBounds, (int) (h - 2*edge - 1.5*RH));
+    AngleSlider = new Slider(w - edge - RW/2 - SliderBounds, w - edge - RW/2 + SliderBounds, 
+    (int) (h - 2*edge - 1.5*RH), (int) (h - 2*edge - 1.5*RH), 10, 25, this);
+    // (w - edge - RW/2 - SliderBounds, w - edge - RW/2 + SliderBounds, 
+    // (int) (h - 2*edge - 1.5*RH), (int) (h - 2*edge - 1.5*RH), 10, 25, this);
+    //AngleSlider.move(w - edge - RW/2 - SliderBounds, w - edge - RW/2 + SliderBounds, (int) (h - 2*edge - 1.5*RH));
             
     //StartTriangle.adjust(lims);
   }
@@ -222,7 +225,7 @@ void draw() {
   stroke(0);
   int comboProdRows = 1;
   if (LSystem.length() > 30) {
-    comboProdRows = min(2 + (LSystem.length() - 50) / 70, 2);
+    comboProdRows = min(2 + (LSystem.length() - 50) / 70, 1);
   }
   BH = (Replacements.size() + 1 /* this +1 is for the + button */ + comboProdRows /* the other is for the combined production */) * 20;
   rect(sep + edge, height - BH - edge, width - (RW + sep * 2 + edge * 2), BH);
@@ -244,12 +247,13 @@ void draw() {
     if (i == 0) {
       text("Start Variable : " + startVar, currentW, currentH);
     } else if (i < Replacements.size() + 1) {
-      text(subWindows.get(i-1).production + " : " + Replacements.get(i-1), currentW, currentH);
+      text(subWindows.get(i-1).production + " \u2192 " + Replacements.get(i-1), currentW, currentH);
     } else if (i == Replacements.size() + 1) {
-      text("Combo Production: " + LSystem.substring(0, min(30, LSystem.length())), currentW, currentH);
-    } else {
-      text("...", currentW, currentH);
-      //text(LSystem.substring(50 + (i - Replacements.size()) * 70, 50 + min((i - Replacements.size() + 1) * 70, LSystem.length() - 50 - (i - Replacements.size()) * 70)), currentW, currentH);
+      String more = "";
+      if (LSystem.length() > 30) {
+        more = "...";
+      }
+      text("Combo Production: " + LSystem.substring(0, min(30, LSystem.length())) + more, currentW, currentH);
     }
     //text(Productions.get(prodNum(minProdNum, maxSubWindows, subWindows)), currentW, currentH);
     if (i < Replacements.size() + 1 && !(Replacements.size() == maxSubWindows && i == 0)) {
