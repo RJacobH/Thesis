@@ -42,6 +42,8 @@
 	Thanks to my roommates, Henry Wilson, Brent Ellis, and especially Gabe Fish for the late night conversations that led to some of the more interesting choices made and questions raised throughout this document.
 	
 	This thesis has been a joy to put together. I've reveled in each opportunity to engage with the material and explore more about this idea whose depth I feel I have only begun to understand. Engaging with my peers and mentors about L-Systems and Generative Art has opened my mind to new ways of thinking about these ideas, not to mention the joy I feel when they respond with their interests in kind. I've attempted to make this thesis multidisciplinary, in the spirit of L-Systems as a child of both art and computer science but also in the spirit of Reed College as a Liberal Arts institution. For this, and in all things, I have found that no idea is complete without a range of perspectives.\\
+	
+	The cell has been the ``tangible immaterial means of representation for everything. [...] [these things are] realities that emerge from handwork," - Rainer Maria Rilke, - Kelty and Landecker (58)
 
 
     \tableofcontents
@@ -56,8 +58,8 @@
 	The world is a mess of systems. I hope to establish the context for one system that interests me and build it up for you so that you may be as interested in it as I have been. There will be an overview of the structure and function of L-Systems, which I will break down so that everyone can get a sense of what I've been doing. I'll explain the program that I wrote in detail and demonstrate some of its capabilities, as well as the steps I took to get where I ended up. I will also discuss some methods that others have used to do similar things, and go on to explain possible extensions to this work.
 	
 \chapter*{Dedication}
-	This thesis is dedicated to the trees. \\\\
-	\textit{worlds and worlds and worlds and worlds}
+	To the unending search for understanding. \\\\
+	\textit{worlds in worlds and of worlds, by worlds and for worlds}
 
   \mainmatter % here the regular arabic numbering starts
   \pagestyle{fancyplain} % turns page numbering back on
@@ -164,7 +166,7 @@ These sets of images show the progression of an L-System between different itera
 
 	The programming language Python has a built-in library called ``Turtle" that enables users to easily write code that draws simple diagrams. There isn't much overhead required to begin experimenting with Turtle, a fact which is reflected in how often it is used in introductory computer science courses to get novices comfortable with creating images with code. It is also particularly effective at teaching people about the results of changing their code. Part of its quality in this regard is how it animates its drawing. Each step is seemingly taken with intention. Turtle was one of the early methods I used to experiment with L-Systems. The images in this chapter show different L-Systems that I've drawn with my first reliable implementation of Turtle.\\
 	
-	The central feature that Turtle uses to great effect is ``state". ``State" here means ``condition" or ``status". The Turtle keeps track of a few attributes as it goes through drawing the image described by the code. The attributes I focus on here are the Turtle's position and its rotation. With an x-position, a y-position, and an angle, the Turtle is uniquely placed in its window. By manipulating these values with the code and choosing whether to draw or not draw between positions, the Turtle is able to draw a single path through every line that it draws. There is a sense that the state of the turtle is all that it is.\\
+	The central feature that Turtle uses to great effect is ``state". ``State" here means ``condition" or ``status". The Turtle keeps track of a few attributes as it goes through drawing the image described by the code. The attributes I focus on here are the Turtle's position and its rotation. With an x-position, a y-position, and an angle, the Turtle is uniquely placed in its window. By manipulating these values with the code and choosing whether to draw or not draw between positions, the Turtle is able to draw a single path through every line that it draws. This is also particularly powerful because it physicalizes the process of coding that's often purely digital and accessible only through rough abstraction. This is a good abstraction for the purposes of this thesis.\\
 
 
 \chapter{Explaining the Program}
@@ -181,7 +183,10 @@ These sets of images show the progression of an L-System between different itera
 
 	The development of the program that I would eventually come to call the L-System Builder started with a series of drawings describing the different functionalities I was aiming to include. I wanted everything to be able to be accessed without touching the keyboard. There has been a few moments since I started development on this project where things could have been easier if typing was allowed, but so far I only expect one of those uses to actually need the keyboard. I was imagining that if someone wanted to input an L-System that they already had on hand, it would make sense for them to be able to type it in.\\
 	
-	I built the windows first. In the basic processing version of the Builder, the windows for the productions are able to be moved independently from the main display window. This 
+	I built the windows first. In the basic processing version of the Builder, the windows for the productions are able to be moved independently from the main display window. This doesn't add all that much to the program in terms of ability, but it allows users to move the windows in accordance with their whims. From there, I began to build up the framework of the Builder itself. The structure changed a bit through its development, but I'll describe the form that the project has taken at the time I'm writing this.\\
+	
+\section{How it works}
+	The main window is initialized upon startup. It then creates some number of sub-windows, one for each production that the program starts with. More productions can be added, and more windows are created for productions when needed. Windows are similarly removed when not needed. 
 
 \section{Access and Use}
 
@@ -230,9 +235,12 @@ What does it mean for a machine to make art?\\
 
 \chapter{Past, Present, Future}
 
-	L-Systems were introduced in 1968 in a paper by Aristid Lindenmayer, where he suggested how one could construct a mathematical model of the structure of simple cells. Even in their introductory paper, L-Systems were deeply tied to the modeling of life. As could be expected, the early models generated by the first L-Systems were extremely simple. They laid the foundation for what was to come, but did not investigate the larger world of possibilities that these structures could make real. In the last 55 years, there have been many developments in this area, most of which have been deeply attached to the development of fast computer graphics. By bringing these systems onto a screen where users could more easily engage with them, there was increased interest in making them more accurately reflect the growth of actual plants. L-Systems have played an essential role in film animations for years, with some notable mentions as the thing responsible for the forests in Shrek, the opening sequence in Fight Club, and  \\
+	L-Systems were introduced in 1968 in a paper by Aristid Lindenmayer, where he suggested how one could construct a mathematical model of the structure of simple cells. Even in their introductory paper, L-Systems were deeply tied to the modeling of life. As could be expected, the early models generated by the first L-Systems were extremely simple. They laid the foundation for what was to come, but did not investigate the larger world of possibilities that these structures could make real. In the last 55 years, there have been many developments in this area, most of which have been deeply attached to the development of fast computer graphics. By bringing these systems onto a screen where users could more easily engage with them, there was increased interest in making them more accurately reflect the growth of actual plants.\\
 	
-	Lindenmayer was in part concerned with the creation of axioms of biological knowledge. In the years before his 1968 paper, he approached discussions about the 
+	Over the last decades, L-Systems have found places for themselves in many notable cultural touchstones. They are responsible for the opening sequence in Fight Club, the
+	played an essential role in film animations for years, with some notable mentions as the thing responsible for the forests in Shrek, the opening sequence in Fight Club, and  \\
+	
+	Lindenmayer was in part concerned with the creation of axioms of biological knowledge. In the years before his 1968 paper, he attempted to provide formal frameworks to break down 
 	
 	He discussed the inseparability of theories from languages (Kelty and Landecker 46). ``Theories become like the biology they purport to describe: natural, evolving forms with dynamics and feature all their own." (46)
 	
@@ -282,41 +290,46 @@ So far, we've only been looking at L-Systems that fall into a very narrow catego
 	\textcolor{blue}{[A parametric L-System or two (probably the set of images from Prusinkieweicz 1997 paper)]}\\
 	
 	Limited-Propagation L-Systems can be classified as those systems which encode the removal of parts of productions into the productions themselves. There are a few types of these L-Systems. Non-propagating L-Systems use productions which \textit{erase} themselves. The production rules for these productions look like ``A $\rightarrow \varepsilon$". This character, $\varepsilon$, symbolizes \textit{nothing}. If 0 is nothing among numbers, $\varepsilon$ is nothing among strings. This production simply erases itself whenever it is called. These are actually implicitly included in the L-System Builder, as if a production is referenced and its production rule doesn't contain any other symbols, then that production is just erased whenever it is read. 
+	
+	
+	\subsection{Interpretations}
+	Up until this point 
+	
 % In addition to the types of L-Systems explored by Prusinkiewicz and Lindenmayer, there is an opportunity that I feel is extremely untapped to explore what it would mean if we change the dimensions of an L-System. 
 
-\subsection{What does it \textit{Mean} to Change Dimensions}
-When the state at a particular point in the construction of an L-System changes, it alters the way that the L-System is displayed. This can be especially obvious and dramatic if the part of the state that is changed is the angle. By changing the angle by only a small amount, let's say a degree, we affect the position and rotation of every following node. Changing the position part of the state will only change the position of later nodes. This seems to suggest that somehow, changing the angle is a \textit{more powerful} alteration than changing the position. Looking more closely at what actually separates changing position from changing angle, we can see that the angle never actually draws anything. The value that draws things is always F. We can take our simplified L-System and see that there is a depth of nuance to the values we implicitly chose to use at the beginning of this process. The following table shows the differences between these two operations, the rotate operation and the forward operation.\\
+%\subsection{What does it \textit{Mean} to Change Dimensions}
+%When the state at a particular point in the construction of an L-System changes, it alters the way that the L-System is displayed. This can be especially obvious and dramatic if the part of the state that is changed is the angle. By changing the angle by only a small amount, let's say a degree, we affect the position and rotation of every following node. Changing the position part of the state will only change the position of later nodes. This seems to suggest that somehow, changing the angle is a \textit{more powerful} alteration than changing the position. Looking more closely at what actually separates changing position from changing angle, we can see that the angle never actually draws anything. The value that draws things is always F. We can take our simplified L-System and see that there is a depth of nuance to the values we implicitly chose to use at the beginning of this process. The following table shows the differences between these two operations, the rotate operation and the forward operation.\\
 
-\begin{longtable}{|c||c|c|c|}
-	 	\caption[Rotate vs Forward Atomization]{Rotate vs Forward Atomization}\\ \hline
-		    	      & Following Node has & Following Node has &  \\  
-		   Attribute & the Same Position &  the Same Orientation & Draws \\\hline%\hline
-		  \endfirsthead
-		    \endhead
+%\begin{longtable}{|c||c|c|c|}
+%	 	\caption[Rotate vs Forward Atomization]{Rotate vs Forward Atomization}\\ \hline
+%		    	      & Following Node has & Following Node has &  \\  
+%		   Attribute & the Same Position &  the Same Orientation & Draws \\\hline%\hline
+%		  \endfirsthead
+%		    \endhead
+%
+%	    Rotate & \textcolor{ForestGreen}{Y} & \textcolor{WildStrawberry}{N} & \textcolor{WildStrawberry}{N}  \\\hline
+%	    Forward & \textcolor{WildStrawberry}{N} & \textcolor{ForestGreen}{Y} & \textcolor{ForestGreen}{Y}  \\\hline
+%
+%\end{longtable}
 
-	    Rotate & \textcolor{ForestGreen}{Y} & \textcolor{WildStrawberry}{N} & \textcolor{WildStrawberry}{N}  \\\hline
-	    Forward & \textcolor{WildStrawberry}{N} & \textcolor{ForestGreen}{Y} & \textcolor{ForestGreen}{Y}  \\\hline
+%Every time the Forward operation is read, two things happen, while when the Rotate operation is read, only one thing happens. It seems like it might be possible to create a more specific operation for forward that breaks it up into its two parts. The way that people have found to get around this problem is by introducing a second type of Forward operation that changes position but doesn't draw. Usually this is notated by a lowercase f instead of the usual capital F for the regular Forward operation. We could approach the forward operation in a different way - perhaps it would be more right to call it a ``draw" command, and the way it draws is governed by either the state of the L-System at the moment when the operation is read or the parameters of the L-System at the outset, or both. If we begin to think about the forward command as a draw command instead, a new world of possibilities opens to us.\\
 
-\end{longtable}
+%Imperative vs declarative (turtles are the ultimate imperative thing) 
+%L-Systems are fundamentally declarative - just the replacement system
+%Don't think about going through the string piece by piece, instead just showing the before and the after
 
-Every time the Forward operation is read, two things happen, while when the Rotate operation is read, only one thing happens. It seems like it might be possible to create a more specific operation for forward that breaks it up into its two parts. The way that people have found to get around this problem is by introducing a second type of Forward operation that changes position but doesn't draw. Usually this is notated by a lowercase f instead of the usual capital F for the regular Forward operation. We could approach the forward operation in a different way - perhaps it would be more right to call it a ``draw" command, and the way it draws is governed by either the state of the L-System at the moment when the operation is read or the parameters of the L-System at the outset, or both. If we begin to think about the forward command as a draw command instead, a new world of possibilities opens to us.\\
-
-Imperative vs declarative (turtles are the ultimate imperative thing) 
-L-Systems are fundamentally declarative - just the replacement system
-Don't think about going through the string piece by piece, instead just showing the before and the after
-
-Declarative language "prologue" - rules are defined \& a hidden engine solves with attention to those restraints
+%Declarative language "prologue" - rules are defined \& a hidden engine solves with attention to those restraints
 
 
 
-\subsection{Alternative Dimensions}
-What if we choose to change our chosen dimensions to display the same L-System in a different way? There are a few ways to do this \textit{I think)}. First, we must figure out possible alternative dimensions. Beyond the basic three spatial dimensions, a classic dimension is time. This suggests that there might be a way to display L-Systems with variations in time, perhaps in the form of an animation. Some other classic dimensions that people have used with L-Systems are width and length (as in determining how wide or long each line is drawn). We could change the color of the line, so that it changes hue, saturation, or opacity according to some color space. We could alter the curvature of the line, perhaps in such a way that we have a smooth, shamelessly organic-looking system. The quality of the lines could be a dimension: we could make them more jagged in one direction and more smooth in the other.\\
+%\subsection{Alternative Dimensions}
+%What if we choose to change our chosen dimensions to display the same L-System in a different way? There are a few ways to do this \textit{I think)}. First, we must figure out possible alternative dimensions. Beyond the basic three spatial dimensions, a classic dimension is time. This suggests that there might be a way to display L-Systems with variations in time, perhaps in the form of an animation. Some other classic dimensions that people have used with L-Systems are width and length (as in determining how wide or long each line is drawn). We could change the color of the line, so that it changes hue, saturation, or opacity according to some color space. We could alter the curvature of the line, perhaps in such a way that we have a smooth, shamelessly organic-looking system. The quality of the lines could be a dimension: we could make them more jagged in one direction and more smooth in the other.\\
 
-\subsection{The Problem of Depiction}
+%\subsection{The Problem of Depiction}
 
-	Some dimensions lend themselves more easily to being displayed. For example, if we try to display an L-System which has a draw function that overwrites previously drawn sections, then we lose information. This might not be bad if that's gives an effect that we're attempting to capture, but we are still losing information. As another example of this same problem, and hopefully one that's more concrete, when the angle is set to 0 or 180 in the Illustrator, you'll notice how the resulting L-System is just a vertical line. Much information is lost. We can imagine adding color to the Illustrator in such a way that each branch segment has a color, but this still will lose information, though not as much. If we see the \textit{problem of depiction} as the problem of losing information, then we can try to solve the problem of depiction by somehow retaining all the information. A way that could work is extending the program into three dimensions, where each line increases in depth over the course of its run. We would have to be able to move in such a way as to be able to see this change, but it seems possible. We could then see that later branches are deeper into the screen (or higher out from the screen). Either way, we've seemingly solved some of this problem. We also might be able to do the same thing by reducing the width of later branches and changing their color. We'd then be able to pick out the later branches from the earlier ones, retaining some information and seemingly resolving this problem.\\
+%	Some dimensions lend themselves more easily to being displayed. For example, if we try to display an L-System which has a draw function that overwrites previously drawn sections, then we lose information. This might not be bad if that's gives an effect that we're attempting to capture, but we are still losing information. As another example of this same problem, and hopefully one that's more concrete, when the angle is set to 0 or 180 in the Illustrator, you'll notice how the resulting L-System is just a vertical line. Much information is lost. We can imagine adding color to the Illustrator in such a way that each branch segment has a color, but this still will lose information, though not as much. If we see the \textit{problem of depiction} as the problem of losing information, then we can try to solve the problem of depiction by somehow retaining all the information. A way that could work is extending the program into three dimensions, where each line increases in depth over the course of its run. We would have to be able to move in such a way as to be able to see this change, but it seems possible. We could then see that later branches are deeper into the screen (or higher out from the screen). Either way, we've seemingly solved some of this problem. We also might be able to do the same thing by reducing the width of later branches and changing their color. We'd then be able to pick out the later branches from the earlier ones, retaining some information and seemingly resolving this problem.\\
 
-	Both of the examples I gave address the issue of losing information by simply adding more dimensions. The added dimensions can be spatial or they can be in the form of attributes, but either way they add something that makes branches unique.\\
+%	Both of the examples I gave address the issue of losing information by simply adding more dimensions. The added dimensions can be spatial or they can be in the form of attributes, but either way they add something that makes branches unique.\\
 
 
 \chapter{Conclusion}
