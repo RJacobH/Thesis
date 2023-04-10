@@ -14,7 +14,7 @@ int w, h; // Variables to keep track of the width and height of the window for r
 boolean firstMousePress = false; // True if a mouse button has just been pressed while no other button was.
 
 Triangle LGen, RGen, LAng, RAng; // The different arrow buttons for changing values
-Slider AngleSlider;
+Slider AngleSlider, OffsetSlider;
 
 
 ArrayList<Rectangle> windowButtons = new ArrayList<Rectangle>(); // The buttons that can add or remove windows/production rules
@@ -24,6 +24,7 @@ PFont myFont;
 
 int gens = 1;
 float angle = 0;
+float offset = 0;
 
 // The bounds for where new nodes can be placed or dragged to
 int xmin, xmax, ymin, ymax;
@@ -177,8 +178,15 @@ void pre() {
             w - edge - RW/2 + 40, h - edge - RH/2 + 10 - RH - edge,
             w - edge - RW/2 + 15, h - edge - RH/2 + 25 - RH - edge);
             
-    AngleSlider = new Slider(w - edge - RW/2 - SliderBounds, w - edge - RW/2 + SliderBounds, 
-    (int) (h - 2*edge - 1.5*RH), (int) (h - 2*edge - 1.5*RH), 10, 25, this);
+    //AngleSlider = new Slider(w - edge - RW/2 - SliderBounds, w - edge - RW/2 + SliderBounds, 
+    //(int) (h - 2*edge - 1.5*RH), (int) (h - 2*edge - 1.5*RH), 10, 25, this);
+    AngleSlider = new Slider(w - edge - RW/4, w - edge - RW/4, 
+    (int) (h - edge - 1.5*RH - 2*SliderBounds+3), (int) (h - edge - 1.5*RH+3), 25, 10, this);
+    
+    OffsetSlider = new Slider(w - edge - 3*RW/4, w - edge - 3*RW/4, 
+    (int) (h - edge - 1.5*RH - 2*SliderBounds+3), (int) (h - edge - 1.5*RH+3), 25, 10, this);
+    
+    
     // (w - edge - RW/2 - SliderBounds, w - edge - RW/2 + SliderBounds, 
     // (int) (h - 2*edge - 1.5*RH), (int) (h - 2*edge - 1.5*RH), 10, 25, this);
     //AngleSlider.move(w - edge - RW/2 - SliderBounds, w - edge - RW/2 + SliderBounds, (int) (h - 2*edge - 1.5*RH));
@@ -291,15 +299,30 @@ void draw() {
   // Angle Box
   
   fill(220);
-  rect(width - RW - edge, height - RH - edge - RH - edge, RW, RH);
+  rect(width - RW/2+sep/2 - edge, height - RH - SliderBounds*2 - 1.5*edge - 70, RW/2-sep/2, SliderBounds*2 + 70);
+  //(h - edge - 1.5*RH - 2*SliderBounds - 5)
+  textSize(20);
+  textAlign(CENTER, CENTER);
+  fill(0);
+  text("Angle", width - RW/4+sep/2 - edge, height - 2*SliderBounds - RW*1.5 + 25);
+  
+  //textSize(20);
+  text(str(angle), width - RW/4+sep/2 - edge, height - edge - 9 - RH - edge);
+  
+  fill(200);
+  
+  // Offset Box
+  
+  fill(220);
+  rect(width - RW - edge, height - RH - SliderBounds*2 - 1.5*edge - 70, RW/2-sep/2, SliderBounds*2 + 70);
   
   textSize(20);
   textAlign(CENTER, CENTER);
   fill(0);
-  text("Angle", width - edge - RW/2, height - edge - RH + 12 - RH - edge);
+  text("Offset", width - 3*RW/4 - edge, height - 2*SliderBounds - RW*1.5 + 25);
   
   //textSize(20);
-  text(str(angle), width - edge - RW/2, height - edge - 18 - RH - edge);
+  text(str(offset), width - 3*RW/4 - edge, height - edge - 9 - RH - edge);
   
   fill(200);
   
@@ -316,16 +339,23 @@ void draw() {
   AngleSlider.display();
   AngleSlider.setFirstMousePress(false);
   
+  OffsetSlider.update();
+  OffsetSlider.display();
+  OffsetSlider.setFirstMousePress(false);
+  
   if (AngleSlider.press) {
     angle = round(360.0 * AngleSlider.slideFraction - 180);
-    
+  }
+  
+  if (OffsetSlider.press) {
+    offset = round(360.0 * OffsetSlider.slideFraction - 180);
   }
   
   for (Window w : subWindows) {
     w.setAngle(angle);
   }
   
-  drawLSystem(LSystem, this, w/2, h/2, radians(angle)); // w/2, 5*h/6
+  drawLSystem(LSystem, this, w/2, h/2, radians(angle), radians(offset)); // w/2, 5*h/6
   //print(angle);
 }
 
@@ -387,7 +417,7 @@ void mousePressed() {
   //  angle = 360 * AngleSlider.slideFraction;
   //}
   AngleSlider.setFirstMousePress(true);
-  
+  OffsetSlider.setFirstMousePress(true);
   //for (Node n : nodes) {
   //  n.setFirstMousePress(true);
   //}
@@ -411,6 +441,7 @@ void mouseReleased() {
   LAng.releaseEvent();
   RAng.releaseEvent();
   AngleSlider.releaseEvent();
+  OffsetSlider.releaseEvent();
   //StartTriangle.releaseEvent();
 }
 

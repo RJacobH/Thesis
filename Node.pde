@@ -6,7 +6,8 @@ class Node {
   boolean locked = false;
   int col = 100;
   float theta; // the current rotation of a node
-  float angle; // the rotation step as chosen in the main window
+  float angle; // the rotation as chosen in the main window
+  float offset; // the offset as chosen in the main window
   float d = 20;
   float r = d/2;
   float Len;
@@ -41,7 +42,7 @@ class Node {
   String t = " "; // The text that is in the center of the node. Only should be used for option and production nodes (and perhaps rotation nodes?)
   
   // This first constructor makes a special node without a before node. This node is tied to the StartTriangle 
-  Node(float ix, float iy, float A, String Ntype, Triangle T, PApplet W, IntList limits) { // Only used once to initialize a window's tree of nodes
+  Node(float ix, float iy, float A, float O, String Ntype, Triangle T, PApplet W, IntList limits) { // Only used once to initialize a window's tree of nodes
     w = W;
     nodeType = Ntype;
     lims = limits;
@@ -53,6 +54,7 @@ class Node {
     somethingActivated = false;
     Len = Tparent.Len;
     angle = A;
+    offset = O;
     
     OGWindowProds = Tparent.WindowProds;
     WindowProds = OGWindowProds;
@@ -62,7 +64,7 @@ class Node {
     options.add(new Node(x + 2*r + 5, y, 0, "option", "add", this, w, lims));
   }
   
-  Node(float ix, float iy, float A, String Ntype, String text, Node b, PApplet W, IntList limits) {
+  Node(float ix, float iy, float A, float O, String Ntype, String text, Node b, PApplet W, IntList limits) {
     w = W;
     nodeType = Ntype;
     lims = limits;
@@ -71,6 +73,7 @@ class Node {
     //theta = radians(rotation) % TWO_PI;
     t = text;
     angle = A;
+    offset = O;
     //t = w.production;
     if (nodeType != "option") {
       before = b;

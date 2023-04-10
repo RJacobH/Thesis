@@ -89,8 +89,8 @@ class Slider {
   
   void overEvent() {
     
-    float s = sin(angle);
-    float c = cos(angle);
+    //float s = sin(angle);
+    //float c = cos(angle);
     if (overQuad(x-swidth/2, y-sheight/2, x-swidth/2, y+sheight/2, x+swidth/2, y+sheight/2, x+swidth/2, y-sheight/2, w)) {
       over = true;
     } else {
@@ -142,10 +142,10 @@ class Slider {
     w.stroke(0);
     w.strokeWeight(1);
     w.fill(fill);
-    float s = sin(angle);
-    float c = cos(angle);
+    w.rect(x-swidth/2, y-sheight/2, swidth, sheight);
+    //w.circle(x,y,(sheight+swidth)/2);
     //print("angle: " + degrees(angle));
-    w.quad(x-swidth/2, y-sheight/2, x-swidth/2, y+sheight/2, x+swidth/2, y+sheight/2, x+swidth/2, y-sheight/2);
+    //w.quad(x-swidth/2, y-sheight/2, x-swidth/2, y+sheight/2, x+swidth/2, y+sheight/2, x+swidth/2, y-sheight/2);
     //w.quad(x-s*swidth/2, y-c*sheight/2, x-s*swidth/2, y+c*sheight/2, x+s*swidth/2, y+c*sheight/2, x+s*swidth/2, y-c*sheight/2);
   }
 }
@@ -166,6 +166,7 @@ class Triangle {
   ArrayList<String> WindowProds;
   float Len;
   float angle = 0;
+  float offset = 0;
   
   Triangle(float X1, float Y1, float X2, float Y2, float X3, float Y3, PApplet Window, IntList limits, ArrayList<String> WP) {
 
@@ -188,6 +189,7 @@ class Triangle {
       
       startNode.Len = Len;
       startNode.angle = angle;
+      startNode.offset = offset;
       startNode.update();
       //if (over && !(startNode.activated || startNode.afterActivated())) {
       //  startNode.activatedFalse();
@@ -462,11 +464,12 @@ String combineLSystem(String Start, String Productions, StringList Replacements,
   return phrase;
 }
 
-void drawLSystem(String LSystem, PApplet Window, float startX, float startY, float angle) {
+void drawLSystem(String LSystem, PApplet Window, float startX, float startY, float angle, float offset) {
   float currentX = startX;
   float currentY = startY;
   float theta = 0;
   float Dtheta = angle;
+  float Otheta = offset;
   char C;
   ArrayList<State> Stack = new ArrayList<State>();
   
@@ -486,7 +489,7 @@ void drawLSystem(String LSystem, PApplet Window, float startX, float startY, flo
       currentX = newX;
       currentY = newY;
     } else if (C == '+') {
-      theta = (theta + Dtheta) % TWO_PI;
+      theta = (theta + Dtheta + Otheta) % TWO_PI;
     } else if (C == '-') {
       theta = (theta - Dtheta) % TWO_PI;
     } else if (C == '[') {

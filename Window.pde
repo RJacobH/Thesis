@@ -19,6 +19,7 @@ class Window extends PApplet {
   float vicinity = 20;
   float Len;
   float angle;
+  float offset;
   
   String production = ""; // the value that is replaced
   String replacement = ""; // the value that replaces 
@@ -138,6 +139,10 @@ class Window extends PApplet {
   
   public void setAngle(float A) {
     StartTriangle.angle = A;
+  }
+  
+  public void setOffset(float O) {
+    StartTriangle.offset = O;
   }
   
   public String getProduction() {
