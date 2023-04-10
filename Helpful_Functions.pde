@@ -251,7 +251,7 @@ class Triangle {
   void setMovable(boolean m) {
     movable = m;
     if (movable) {
-      startNode = new Node(x1, y1, 0, "start", this, w, lims);
+      startNode = new Node(x1, y1, 0, 0, "start", this, w, lims);
     }
   }
   

@@ -227,7 +227,7 @@ void draw() {
   }
   
   LSystem = combineLSystem(startVar, Productions, Replacements, gens);
-  
+  drawLSystem(LSystem, this, w/2, h/2, radians(angle), radians(offset)); // w/2, 5*h/6
   fill(220);
   strokeWeight(1);
   stroke(0);
@@ -353,9 +353,10 @@ void draw() {
   
   for (Window w : subWindows) {
     w.setAngle(angle);
+    w.setOffset(offset);
   }
   
-  drawLSystem(LSystem, this, w/2, h/2, radians(angle), radians(offset)); // w/2, 5*h/6
+  
   //print(angle);
 }
 
