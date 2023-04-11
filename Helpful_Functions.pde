@@ -115,6 +115,10 @@ class Slider {
     firstMousePress = B;
   }
   
+  void setSlideFraction(float f) {
+    slideFraction = lock(f, 0.0, 1.0);
+  }
+  
   void move(int newmin, int newmax, int newy) {
     xmin = newmin;
     xmax = newmax;

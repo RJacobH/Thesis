@@ -65,6 +65,11 @@ String LSystem;
 
 int SliderBounds = 185;
 
+
+boolean animating = true;
+float Arate = 0.3;
+float Orate = 0.2;
+
 void settings() {
   size(displayWidth/2, displayHeight);
   windowButtons.add(new Rectangle(0, 0, buttonSize, buttonSize, "+", this));
@@ -192,8 +197,10 @@ void pre() {
     //AngleSlider.move(w - edge - RW/2 - SliderBounds, w - edge - RW/2 + SliderBounds, (int) (h - 2*edge - 1.5*RH));
             
     //StartTriangle.adjust(lims);
+    
   }
 }
+
 
 void draw() {
   background(255);
@@ -307,7 +314,7 @@ void draw() {
   text("Angle", width - RW/4+sep/2 - edge, height - 2*SliderBounds - RW*1.5 + 25);
   
   //textSize(20);
-  text(str(angle), width - RW/4+sep/2 - edge, height - edge - 9 - RH - edge);
+  text(nf(angle, 0, 1), width - RW/4+sep/2 - edge, height - edge - 9 - RH - edge);
   
   fill(200);
   
@@ -322,7 +329,7 @@ void draw() {
   text("Offset", width - 3*RW/4 - edge, height - 2*SliderBounds - RW*1.5 + 25);
   
   //textSize(20);
-  text(str(offset), width - 3*RW/4 - edge, height - edge - 9 - RH - edge);
+  text(nf(offset, 0, 1), width - 3*RW/4 - edge, height - edge - 9 - RH - edge);
   
   fill(200);
   
@@ -334,6 +341,27 @@ void draw() {
   //RAng.update();
   //RAng.display();
   //RAng.setFirstMousePress(false);
+  if (AngleSlider.press) {
+    angle = round(360.0 * AngleSlider.slideFraction - 180);
+  } else if (OffsetSlider.press) {
+    offset = round(360.0 * OffsetSlider.slideFraction - 180);
+    
+  } else if (animating) {
+    
+    angle = (angle + Arate + 180) % 360 - 180;
+    offset = (offset - Orate - 180) % 360 + 180; 
+    //offset = (90 - angle) % 360;
+    AngleSlider.setSlideFraction((angle+180.0)/360.0);
+    //print(AngleSlider.slideFraction + " ");
+    ////print(OffsetSlider.slideFraction + " " );
+    AngleSlider.x = AngleSlider.xmin+AngleSlider.slideFraction*(AngleSlider.xmax-AngleSlider.xmin);
+    AngleSlider.y = AngleSlider.ymin+AngleSlider.slideFraction*(AngleSlider.ymax-AngleSlider.ymin);
+    
+    OffsetSlider.setSlideFraction((offset+180.0)/360.0);
+    ////print(OffsetSlider.slideFraction + " " );
+    OffsetSlider.x = OffsetSlider.xmin+OffsetSlider.slideFraction*(OffsetSlider.xmax-OffsetSlider.xmin);
+    OffsetSlider.y = OffsetSlider.ymin+OffsetSlider.slideFraction*(OffsetSlider.ymax-OffsetSlider.ymin);
+  }
   
   AngleSlider.update();
   AngleSlider.display();
@@ -343,13 +371,7 @@ void draw() {
   OffsetSlider.display();
   OffsetSlider.setFirstMousePress(false);
   
-  if (AngleSlider.press) {
-    angle = round(360.0 * AngleSlider.slideFraction - 180);
-  }
   
-  if (OffsetSlider.press) {
-    offset = round(360.0 * OffsetSlider.slideFraction - 180);
-  }
   
   for (Window w : subWindows) {
     w.setAngle(angle);

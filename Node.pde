@@ -312,17 +312,6 @@ class Node {
     return false;
   }
   
-  void activatedFalse() {
-    activated = false;
-    for (Node o : options) {
-      o.activatedFalse();
-    }
-    if (nodeType != "option") {
-      for (Node a : after) {
-        a.activatedFalse();
-      }
-    }
-  }
   
   void overEvent() {
     if (isOver()/* && nodeType == "option"*/) {
