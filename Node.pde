@@ -107,8 +107,10 @@ class Node {
     
     if (nodeType != "option") {
       if (nodeType == "forward") {
-        options.add(new Node(x - Len*(-sin(theta))/2 - 2*r + 5, y - Len*(-cos(theta))/2, "option", "del", this, w, lims));
-        options.add(new Node(x - Len*(-sin(theta))/2 + 2*r - 5, y - Len*(-cos(theta))/2, "option", "add", this, w, lims));
+        //x = before.x + Len*(-sin(theta));
+        //y = before.y + Len*(-cos(theta));
+        options.add(new Node(x - Len*(-sin(theta))/2 + 1.5*r*(-cos(theta)), y - Len*(-cos(theta))/2 + 1.5*r*(sin(theta)), "option", "del", this, w, lims));
+        options.add(new Node(x - Len*(-sin(theta))/2 - 1.5*r*(-cos(theta)), y - Len*(-cos(theta))/2 - 1.5*r*(sin(theta)), "option", "add", this, w, lims));
       } else {
         options.add(new Node(x - 2*r - 5, y, "option", "del", this, w, lims));
         options.add(new Node(x + 2*r + 5, y, "option", "add", this, w, lims));
@@ -117,19 +119,20 @@ class Node {
     
     if (nodeType == "option" && t == "add") {
       options.add(new Node(x + 2*r + 5, y-r, "option", "F", this, w, lims)); // forward option node
-      options.add(new Node(x + 2*r*2 + 5, y-r, "option", "+", this, w, lims)); // rotation option node
-      options.add(new Node(x + 2*r*3 + 5, y-r, "option", "-", this, w, lims)); // rotation option node
+      options.add(new Node(x + 2*r*2 + 5, y-r, "option", "f", this, w, lims)); // forward option node
+      options.add(new Node(x + 2*r*3 + 5, y-r, "option", "+", this, w, lims)); // rotation option node
+      options.add(new Node(x + 2*r*4 + 5, y-r, "option", "-", this, w, lims)); // rotation option node
       for (int i = 0; i < WindowProds.size(); i++) {
         options.add(new Node(x + 2*r*(i+1) + 5, y+r, "option", WindowProds.get(i), this, w, lims));
         //options.get(i).setText(WindowProds.get(i));
       }
       
       
-      if (optionParent.nodeType == "rotation") { // two rotation nodes, one clockwise and one counterclockwise
+      //if (optionParent.nodeType == "rotation") { // two rotation nodes, one clockwise and one counterclockwise
         
-      } else { // just one node for making a rotation node
+      //} else { // just one node for making a rotation node
         
-      }
+      //}
     }
   }
   
@@ -388,17 +391,17 @@ class Node {
   
   void fixWindowProds() {
     if (nodeType == "option" && t == "add") {
-      if (WindowProds.size() < options.size()-3) { // An option node needs to be removed
+      if (WindowProds.size() < options.size()-4) { // An option node needs to be removed
         for (int i = 0; i < options.size(); i++) { // to determine which option node should be removed
-          if (WindowProds.size() > 0 && (WindowProds.get(min(i, WindowProds.size()-1)) != options.get(i+3).t)) {
+          if (WindowProds.size() > 0 && (WindowProds.get(min(i, WindowProds.size()-1)) != options.get(i+4).t)) {
             options.get(i+3).removeOption(); // remove the node that is no longer represented in the WindowProds array
             break;
           }
         }
       } else if (WindowProds.size() > options.size()-3) { // an option node needs to be added
         for (int i = 0; i < WindowProds.size(); i++) {
-          if (options.get(min(i+3, options.size()-1)).t != WindowProds.get(i)) {
-            options.add(i + 3, new Node(x + 2*r*(i+1) + 5, y+r, "option", WindowProds.get(i), this, w, lims));
+          if (options.get(min(i+4, options.size()-1)).t != WindowProds.get(i)) {
+            options.add(i + 4, new Node(x + 2*r*(i+1) + 5, y+r, "option", WindowProds.get(i), this, w, lims));
             break;
           }
         }
@@ -430,8 +433,10 @@ class Node {
       //replacement = "±";
     } else if (nodeType == "production") {
       replacement = t;
-    } else if (nodeType == "forward") {
+    } else if (nodeType == "forward" && t == "F") {
       replacement = "F";
+    } else if (nodeType == "forward" && t == "f") {
+      replacement = "f";
     } else {
       //print("GENERATOR MELTDOWN");
     }
@@ -501,8 +506,8 @@ class Node {
     if (WindowProds.indexOf(t) != -1) { 
       //print(t + " is in the list. ");
       after.add(new Node(x, y, "production", t, this, w, lims));
-    } else if (t == "F") {
-      after.add(new Node(x + Len*(-sin(theta)), y + Len*(-cos(theta)), "forward", "", this, w, lims));
+    } else if (t == "F" || t == "f") {
+      after.add(new Node(x + Len*(-sin(theta)), y + Len*(-cos(theta)), "forward", t, this, w, lims));
     } else if (t == "+") {
       Node newNode = new Node(x, y, "rotation", "+", this, w, lims);
       newNode.theta = theta;
@@ -518,11 +523,18 @@ class Node {
   void drawNode(int fill) {
     w.fill(fill);
     // This part draws & fills in the shape of the node
-    if (nodeType == "forward") {
+    if (nodeType == "forward" && t == "F") {
       w.stroke(fill);
       w.strokeWeight(4);
       w.line(x, y, x - Len*(-sin(theta)), y - Len*(-cos(theta)));
       //w.line(optionParent.x, optionParent.y, optionParent.x+100, optionParent.y-100);
+      
+    } else if (nodeType == "forward" && t == "f") {
+      w.stroke(fill);
+      w.strokeWeight(4);
+      w.line(x, y, x - 0.25*Len*(-sin(theta)), y - 0.25*Len*(-cos(theta)));
+      w.line(x - 0.45*Len*(-sin(theta)), y - 0.45*Len*(-cos(theta)), x - 0.55*Len*(-sin(theta)), y - 0.55*Len*(-cos(theta)));
+      w.line(x - 0.75*Len*(-sin(theta)), y - 0.75*Len*(-cos(theta)), x - Len*(-sin(theta)), y - Len*(-cos(theta)));
       
     } else {
       w.stroke(0);
@@ -559,7 +571,7 @@ class Node {
     if (t == "add" || t == "del") {
       w.textSize(d-10);
       w.text(t, x, y-2);
-    } else {
+    } else if (nodeType != "forward") {
       w.textSize(d-3);
       w.text(t, x, y-3);
     }

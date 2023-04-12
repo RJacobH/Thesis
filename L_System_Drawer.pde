@@ -66,7 +66,8 @@ String LSystem;
 int SliderBounds = 185;
 
 
-boolean animating = true;
+boolean animatingA = true;
+boolean animatingO = true;
 float Arate = 0.3;
 float Orate = 0.2;
 
@@ -343,25 +344,22 @@ void draw() {
   //RAng.setFirstMousePress(false);
   if (AngleSlider.press) {
     angle = round(360.0 * AngleSlider.slideFraction - 180);
-  } else if (OffsetSlider.press) {
-    offset = round(360.0 * OffsetSlider.slideFraction - 180);
-    
-  } else if (animating) {
-    
+  } else if (animatingA) {
     angle = (angle + Arate + 180) % 360 - 180;
-    offset = (offset - Orate - 180) % 360 + 180; 
-    //offset = (90 - angle) % 360;
     AngleSlider.setSlideFraction((angle+180.0)/360.0);
-    //print(AngleSlider.slideFraction + " ");
-    ////print(OffsetSlider.slideFraction + " " );
     AngleSlider.x = AngleSlider.xmin+AngleSlider.slideFraction*(AngleSlider.xmax-AngleSlider.xmin);
     AngleSlider.y = AngleSlider.ymin+AngleSlider.slideFraction*(AngleSlider.ymax-AngleSlider.ymin);
-    
+  }
+  
+  if (OffsetSlider.press) {
+    offset = round(360.0 * OffsetSlider.slideFraction - 180);
+  } else if (animatingO) {
+    offset = (offset - Orate - 180) % 360 + 180;
     OffsetSlider.setSlideFraction((offset+180.0)/360.0);
-    ////print(OffsetSlider.slideFraction + " " );
     OffsetSlider.x = OffsetSlider.xmin+OffsetSlider.slideFraction*(OffsetSlider.xmax-OffsetSlider.xmin);
     OffsetSlider.y = OffsetSlider.ymin+OffsetSlider.slideFraction*(OffsetSlider.ymax-OffsetSlider.ymin);
   }
+  
   
   AngleSlider.update();
   AngleSlider.display();
@@ -370,8 +368,6 @@ void draw() {
   OffsetSlider.update();
   OffsetSlider.display();
   OffsetSlider.setFirstMousePress(false);
-  
-  
   
   for (Window w : subWindows) {
     w.setAngle(angle);

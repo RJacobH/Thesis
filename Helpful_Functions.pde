@@ -492,6 +492,9 @@ void drawLSystem(String LSystem, PApplet Window, float startX, float startY, flo
       Window.line(currentX, currentY, newX, newY);
       currentX = newX;
       currentY = newY;
+    } else if (C == 'f') {
+      currentX = (currentX + 20 * -sin(theta));
+      currentY = (currentY + 20 * -cos(theta)); 
     } else if (C == '+') {
       theta = (theta + Dtheta + Otheta) % TWO_PI;
     } else if (C == '-') {
