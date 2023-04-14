@@ -66,10 +66,14 @@ String LSystem;
 int SliderBounds = 185;
 
 
-boolean animatingA = true;
-boolean animatingO = true;
-float Arate = 0.3;
+boolean animatingA = false;
+boolean animatingO = false;
+float Arate = 0.3; // anywhere between -0.5 and 0.5 or so is good
 float Orate = 0.2;
+
+float startWidth = 10;
+float decrease = 0.8; // fraction by which it changes
+
 
 void settings() {
   size(displayWidth/2, displayHeight);
@@ -235,7 +239,7 @@ void draw() {
   }
   
   LSystem = combineLSystem(startVar, Productions, Replacements, gens);
-  drawLSystem(LSystem, this, w/2, h/2, radians(angle), radians(offset)); // w/2, 5*h/6
+  drawLSystem(LSystem, this, w/2, h/2, radians(angle), radians(offset), startWidth, decrease); // w/2, 5*h/6
   fill(220);
   strokeWeight(1);
   stroke(0);

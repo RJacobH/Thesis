@@ -368,15 +368,24 @@ class Node {
   }
   
   void move(float Dx, float Dy) {
-    x = x + Dx;
-    y = y + Dy;
+    
     for (Node o : options) {
-      o.move(Dx, Dy);
+      if (nodeType == "forward") {
+        o.move(x - Len*(-sin(theta))/2 + 1.5*r*(-cos(theta)), y - Len*(-cos(theta))/2 + 1.5*r*(sin(theta)));
+      } else {
+        o.move(Dx, Dy);
+      }
     }
     if (nodeType != "option") {
       for (Node a : after) {
         a.move(Dx, Dy);
       }
+    }
+    if (nodeType == "option" && optionParent.nodeType == "forward") {
+      
+    } else {
+      x = x + Dx;
+      y = y + Dy;
     }
   }
   

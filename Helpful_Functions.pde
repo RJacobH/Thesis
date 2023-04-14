@@ -411,17 +411,20 @@ class State {
   float X;
   float Y;
   float theta;
+  float Width;
   
-  State(float x, float y, float t) {
+  State(float x, float y, float t, float w) {
     X = x;
     Y = y;
     theta = t;
+    Width = w;
   }
   
-  void changeData(float x, float y, float t) {
+  void changeData(float x, float y, float t, float w) {
     X = x;
     Y = y;
     theta = t;
+    Width = w;
   }
   
   float getX() {
@@ -434,6 +437,10 @@ class State {
   
   float getTheta() {
     return theta;
+  }
+  
+  float getWidth() {
+    return Width;
   }
 }
 
@@ -468,12 +475,13 @@ String combineLSystem(String Start, String Productions, StringList Replacements,
   return phrase;
 }
 
-void drawLSystem(String LSystem, PApplet Window, float startX, float startY, float angle, float offset) {
+void drawLSystem(String LSystem, PApplet Window, float startX, float startY, float angle, float offset, float startWidth, float decrease) {
   float currentX = startX;
   float currentY = startY;
   float theta = 0;
   float Dtheta = angle;
   float Otheta = offset;
+  float Width = startWidth;
   char C;
   ArrayList<State> Stack = new ArrayList<State>();
   
@@ -482,16 +490,17 @@ void drawLSystem(String LSystem, PApplet Window, float startX, float startY, flo
   Window.stroke(0);
   for (int i = 0; i < LSystem.length(); i++) {
     C = LSystem.charAt(i);
-    State tempState = new State(currentX, currentY, theta);
+    State tempState = new State(currentX, currentY, theta, Width);
     if (C == 'F') {
       float newX = (currentX + 20 * -sin(theta)); // was cos
       float newY = (currentY + 20 * -cos(theta)); // was -sin
-      Window.strokeWeight(1);
+      Window.strokeWeight(Width);
       //float
       //Window.stroke(255* (currentX-newX)/, random(255), random(255));
       Window.line(currentX, currentY, newX, newY);
       currentX = newX;
       currentY = newY;
+      Width = Width*decrease;
     } else if (C == 'f') {
       currentX = (currentX + 20 * -sin(theta));
       currentY = (currentY + 20 * -cos(theta)); 
@@ -500,7 +509,7 @@ void drawLSystem(String LSystem, PApplet Window, float startX, float startY, flo
     } else if (C == '-') {
       theta = (theta - Dtheta) % TWO_PI;
     } else if (C == '[') {
-      tempState.changeData(currentX, currentY, theta);
+      tempState.changeData(currentX, currentY, theta, Width);
       Stack.add(tempState);
     } else if (C == ']') {
       tempState = Stack.get(Stack.size()-1);
@@ -508,6 +517,7 @@ void drawLSystem(String LSystem, PApplet Window, float startX, float startY, flo
       currentX = tempState.getX();
       currentY = tempState.getY();
       theta = tempState.getTheta();
+      Width = tempState.getWidth();
     }
     //print(Stack.size());
   }
