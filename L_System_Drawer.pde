@@ -22,7 +22,7 @@ int buttonSize = 16;
 
 PFont myFont;
 
-int gens = 1;
+int iters = 1;
 float angle = 0;
 float offset = 0;
 
@@ -72,7 +72,7 @@ float Arate = 0.3; // anywhere between -0.5 and 0.5 or so is good
 float Orate = 0.2;
 
 float startWidth = 10;
-float decrease = 0.8; // fraction by which it changes
+float decrease = 0.8; // fraction by which it changes (0.8 is good)
 
 
 void settings() {
@@ -238,7 +238,7 @@ void draw() {
     startVar = "none";
   }
   
-  LSystem = combineLSystem(startVar, Productions, Replacements, gens);
+  LSystem = combineLSystem(startVar, Productions, Replacements, iters);
   drawLSystem(LSystem, this, w/2, h/2, radians(angle), radians(offset), startWidth, decrease); // w/2, 5*h/6
   fill(220);
   strokeWeight(1);
@@ -286,15 +286,15 @@ void draw() {
     }
   }
   
-  // Generations Box
+  // Iterations Box
   fill(220);
   rect(width - RW - edge, height - RH - edge, RW, RH);
   
   textSize(20);
   textAlign(CENTER, CENTER);
   fill(0);
-  text("Generations", width - edge - RW/2, height - edge - RH + 12);
-  text(str(gens), width - edge - RW/2, height - edge - RH/2 + 6);
+  text("Iterations", width - edge - RW/2, height - edge - RH + 12);
+  text(str(iters), width - edge - RW/2, height - edge - RH/2 + 6);
   
   fill(200);
   
@@ -411,13 +411,13 @@ void mousePressed() {
   //StartTriangle.setFirstMousePress(true);
   
   if (LGen.over) {
-    gens--;
-    if (gens < 0) {
-      gens = 0;
+    iters--;
+    if (iters < 0) {
+      iters = 0;
     }
   }
   if (RGen.over) {
-    gens++;
+    iters++;
   }
   LGen.setFirstMousePress(true);
   RGen.setFirstMousePress(true);
