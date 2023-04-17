@@ -41,11 +41,11 @@
 % Acknowledgements (Acceptable American spelling) are optional
 % So are Acknowledgments (proper English spelling)
     \chapter*{Acknowledgements}
-	Thanks to my roommates, Henry Wilson, Brent Ellis, and especially Gabe Fish for the late night conversations that led to some of the more interesting choices made and questions raised throughout this document.
+	Thanks to my roommates, Henry Wilson, Brent Ellis, and Gabe Fish for many hours spent talking about the questions that have helped me to create this document in the way that I have.
 	
-	This thesis has been a joy to put together. I've reveled in each opportunity to engage with the material and explore more about this idea whose depth I feel I have only begun to understand. Engaging with my peers and mentors about L-Systems and Generative Art has opened my mind to new ways of thinking about these ideas, not to mention the joy I feel when they respond with their interests in kind. I've attempted to make this thesis multidisciplinary, in the spirit of L-Systems as a child of both art and computer science but also in the spirit of Reed College as a Liberal Arts institution. For this, and in all things, I have found that no idea is complete without a range of perspectives.\\
+	This thesis has been a joy to put together. I've reveled in each opportunity to engage with the material and explore more about this idea whose depth I feel I have only begun to understand. Engaging with my peers and mentors about L-Systems and Generative Art has opened my mind to new ways of thinking about these ideas, not to mention the joy I feel when they respond with their interests in kind. I've attempted to make this thesis multidisciplinary, in the spirit of L-Systems as a child of both Art and Computer Science, but also in the spirit of Reed College as a Liberal Arts institution. For this, and in all things, I have found that no idea is complete without a range of perspectives.\\
 	
-	The cell has been the ``tangible immaterial means of representation for everything. [...] [these things are] realities that emerge from handwork," - Rainer Maria Rilke, - Kelty and Landecker (58)
+	\textit{The cell has been the ``tangible immaterial means of representation for everything. [...] [these things are] realities that emerge from handwork,"} - Rainer Maria Rilke, - Kelty and Landecker (58)
 
 
     \tableofcontents
@@ -57,7 +57,7 @@
 % The abstract is not required if you're writing a creative thesis (but aren't they all?)
 % If your abstract is longer than a page, there may be a formatting issue.
 \chapter*{Abstract}
-	The world is a mess of systems. I hope to establish the context for one system that interests me and build it up for you so that you may be as interested in it as I have been. There will be an overview of the structure and function of L-Systems, later followed by the introduction of different types of L-Systems. I'll explain the program that I wrote in detail and demonstrate some of its capabilities, as well as the steps I took to get where I ended up. I will also discuss some methods that others have used to do similar things, and go on to explain possible extensions to this work. Wrapping things up, I take a step back from my work to ask some larger questions.
+	The world is a mess of systems. I hope to establish the context for one system that interests me and build it up for you so that you may be as interested in it as I have been. There will be an overview of the structure and function of L-Systems, later followed by the brief introduction of some different types of L-Systems. I'll explain the program that I wrote in detail and demonstrate some of its capabilities, as well as the steps I took to get where I ended up. I will also discuss some methods that others have used to do similar things, and go on to explain possible extensions to this work. Wrapping things up, I take a step back from my work to ask some larger questions.
 	
 \chapter*{Dedication}
 	To the unending search for understanding. \\\\
@@ -73,15 +73,15 @@
 	
 \textcolor{blue}{[Illustration of a simple L-System, perhaps just a fractal tree]}\\
 
-The world of Computer Science can seem like a wilderness, teeming with frightening phrases like Zero-knowledge proofs, NP-Completeness, Finite State Machines, and the Halting Problem, but I hope to help show how approachable this discipline can be. Specifically at the hands of those from distant disciplines, like Anthropology, Economics, and Psychology, as well as the locals, pure Math, Bio, Chem, and Physics. The tool I will show and give to you will demonstrate the accessibility of one of the most powerful, subtle, but familiar disciplines: Computer Science. The ideas that I employ in the program were named L-Systems, and their capabilities and beauty can astound.
+The world of Computer Science can seem like a wilderness, teeming with frightening phrases like Zero-knowledge proofs, NP-Completeness, Finite State Machines, and the Halting Problem, but I hope to help show how approachable this discipline can be. Specifically at the hands of those from distant disciplines, like Anthropology, Economics, and Psychology, as well as the locals, pure Math, Bio, Chem, and Physics. The tool I will show and give to you will demonstrate the accessibility of one of this most powerful, subtle, yet familiar disciplines. The ideas that I employ in the program were named L-Systems, and their capabilities and beauty can astound.
 	
-Before we jump in, there are some things that must be said. This is a Computer Science Thesis, and so (essentially by necessity,) there will be code. I would like to keep this Thesis as accessible as possible to those who don’t code, and so I have tried to design it so that anyone with the ability to feel wonder and joy can find something of value between these covers. The code will be accessible on my website, \textit{rjacobh.github.io/website}. Some parts of the code of the central project will also be discussed at a later point in the thesis. However! I have included pictures on every page I could, and I’d like to imagine that they tell enough of a story by themselves that the words are ultimately unnecessary.\\
+Before we jump in, there are some things that must be said. This is a Computer Science Thesis, and so (essentially by necessity,) there will be code. I would like to keep this Thesis as accessible as possible to those who don’t code, and so I have tried to design it so that anyone with the ability to feel wonder and joy can find something of value between these covers. The code will be accessible on my github, \textit{github.com/RJacobH/Thesis} as well as hopefully my website, \textit{rjacobh.github.io/website}. Some parts of the code of the central project will also be discussed at a later point in the thesis. However! I have included pictures on every page I could, and I’d like to imagine that they tell enough of a story by themselves that the words are ultimately unnecessary.\\
 
 \textcolor{blue}{[An L-System that's mirrored across a horizontal line]}\\
 
-The fundamental structures that I will be discussing throughout this thesis are \textit{Lindenmayer Systems}, usually called \textit{L-Systems}. They are a type of ``rewriting" system that have a distinct visual flavor. Introduced by Aristid Lindenmayer in 1968, they were first imagined as a framework for understanding the development of simple multicellular organisms. They were soon applied to larger systems, such as the structures of plants. A publication of Lindenmayer and others, \textit{The Algorithmic Beauty of Plants}, was written in 1990 and has been an invaluable resource for me in the formation of this thesis. It introduces L-Systems as a tool to understand and revel in the beautiful complexity of plants, as well as to understand complex developments with limited arguments. Beyond this book, there have been a number of other vital resources in this process which I will discuss as they become relevant.
+The fundamental structures that I will be discussing throughout this thesis are \textit{Lindenmayer Systems}, usually called \textit{L-Systems}. They are a type of ``rewriting" system that have a distinct visual flavor. Introduced by Aristid Lindenmayer in 1968[citation pointing to the section where I discuss the history in more depth], they were first imagined as a framework for understanding the development of simple multicellular organisms. They were soon applied to larger systems, such as the structures of plants. A publication of Lindenmayer and others, \textit{The Algorithmic Beauty of Plants}, was written in 1990 and has been an invaluable resource for me in the formation of this thesis. It introduces L-Systems as a tool to understand and revel in the beautiful complexity of plants, as well as to understand complex developments with limited arguments. Beyond this book, there have been a number of other vital resources in this process which I will discuss as they become relevant.
 
-L-Systems are fundamentally a collaborative topic, they cannot be understood from the perspective of just one discipline. An idea of their structure and abilities can only be sufficient if a variety of fields are consulted. I've tried to reflect this awareness in the form of my thesis as well as its content. I've tried to write something that would be as interesting for an artist to read as a computer scientist. If you're here for the pictures, please enjoy! But if you're here for the discussion of the systems that create those pictures, I urge you to stay and engage with some of the larger philosophical questions that I've asked about life, computers, and the place this thesis has in that discussion. But regardless of what brought you here, I hope you have a fun time looking through this thesis, and it warms my heart to know that there are people interested in this work which has captured by imagination so completely.\\
+L-Systems are fundamentally a collaborative topic, they cannot be understood from the perspective of just one discipline. An idea of their structure and abilities can only be sufficient if a variety of fields are consulted. I've tried to reflect this awareness in the form of my thesis as well as its content. I've tried to write something that would be as interesting for an artist to read as a computer scientist. If you're here for the pictures, please enjoy! But if you're here for the discussion of the systems that create those pictures, I urge you to stay and engage with some of the larger questions that I've asked about life, computers, and the place this thesis has in that discussion. But regardless of what brought you here, I hope you have a fun time looking through this thesis, and it warms my heart to know that there are people interested in this work which has captured by imagination so completely.
 
 
 \textcolor{blue}{[Illustration of an L-System, something that parallels the first one, and yet does something dramatically different (maybe the same image, just upside down? Inverted somehow?) Maybe just another cool L-System.]}
@@ -378,26 +378,34 @@ These sets of images show the progression of an L-System between different itera
 	
 	\textcolor{blue}{[Stills from Processing animations, definitely the Simplex Cloud]}\\
 	
-	These projects were instrumental to the development of the thesis as you see it now. Without considering them, an understanding of my thesis is incomplete.\\
+	These projects were instrumental to the development of the thesis as you see it now. Without considering them, an understanding of my thesis is incomplete.
 
 \section{Quandaries, Puzzlements, and Musings}
 \label{Questions}
 
-Here is where I feel it's appropriate to ask some of the big questions. I know it's infeasible to try to answer any of these questions, much less all, but I think there's still something valuable about asking them. I've wondered about why this work 
+	While developing this thesis and the various projects that came with it, I began to begin to see things through a specific lens. I was researching this type of structure that had been used for half a century to describe living things with an almost startling degree of accuracy, considering the simplicity of their construction. I started to question the line between living things and the code we write to imitate those living things. Is there actually a difference? I'm not so sure.
+	
+	This is the sort of question that people have been asking for hundreds, if not thousands of years. Machines makers have attempted to imitate life by different means for a similarly long period. Science Fiction authors and pioneers like Alan Turing have suggested ways in which we might learn if there is a difference between life and machines. Some of those questions have borne fruit or guided our development, [mention ideas which have guided our development, like the Turing test] others have just marked moments when we moved the goalposts. [include citations for this] 
+	
+	In the last decades, there have been tremendous advances in the simulation of life. Robots have beaten professional Chess and Go players, and have become indistinguishable from humans in many respects. We've become used to robot assistants in our homes and in our daily lives. The rise of AI-powered chatbots has thrown a wrench in the gears of several industries. Are we so sure that robots will never be able to do what we as humans can do?\\
+	
+	\textcolor{blue}{[An especially beautiful, lifelike fern-like L-System]}\\
+	
+	L-Systems are not complicated, and I will not make the argument that they are themselves alive (though some have), [include citation to that one guy] but I suggest that they support a physicalist interpretation of the world. By that I mean the whole world, including humans and their apparently unique consciousnesses, are only the result of physical operations and no invisible, imperceptible, separate element.
+	
+	%Back in the 1730s, Jacque von Vaucanson built an automaton in the shape of a duck that seemed to be able to eat and defecate. 
 
-I'm going to break this section into two main parts.
+\subsection{The Times We Live In / Flights of Whimsy}
+\label{AI-Art}
 
-Start with an intro explaining and defending the existence of this section,\\
+	At the time of writing, ChatGPT has taken the world by storm. While it doesn't appear to be destroying the capitalist system of exploitation at this point, there's no saying what its successors will do. Regardless, it feels apparent to me that things are on the verge of changing dramatically. I believe that if we are going to be engaging with AI in any sort of meaningful way in the near future, we need to understand what that means. 
+
+What does it mean for a machine to make art?\\
 
 \subsection{Is Math Art?}
 
 Is this art? Where do we draw the line between art and math?\\
 Where does the simulation of life fall into this?
-
-\subsection{The Times We Live In / Flights of Whimsy}
-\label{AI-Art}
-
-What does it mean for a machine to make art?\\
 
 
 \chapter{Past, Present, Future}
