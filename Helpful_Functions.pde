@@ -195,10 +195,6 @@ class Triangle {
       startNode.angle = angle;
       startNode.offset = offset;
       startNode.update();
-      //if (over && !(startNode.activated || startNode.afterActivated())) {
-      //  startNode.activatedFalse();
-      //}
-      
     }
     
     if (press && movable) {
@@ -479,15 +475,22 @@ String combineLSystem(String Start, String Productions, StringList Replacements,
   return phrase;
 }
 
-void drawLSystem(String LSystem, PApplet Window, float startX, float startY, float angle, float offset, float startWidth, float decrease) {
+void drawLSystem(String LSystem, PApplet Window, float startX, float startY, float L, float R, float angle, float offset, float startWidth, float widthChange, char[] drawChars) {
   float currentX = startX;
   float currentY = startY;
-  float theta = 0;
+  float theta = R;
+  float len = L;
   float Dtheta = angle;
   float Otheta = offset;
   float Width = startWidth;
+  char[] DrawChars = drawChars;
+  
+  boolean inDrawChars;
+  
   char C;
   ArrayList<State> Stack = new ArrayList<State>();
+  
+  
   
   //Window.fill(123,3,123);
   Window.strokeWeight(1);
@@ -496,9 +499,16 @@ void drawLSystem(String LSystem, PApplet Window, float startX, float startY, flo
   for (int i = 0; i < LSystem.length(); i++) {
     C = LSystem.charAt(i);
     State tempState = new State(currentX, currentY, theta, Width);
-    if (C == 'F') {
-      float newX = (currentX + 20 * -sin(theta)); // was cos
-      float newY = (currentY + 20 * -cos(theta)); // was -sin
+    inDrawChars = false;
+    for (char c : DrawChars) {
+      if (C == c) {
+        inDrawChars = true;
+        break;
+      }
+    }
+    if (C == 'F' || inDrawChars) {
+      float newX = (currentX + len * -sin(theta)); // was cos
+      float newY = (currentY + len * -cos(theta)); // was -sin
       
       Window.strokeWeight(Width);
       if (Width < 1) {
@@ -509,7 +519,7 @@ void drawLSystem(String LSystem, PApplet Window, float startX, float startY, flo
       Window.line(currentX, currentY, newX, newY);
       currentX = newX;
       currentY = newY;
-      Width = Width*decrease;
+      Width = Width*widthChange;
     } else if (C == 'f') {
       currentX = (currentX + 20 * -sin(theta));
       currentY = (currentY + 20 * -cos(theta)); 

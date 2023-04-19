@@ -137,9 +137,9 @@ class Node {
   }
   
   void update() {
-    if (nodeType != "option") {
-      //print(angle);
-    }
+    //if (nodeType != "option") {
+    //  print(nodeType);
+    //}
     fixWindowProds();
     
     overEvent();
@@ -389,15 +389,6 @@ class Node {
     }
   }
   
-  //int getPlusIndex() {
-  //  for (int i = 0; i < options.size(); i++) {
-  //    if (options.get(i).t == "+") {
-  //      return i;
-  //    }
-  //  }
-  //  return -1;
-  //}
-  
   void fixWindowProds() {
     if (nodeType == "option" && t == "add") {
       if (WindowProds.size() < options.size()-4) { // An option node needs to be removed
@@ -407,7 +398,7 @@ class Node {
             break;
           }
         }
-      } else if (WindowProds.size() > options.size()-3) { // an option node needs to be added
+      } else if (WindowProds.size() > options.size()-4) { // an option node needs to be added
         for (int i = 0; i < WindowProds.size(); i++) {
           if (options.get(min(i+4, options.size()-1)).t != WindowProds.get(i)) {
             options.add(i + 4, new Node(x + 2*r*(i+1) + 5, y+r, "option", WindowProds.get(i), this, w, lims));

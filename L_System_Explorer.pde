@@ -22,6 +22,8 @@ Triangle LWid, RWid, LDec, RDec;
 Slider AngleSlider, OffsetSlider;
 Rectangle PhotoButton;
 
+Triangle MU, MD, ML, MR, ZI, ZO; // Move up, down, left, right, and zoom in and out
+
 ArrayList<Rectangle> windowButtons = new ArrayList<Rectangle>(); // The buttons that can add or remove windows/production rules
 int buttonSize = 16;
 
@@ -79,6 +81,14 @@ float Orate = 0.2;
 float initialWidth = 1;
 float widthChange = 1; // fraction by which it changes (0.8 is good)
 
+char[] DrawChars;
+
+DrawChars = new char[] {'A', 'B'};
+float len = 2;
+float rot = -30;
+int initialX = 30; // was w/2
+int initialY = height - 30; // was h/2
+
 
 void settings() {
   size(displayWidth/2, displayHeight);
@@ -88,10 +98,7 @@ void settings() {
     windowButtons.add(new Rectangle(0, 0, buttonSize, buttonSize, "-", this));
   }
   
-  
-  
   WindowProds = OGWindowProds;
-  
   
   registerMethod("pre", this);
   
@@ -194,6 +201,13 @@ void pre() {
   
     PhotoButton = new Rectangle(sep+ edge, 0, 100, 40, "Make PDF", this);
     
+    RWid = new Triangle(w - edge - 5*RW/2 + 15 - 2*sep + 8, h - edge - RH/2 - BH - sep - 5,
+            w - edge - 5*RW/2 + 15 - 2*sep + 8, h - edge - RH/2 - BH - sep + 10,
+            w - edge - 5*RW/2 + 40 - 2*sep + 8, h - edge - RH/2 - BH - sep + 25,
+            this);
+    
+    
+    
   }
 }
 
@@ -229,7 +243,7 @@ void draw() {
     beginRecord(PDF, "frame-####.pdf");
   }
   
-  drawLSystem(LSystem, this, w/2, h/2, radians(angle), radians(offset), initialWidth, widthChange); // w/2, 5*h/6
+  drawLSystem(LSystem, this, initialX, initialY, len, radians(rot), radians(angle), radians(offset), initialWidth, widthChange, DrawChars); // w/2, 5*h/6
   
   if (record) {
     endRecord();
