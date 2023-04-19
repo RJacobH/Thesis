@@ -11,6 +11,8 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{scrextend}
 
+% pdflatex --shell-escape svg.tex;
+
 \newcommand{\code}[1]{\texttt{#1}}
 % Comment out the natbib line above and uncomment the following two lines to use the new 
 % biblatex-chicago style, for Chicago A. Also make some changes at the end where the 
@@ -45,19 +47,32 @@
 	
 	This thesis has been a joy to put together. I've reveled in each opportunity to engage with the material and explore more about this idea whose depth I feel I have only begun to understand. Engaging with my peers and mentors about L-Systems and Generative Art has opened my mind to new ways of thinking about these ideas, not to mention the joy I feel when they respond with their interests in kind. I've attempted to make this thesis multidisciplinary, in the spirit of L-Systems as a child of both Art and Computer Science, but also in the spirit of Reed College as a Liberal Arts institution. For this, and in all things, I have found that no idea is complete without a range of perspectives.\\
 	
-	\textit{The cell has been the ``tangible immaterial means of representation for everything. [...] [these things are] realities that emerge from handwork,"} - Rainer Maria Rilke, - Kelty and Landecker (58)
+	\textit{The cell has been the ``tangible immaterial means of representation for everything. [...] [these things are] realities that emerge from handwork,"} - Rainer Maria Rilke, - Kelty and Landecker (58)\\
+	
+	%\textcolor{blue}{[A large, beautiful L-System]}
+	
+	%\includesvg{pretty}
+	\begin{figure}[h]
+	\centering
+	\includegraphics[clip=true, viewport=1in 5.5in 9in 10in, scale=0.5]{pretty}
+	\caption{A, A $\rightarrow$ F[+FA]F–FA, $\theta$ = 34, Iterations = 6}
+	\label {Acknowledgements 1}
+	\end{figure}
+	
 
 
     \tableofcontents
 % if you want a list of tables, optional
    % \listoftables
 % if you want a list of figures, also optional
-  %  \listoffigures
+	\listoffigures
 
 % The abstract is not required if you're writing a creative thesis (but aren't they all?)
 % If your abstract is longer than a page, there may be a formatting issue.
 \chapter*{Abstract}
-	The world is a mess of systems. I hope to establish the context for one system that interests me and build it up for you so that you may be as interested in it as I have been. There will be an overview of the structure and function of L-Systems, later followed by the brief introduction of some different types of L-Systems. I'll explain the program that I wrote in detail and demonstrate some of its capabilities, as well as the steps I took to get where I ended up. I will also discuss some methods that others have used to do similar things, and go on to explain possible extensions to this work. Wrapping things up, I take a step back from my work to ask some larger questions.
+	The world is a mess of systems. I hope to establish the context for one system that interests me and build it up for you so that you may be as interested in it as I have been. There will be an overview of the structure and function of L-Systems, later followed by the brief introduction of some different types of L-Systems. I'll explain the program that I wrote in detail and demonstrate some of its capabilities, as well as the steps I took to get where I ended up. I will also discuss some methods that others have used to do similar things, and go on to explain possible extensions to this work. Wrapping things up, I take a step back from my work to ask some larger questions.\\
+	
+	\textcolor{blue}{[Another large, beautiful L-System]}
 	
 \chapter*{Dedication}
 	To the unending search for understanding. \\\\
@@ -98,7 +113,14 @@ There are several motivations for this thesis, each which I hope will appeal to 
 	
 	The third motivation is tied in with a philosophical understanding of these structures. I am not a trained philosopher, and I would not be surprised to learn if many of the questions that I ask as a part of my exploration are in well-tread ground. It’s possible the questions I ask in this thesis will contribute to the conversations where I imagine they might find a home, but I don't expect them to. This motivation comes from that observation that I mentioned earlier that there are some ideas that seem to exist in disconnected disciplines. Some of the questions I ask address larger issues of the place of machines in the creation of art and the creative process. It feels like these are essential questions to be asking when the wider culture is experiencing what may be the first wave of publicly available and popular AI systems.\\
 	
-	\textcolor{blue}{[Several more Fractal L-Systems]}\\
+	%\textcolor{blue}{[Several more Fractal L-Systems]}\\
+	
+	\begin{figure}[h]
+	\centering
+	\includegraphics[clip=true, viewport=1in 4.5in 9in 9in, scale=0.5]{Images/Motivations2}
+	\caption{A, A $\rightarrow$ F[+A]–A, $\theta$ = 30, Iterations = 12}
+	\label {Acknowledgements 1}
+	\end{figure}
 	
 	While this is absolutely not a formal foray into the philosophy of these questions, I do hope that my readers will take my suggestions seriously. I present a thesis which asserts the importance of these systems that a person can hope to understand, in a time when so many of the systems that control our lives are invisible to us. This sort of question feels to me to be inseparable from the rest of the work.
 	
