@@ -172,7 +172,7 @@ class Triangle {
   float angle = 0;
   float offset = 0;
   
-  Triangle(float X1, float Y1, float X2, float Y2, float X3, float Y3, PApplet Window, IntList limits, ArrayList<String> WP) {
+  Triangle(float X1, float Y1, float X2, float Y2, float X3, float Y3, PApplet Window) {
 
     x1 = X1;
     y1 = Y1;
@@ -181,9 +181,9 @@ class Triangle {
     x3 = X3;
     y3 = Y3;
     w = Window;
-    lims = limits;
+    //lims = limits;
     h = max(y1, max(y2, y3)) - min(y1, min(y2, y3));
-    WindowProds = WP;
+    //WindowProds = WP;
   }
   
   void update() {
@@ -252,8 +252,10 @@ class Triangle {
     startNode = n;
   }
   
-  void setMovable(boolean m) {
+  void setMovable(boolean m, IntList limits, ArrayList<String> WP) {
     movable = m;
+    lims = limits;
+    WindowProds = WP;
     if (movable) {
       startNode = new Node(x1, y1, 0, 0, "start", this, w, lims);
     }
@@ -375,8 +377,10 @@ class Rectangle {
     
     W.textAlign(CENTER, CENTER);
     W.fill(0);
-    int yChange = 3;
-    if (s == "+") {
+    int yChange = 16;
+    if (s == "-") {
+      yChange = 3;
+    } else if (s == "+") {
       yChange = 5;
     }
     W.text(s, x + w/2 + 1, y + yChange);
@@ -485,18 +489,23 @@ void drawLSystem(String LSystem, PApplet Window, float startX, float startY, flo
   char C;
   ArrayList<State> Stack = new ArrayList<State>();
   
-  Window.fill(0);
+  //Window.fill(123,3,123);
   Window.strokeWeight(1);
   Window.stroke(0);
+  
   for (int i = 0; i < LSystem.length(); i++) {
     C = LSystem.charAt(i);
     State tempState = new State(currentX, currentY, theta, Width);
     if (C == 'F') {
       float newX = (currentX + 20 * -sin(theta)); // was cos
       float newY = (currentY + 20 * -cos(theta)); // was -sin
+      
       Window.strokeWeight(Width);
-      //float
-      //Window.stroke(255* (currentX-newX)/, random(255), random(255));
+      if (Width < 1) {
+        Window.stroke(255-Width*255);
+      } else {
+        Window.stroke(0);
+      }
       Window.line(currentX, currentY, newX, newY);
       currentX = newX;
       currentY = newY;

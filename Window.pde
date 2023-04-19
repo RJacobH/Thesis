@@ -63,8 +63,8 @@ class Window extends PApplet {
     
     startX = w/2;
     startY = h/2;
-    StartTriangle = new Triangle(startX, startY, startX + stW/2, startY + stH, startX - stW/2, startY + stH, this, lims, OGWindowProds);
-    StartTriangle.setMovable(true);
+    StartTriangle = new Triangle(startX, startY, startX + stW/2, startY + stH, startX - stW/2, startY + stH, this);
+    StartTriangle.setMovable(true, lims, OGWindowProds);
   }
   
   public void setup() {
