@@ -1,51 +1,46 @@
 This is BibTeX, Version 0.99d (TeX Live 2022)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: thesis.aux
-I couldn't open style file thesis.bst
----line 139 of file thesis.aux
- : \bibstyle{thesis
- :                 }
-I'm skipping whatever remains of this command
-I found no style file---while reading file thesis.aux
-You've used 0 entries,
-            0 wiz_defined-function locations,
-            83 strings with 486 characters,
-and the built_in function-call counts, 0 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 0
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 0
-format.name$ -- 0
-if$ -- 0
-int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 0
-num.names$ -- 0
-pop$ -- 0
-preamble$ -- 0
-purify$ -- 0
+The style file: APA/apa-good.bst
+Database file #1: thesis.bib
+You've used 26 entries,
+            2804 wiz_defined-function locations,
+            754 strings with 8461 characters,
+and the built_in function-call counts, 11755 in all, are:
+= -- 992
+> -- 354
+< -- 27
++ -- 154
+- -- 110
+* -- 720
+:= -- 1947
+add.period$ -- 75
+call.type$ -- 26
+change.case$ -- 169
+chr.to.int$ -- 26
+cite$ -- 26
+duplicate$ -- 898
+empty$ -- 918
+format.name$ -- 161
+if$ -- 2307
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 174
+newline$ -- 144
+num.names$ -- 106
+pop$ -- 369
+preamble$ -- 1
+purify$ -- 140
 quote$ -- 0
-skip$ -- 0
+skip$ -- 407
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 457
+swap$ -- 403
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 216
 warning$ -- 0
-while$ -- 0
+while$ -- 92
 width$ -- 0
-write$ -- 0
-(There were 2 error messages)
+write$ -- 331

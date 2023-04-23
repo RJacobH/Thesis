@@ -1,0 +1,161 @@
+\begin{thebibliography}{26}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{}\fi
+
+\bibitem[{Adamson \& Jenson(2001)}]{shrek2001}
+Adamson, A., \& Jenson, V. (2001).
+\newblock Shrek.
+
+\bibitem[{Ben-Ari \& Mondada(2018)}]{FSMs2018}
+Ben-Ari, M., \& Mondada, F. (2018).
+\newblock Finite {State} {Machines}.
+\newblock {\em Elements of Robotics\/}, (pp. 55--61).
+
+\bibitem[{Blender(2018)}]{Blender2018}
+Blender (2018).
+\newblock {\em Blender - a {3D} modelling and rendering package\/}.
+\newblock Stichting Blender Foundation, Amsterdam: Blender Foundation.
+\urlprefix\url{http://www.blender.org}
+
+\bibitem[{{CHmjoo}(2012)}]{FightClubVid}
+{CHmjoo} (2012).
+\newblock Fight {Club} {Opening} {Sequence}.
+\urlprefix\url{https://www.youtube.com/watch?v=Ze9-wg9k7AU}
+
+\bibitem[{Cook(1971)}]{PvsNP1971}
+Cook, S.~A. (1971).
+\newblock The complexity of theorem-proving procedures.
+\newblock In {\em Proceedings of the Third Annual ACM Symposium on Theory of
+  Computing\/}, STOC '71, (p. 151–158). New York, NY, USA: Association for
+  Computing Machinery.
+\urlprefix\url{https://doi.org/10.1145/800157.805047}
+
+\bibitem[{DeRose(1989)}]{derose1989}
+DeRose, T.~D. (1989).
+\newblock A {Coordinate}-{Free} {Approach} to {Geometric} {Programming}.
+\newblock In W.~Straßer, \& H.-P. Seidel (Eds.), {\em Theory and {Practice} of
+  {Geometric} {Modeling}\/}, (pp. 291--305). Berlin, Heidelberg: Springer
+  Berlin Heidelberg.
+
+\bibitem[{Fincher(1999)}]{FightClub1999}
+Fincher, D. (1999).
+\newblock Fight {Club}.
+
+\bibitem[{Games(1970)}]{GameOfLife1970}
+Games, M. (1970).
+\newblock The fantastic combinations of {John} {Conway}’s new solitaire game
+  “life” by {Martin} {Gardner}.
+\newblock {\em Scientific American\/}, {\em 223\/}, 120--123.
+
+\bibitem[{Garisto(2019)}]{gamerAI2019}
+Garisto, D. (2019).
+\newblock Google {AI} beats top human players at strategy game {StarCraft}
+  {II}.
+\newblock {\em Nature\/}.
+\newblock Bandiera\_abtest: a Cg\_type: News Publisher: Nature Publishing
+  Group.
+\urlprefix\url{https://www.nature.com/articles/d41586-019-03298-6}
+
+\bibitem[{Goldwasser et~al.(1989)Goldwasser, Micali, \&
+  Rackoff}]{ZeroKnowledge1989}
+Goldwasser, S., Micali, S., \& Rackoff, C. (1989).
+\newblock The {Knowledge} {Complexity} of {Interactive} {Proof} {Systems}.
+\newblock {\em Society for Industrial and Applied Mathematics\/}.
+
+\bibitem[{Harris(2023)}]{NYT2023}
+Harris, E.~A. (2023).
+\newblock Peering {Into} the {Future} of {Novels}, {With} {Trained} {Machines}
+  {Ready}.
+\newblock {\em The New York Times\/}.
+\urlprefix\url{https://www.nytimes.com/2023/04/20/books/ai-novels-stephen-marche.html}
+
+\bibitem[{Kelty \& Landecker(2004)}]{theory2004}
+Kelty, C., \& Landecker, H. (2004).
+\newblock A {Theory} of {Animation}: {Cells}, {L}-{Systems}, and {Film}.
+\newblock {\em Grey Room\/}.
+
+\bibitem[{Kintel(2023)}]{openSCAD}
+Kintel, M. (2023).
+\newblock {OpenSCAD}.
+\urlprefix\url{https://openscad.org}
+
+\bibitem[{Leopold(2017)}]{Leopold2017}
+Leopold, N. (2017).
+\newblock {\em Algorithmische {Botanik} durch {Lindenmayer} {Systeme} in
+  {Blender}\/}.
+\newblock Graduate thesis, Technischen Universität Wien.
+
+\bibitem[{Lindenmayer(1967)}]{OG1967}
+Lindenmayer, A. (1967).
+\newblock Mathematical {Models} for {Cellular} {Interactions} in {Development}
+  {II}. {Simple} and {Branching} {Filaments} with {Two}-sided {Inputs}.
+\newblock {\em Journal of Theoretical Biology\/}.
+
+\bibitem[{none(2023)}]{manyPapers}
+none (2023).
+\newblock (99+) {Academia}.edu {\textbar} {Search} {\textbar} {L}-{Systems}.
+\urlprefix\url{https://www.academia.edu/search?q=L-Systems}
+
+\bibitem[{OpenAI(2023)}]{ChatGPT}
+OpenAI (2023).
+\newblock {ChatGPT}.
+\urlprefix\url{https://chat.openai.com}
+
+\bibitem[{Prusinkiewicz et~al.(2001)Prusinkiewicz, Hanan, Hammel, \&
+  Mech}]{LSystems2001}
+Prusinkiewicz, P., Hanan, J., Hammel, M., \& Mech, R. (2001).
+\newblock {\em L-systems: from the {Theory} to {Visual} {Models} of
+  {Plants}\/}.
+\newblock Springer-Verlag.
+
+\bibitem[{Prusinkiewicz \& Lindenmayer(1990)}]{ABOP1990}
+Prusinkiewicz, P., \& Lindenmayer, A. (1990).
+\newblock {\em The {Algorithmic} {Beauty} of {Plants}\/}.
+\newblock The {Virtual} laboratory. New York: Springer-Verlag.
+
+\bibitem[{Reas \& Fry(2014)}]{processing2014}
+Reas, C., \& Fry, B. (2014).
+\newblock {\em Processing: a programming handbook for visual designers and
+  artists\/}.
+\newblock Cambridge, Massachusetts: The MIT Press, second edition ed.
+
+\bibitem[{Reddit(2023)}]{reddit2023}
+Reddit (2023).
+\newblock r/generative.
+\urlprefix\url{https://www.reddit.com/r/generative/wiki/index/}
+
+\bibitem[{Riskin(2016)}]{riskin2016}
+Riskin, J. (2016).
+\newblock {\em The {Restless} {Clock}: {A} history of the centuries-long
+  argument over what makes living things tick\/}.
+\newblock Chicago: The University of Chicago Press.
+
+\bibitem[{Train(2023)}]{codingTrain}
+Train, C. (2023).
+\newblock The {Coding} {Train} - {YouTube}.
+\urlprefix\url{https://www.youtube.com/}
+
+\bibitem[{Turing(1936)}]{turing1936}
+Turing, A.~M. (1936).
+\newblock On {Computable} {Numbers}, with an {Application} to the
+  {Entscheidungsproblem}.
+\newblock {\em Proceedings of the London Mathematical Society\/}, {\em
+  2\/}(42), 230--265.
+\urlprefix\url{http://www.cs.helsinki.fi/u/gionis/cc05/OnComputableNumbers.pdf}
+
+\bibitem[{Turing(1950)}]{turing1950}
+Turing, A.~M. (1950).
+\newblock Computing {Machinery} and {Intelligence}.
+\newblock {\em Mind\/}, {\em 59\/}(236), 433--460.
+\newblock Publisher: [Oxford University Press, Mind Association].
+\urlprefix\url{http://www.jstor.org/stable/2251299}
+
+\bibitem[{Wolfram(2002)}]{wolfram2002}
+Wolfram, S. (2002).
+\newblock {\em A {New} {Kind} of {Science}\/}.
+\newblock Wolfram Media.
+\urlprefix\url{https://www.wolframscience.com}
+
+\end{thebibliography}

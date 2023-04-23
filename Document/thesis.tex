@@ -13,6 +13,9 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc,through,backgrounds}
 
 % pdflatex --shell-escape svg.tex;
 
@@ -559,7 +562,7 @@ This is an L-System:
 	\end{figure}
 
 	
-	The main window is initialized upon startup. Some number of sub-windows, one for each production that the program starts with. More productions can be added, and more windows are created for productions when needed. Windows are similarly removed when not needed. Each sub-window contains a reference to a `starting' triangle that I fittingly named the \code{StartTriangle}. This is an instance of a class that can be moved up to the boundaries of its window. The start triangle has a reference to the \code{startNode}, which is the root of a linked list structure of nodes. I've made a class to describe the nodes as well. When the \code{StartTriangle} is moved, the \code{startNode} is moved similarly, and then recursive calls down the node tree move all the nodes to the correct positions. Each \code{StartTriangle} and its closely-tied \code{startNode} provide the foundation on top of which each of the production rule displays are constructed.
+	The main window is initialized upon startup. Some number of sub-windows, one for each production that the program starts with. More productions can be added, and more windows are created for productions when needed. Windows are similarly removed when not needed. Each sub-window contains a reference to a `starting' triangle that I fittingly named the \code{StartTriangle}. This is an instance of a class that can be moved up to the boundaries of its window. The start triangle has a reference to the \code{startNode}, which is the root of a linked list structure of nodes. I've made a class to describe the nodes as well. When the \code{StartTriangle} is moved, the \code{startNode} is moved similarly, and then recursive calls down the node tree move all the nodes to the correct positions. Shown in Figure \ref{HowItWorks3}, \code{StartTriangle} and its closely-tied \code{startNode} provide the foundation on top of which each of the production rule displays are constructed.
 	
 		
 	\begin{figure}[h!]
@@ -577,7 +580,7 @@ This is an L-System:
 	\label {HowItWorks3}
 	\end{figure}
 	
-	There are five subtypes among the node class, each node belongs to only one of these subtypes. These aren't subclasses, the different nodes have some different functionality, but they're only differentiated with a string. The start node is the only element of the \code{start} subtype; I use this as a signpost to stop calls from nodes to their parents from going too far. There are \code{production} and \code{rotation} nodes, the main difference being that rotation nodes have a point that shows which direction they're oriented. The fourth subtype is \code{forward} nodes. These are displayed as lines, unlike the other types of nodes, which are displayed as circles. The final subtype is \code{option} nodes. These are a special type of node with some unique characteristics. They have a pointer to an \code{optionParent} node, which may be a member of any subtype of node, including another option node. They will only appear if their \code{optionParent} node is being hovered over by the mouse or their \code{optionParent} has recently been hovered over by the mouse and the mouse has not left its vicinity or the vicinity of any of its \code{option} nodes.
+	There are five subtypes among the node class, each node belongs to only one of these subtypes. These aren't subclasses, the different nodes have some different functionality, but they're only differentiated with a string. The start node is the only element of the \code{start} subtype; I use this as a signpost to stop calls from nodes to their parents from going too far. There are \code{production} and \code{rotation} nodes, the main difference being that rotation nodes have a point that shows which direction they're oriented. The fourth subtype is \code{forward} nodes. These are displayed as lines, unlike the other types of nodes, which are displayed as circles. The final subtype is \code{option} nodes. These are a special type of node with some unique characteristics. They have a pointer to an \code{optionParent} node, which may be a member of any subtype of node, including another option node. They will only appear if their \code{optionParent} node is being hovered over by the mouse or their \code{optionParent} has recently been hovered over by the mouse and the mouse has not left its vicinity or the vicinity of any of its \code{option} nodes. This is pictured in Figure \ref{MouseInteraction}.
 	
 	%\textcolor{blue}{[Images that show how the mouse interacts with the nodes]}
 	\begin{figure}[h]
@@ -605,40 +608,195 @@ This is an L-System:
 	\end{figure}
 
 
-	Each node of any subtype can only interact with its neighboring nodes and the \code{option} nodes that refer to it as an \code{optionParent}. This intentionally limited functionality is created by giving each node a pointer to one other node in the direction of the \code{start} node. This is the node's \code{before} node. It also has an array of \code{after} nodes, which consists of all the nodes that consider this node to be their \code{before} node. The remaining reference in a node is the array of \code{option} nodes that consider this node to be their \code{optionParent}.
+	Each node of any subtype can only interact with its neighboring nodes and the \code{option} nodes that refer to it as an \code{optionParent}. This intentionally limited functionality is created by giving each node a pointer to one other node in the direction of the \code{start} node. This is the node's \code{before} node. It also has an array of \code{after} nodes, which consists of all the nodes that consider this node to be their \code{before} node. The remaining reference in a node is the array of \code{option} nodes that consider this node to be their \code{optionParent}. Figure \ref{options} depicts this parent and child structure.
 	
 	%\textcolor{blue}{[An image of the options, with the mouse hovering over an \code{optionParent} node]}
 	
 	\begin{figure}[h]
-	\centering
-	\includegraphics[height = 3in]{Images/HowItWorks4D}
-	\caption{Multiple nodes}
-	\label {HowItWorks4D}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[height = 3in]{Images/HowItWorks5}
+		\caption{Multiple nodes}
+		\label {HowItWorks5}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		%\includegraphics[height = 3in]{Images/HowItWorks5}
+		\begin{tikzpicture}
+		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		\draw (.55,.25) node{hey};
+		\draw (2.45,.25) node{whoa};
+		\draw (1.5,1.9) node{huh};
+		\end{tikzpicture}
+		
+		\caption{The relationships between the nodes}
+		\label {HowItWorks5B}
+	\end{subfigure}
+	\caption{The \code{option} nodes of the \code{option} node named ``add"}
+	\label{options}
 	\end{figure}
 	
-	\textcolor{blue}{[A diagram of the relationships between these nodes]}
+	%\textcolor{blue}{[A diagram of the relationships between these nodes]}
 	
 	
+	Beyond the references, each node contains information that defines its state. One part of a code's state is the value \code{over}, which is a boolean for whether the mouse is over the node. Another main event is \code{press} which is a boolean for whether the mouse is clicking the node. The most central variable is called \code{activated}. \code{activated} is a boolean with a complicated condition. It corresponds to whether the mouse is currently over the node or was recently over the node and has not moved too far away. If \code{activated} is true, then some user interface logic ensures that no other node is activated or can become activated while this node is activated. This happens through a recursive method called in a node's \code{before} node and its \code{after} nodes, shown in Figure \ref{Recursion}. \code{option} nodes are the exception to this. They will only ever be \code{activated} when their \code{optionParent} is already \code{activated}. Each node also tracks its position and orientation, information that is referenced by this node's \code{after} nodes to ensure that every node is in the correct state.\\
 	
-	Beyond the references, each node contains information that defines its state. One part of a code's state is the value \code{over}, which is a boolean for whether the mouse is over the node. Another main event is \code{press} which is a boolean for whether the mouse is clicking the node. The most central variable is called \code{activated}. \code{activated} is a boolean with a complicated condition. It corresponds to whether the mouse is currently over the node or was recently over the node and has not moved too far away. If \code{activated} is true, then some user interface logic ensures that no other node is activated or can become activated while this node is activated. This happens through a recursive method called in a node's \code{before} node and its \code{after} nodes. \code{option} nodes are the exception to this. They will only ever be \code{activated} when their \code{optionParent} is already \code{activated}. Each node also tracks its position and orientation, information that is referenced by this node's \code{after} nodes to ensure that every node is in the correct state.\\
+	%\textcolor{blue}{[A diagram of the recursive-ness of the code that ensures that all the right nodes are activated]}\\
 	
-	\textcolor{blue}{[A diagram of the recursive-ness of the code that ensures that all the right nodes are activated]}\\
+	\begin{figure}[h]
+	\centering
+		\begin{tikzpicture}
+		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		\draw (.55,.25) node{hey};
+		\draw (2.45,.25) node{whoa};
+		\draw (1.5,1.9) node{huh};
+		\end{tikzpicture}
+	\caption{The recursive nature of \code{activated}}
+	\label {Recursion}
+	\end{figure}
 	
-	There are specific ways for users to engage with this process. The user is able to click on the \code{option} nodes of an \code{activated} node, and if the node has an associated action and some conditions are fulfilled, the action happens. Usually, this action is the creation of a new node whose \code{before} node is set to be the current node (the node whose \code{option} node was just clicked). The other case is that the \code{option} node that was clicked will trigger the deletion of that \code{option} node's \code{optionParent} node. For both of these possibilities, the current node's \code{after} array and the display are both updated.\\
+	There are specific ways for users to engage with this process. The user is able to click on the \code{option} nodes of an \code{activated} node, and if the node has an associated action and some conditions are fulfilled, the action happens. Usually, this action is the creation of a new node whose \code{before} node is set to be the current node (the node whose \code{option} node was just clicked). The other case is that the \code{option} node that was clicked will trigger the deletion of that \code{option} node's \code{optionParent} node. Deletion is described in more detail in Figure \ref{NodeDeletion}. For both of these possibilities, the current node's \code{after} array and the display are both updated.\\
 	
-	\textcolor{blue}{[Two images showing how the deletion of a node affects the arrays and display (maybe actually four images? Two that show what is on the screen and two that show the changing relationship of the nodes behind the scenes?)]}\\
+	%\textcolor{blue}{[Two images showing how the deletion of a node affects the arrays and display (maybe actually four images? Two that show what is on the screen and two that show the changing relationship of the nodes behind the scenes?)]}\\
 	
-	 Each sub-window has a function to turn its tree of nodes into a string that uniquely describes it. This is done through a process of depth-first search, where each branch of the tree is explored down to its end, adding elements to the string as it does. The tree is explored through the \code{before} and \code{after} linkages. Any time the tree branches, the function adds an \code{[}, and any time the tree finishes reading a branch, the function adds a \code{]}. These brackets allows complex branching structures to be accurately described in only one string. Most nodes have an associated character that is added to the string whenever the node is seen on the tree. \code{rotation} nodes have either a \code{+} or a \code{-}. \code{forward} nodes have either an \code{F} or an \code{f}. \code{production} nodes have the character of their associated production. (These might be \code{A}, \code{B}, etc.) The \code{start} node and \code{option} nodes are not read by the function and so do not have associated characters. At the end of this process, the sub-window has a string that is the production rule for the production of that sub-window.\\
+	\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[height = 2.5in]{Images/HowItWorks7A}
+		\caption{Before deletion}
+		\label {HowItWorks7A}
+	\end{subfigure}%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\begin{tikzpicture}
+		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		\draw (.55,.25) node{hey};
+		\draw (2.45,.25) node{whoa};
+		\draw (1.5,1.9) node{huh};
+		\end{tikzpicture}
+		\caption{Before deletion (behind the scenes)}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[height = 2.5in]{Images/HowItWorks7C}
+		\caption{After deletion}
+		\label {HowItWorks7C}
+	\end{subfigure}%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\begin{tikzpicture}
+		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		\draw (.55,.25) node{hey};
+		\draw (2.45,.25) node{whoa};
+		\draw (1.5,1.9) node{huh};
+		\end{tikzpicture}
+		\caption{After deletion (behind the scenes)}
+	\end{subfigure}
+	\caption{Effects of a node deletion}
+	\label{NodeDeletion}
+	\end{figure}
+	
+	 Each sub-window has a function to turn its tree of nodes into a string that uniquely describes it. Figure \ref{RuleMaking} shows this process of depth-first search, where each branch of the tree is explored down to its end, adding elements to the string as it does. The tree is explored through the \code{before} and \code{after} linkages. Any time the tree branches, the function adds an \code{[}, and any time the tree finishes reading a branch, the function adds a \code{]}. These brackets allows complex branching structures to be accurately described in only one string. Most nodes have an associated character that is added to the string whenever the node is seen on the tree. \code{rotation} nodes have either a \code{+} or a \code{-}. \code{forward} nodes have either an \code{F} or an \code{f}. \code{production} nodes have the character of their associated production. (These might be \code{A}, \code{B}, etc.) The \code{start} node and \code{option} nodes are not read by the function and so do not have associated characters. At the end of this process, the sub-window has a string that is the production rule for the production of that sub-window.\\
 	 
-	 \textcolor{blue}{[Images showing the creation of a string based on some L-System]}\\
+	% \textcolor{blue}{[Images showing the creation of a string based on some L-System]}\\
+	\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\begin{tikzpicture}
+		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		\draw (.55,.25) node{hey};
+		\draw (2.45,.25) node{whoa};
+		\draw (1.5,1.9) node{huh};
+		\end{tikzpicture}
+		\caption{F}
+	\end{subfigure}%
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\begin{tikzpicture}
+		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		\draw (.55,.25) node{hey};
+		\draw (2.45,.25) node{whoa};
+		\draw (1.5,1.9) node{huh};
+		\end{tikzpicture}
+		\caption{F[–}
+	\end{subfigure}%
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\begin{tikzpicture}
+		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		\draw (.55,.25) node{hey};
+		\draw (2.45,.25) node{whoa};
+		\draw (1.5,1.9) node{huh};
+		\end{tikzpicture}
+		\caption{F[–F}
+	\end{subfigure}
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\begin{tikzpicture}
+		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		\draw (.55,.25) node{hey};
+		\draw (2.45,.25) node{whoa};
+		\draw (1.5,1.9) node{huh};
+		\end{tikzpicture}
+		\caption{F[–F]+}
+	\end{subfigure}
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\begin{tikzpicture}
+		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		\draw (.55,.25) node{hey};
+		\draw (2.45,.25) node{whoa};
+		\draw (1.5,1.9) node{huh};
+		\end{tikzpicture}
+		\caption{F[–F]+F}
+	\end{subfigure}%
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\begin{tikzpicture}
+		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		\draw (.55,.25) node{hey};
+		\draw (2.45,.25) node{whoa};
+		\draw (1.5,1.9) node{huh};
+		\end{tikzpicture}
+		\caption{F[–F]+FA}
+	\end{subfigure}
+	\caption{The step-by-step creation of a production rule}
+	\label{RuleMaking}
+	\end{figure}
 	
-	Similar to how each node's \code{after} nodes will have a way to access their \code{before} node, each sub-window is able to access some information from the main window. The main window is also able to change some information in the sub-windows. However, there is no way for the main window to directly affect the start triangle or nodes within any of the sub-windows. It must have each sub-window do that. Some information must still be transferred between layers, information such as the production rules. The main window is able to reference the production rules from each sub-window. It applies the L-System recursive replacement process described in section \ref{Understanding-through-Images} some number of times equal to the value of \code{Iterations}. This value can be changed by the user. The output of this process is the L-string, which is used to draw the L-System.\\
+	Similar to how each node's \code{after} nodes will have a way to access their \code{before} node, each sub-window is able to access some information from the main window. The main window is also able to change some information in the sub-windows. However, there is no way for the main window to directly affect the start triangle or nodes within any of the sub-windows. It must have each sub-window do that. Some information must still be transferred between layers, information such as the production rules. The main window is able to reference the production rules from each sub-window. It applies the L-System recursive replacement process described in section \ref{Understanding-through-Images} a number of times equal to \code{Iterations}. This value can be changed by the user. The output of this process is the L-string, which is used to draw the L-System.\\
 	
-	\textcolor{blue}{[A labelled drawing of the different strings and how they are related between the different windows]}\\
+	%\textcolor{blue}{[A labelled drawing of the different strings and how they are related between the different windows]}\\
 	
-	In the process of drawing the L-System, the Explorer reads the L-string character-by-character and performs actions depending on that character. It acts very much like Turtle Graphics described in section \ref{Turtle-Graphics}. It also has another data structure called a ``stack". The Explorer is only allowed to interact with the top item on the stack, and it can choose to read it or to remove it. It can also add a new item to the top of the stack. (It cannot add a new item in the middle.) In this case, the kind of item that we're putting on the top of the stack is a snapshot of the current state.\\
+	\begin{figure}[h]
+	\centering
+		\begin{tikzpicture}
+		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		\draw (.55,.25) node{hey};
+		\draw (2.45,.25) node{whoa};
+		\draw (1.5,1.9) node{huh};
+		\end{tikzpicture}
+	\caption{The movement of the production rules between windows}
+	\label {Strings}
+	\end{figure}
 	
-	\textcolor{blue}{[An illustration of the Explorer's stack and how the system engages with it]}\\
+	In the process of drawing the L-System, the Explorer reads the L-string character-by-character and performs actions depending on that character. It acts very much like the Turtle Graphics described in Section \ref{Turtle-Graphics}. It also has another data structure called a ``stack", shown in Figure \ref{Stack}. The Explorer is only allowed to interact with the top item on the stack, and it can choose to read it or to remove it. It can also add a new item to the top of the stack. (It cannot add a new item in the middle.) In this case, the kind of item that we're putting on the top of the stack is a snapshot of the current state.\\
+	
+	%\textcolor{blue}{[An illustration of the Explorer's stack and how the system engages with it]}\\
+	
+	\begin{figure}[h]
+	\centering
+		\begin{tikzpicture}
+		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		\draw (.55,.25) node{hey};
+		\draw (2.45,.25) node{whoa};
+		\draw (1.5,1.9) node{huh};
+		\end{tikzpicture}
+	\caption{The structure of the stack}
+	\label {Stack}
+	\end{figure}
 	
 	When the Explorer processes a \code{[}, it puts the current state onto the stack. Whenever it processes a \code{]}, it sets the current state to the state that is on top of the stack, then it removes the state on the top of the stack. If it processes an \code{F}, it goes a given distance in the direction it's facing and draws a line between its starting and ending point. When it processes an \code{f}, it goes that distance in that direction, but doesn't draw a line. A \code{+} adds the given angle value to its stored orientation. \code{–} does the same, but subtracts the angle from the orientation instead. The angle can be changed by the user to quickly see different possible views of the L-System. Reading a production like \code{A} or \code{B} doesn't change its state, nor does it draw anything. It won't change its state if the character that it reads is not among these ones.
 	
