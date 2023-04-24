@@ -1069,34 +1069,56 @@ This is an L-System:
 	\label{LeopoldTrees}
 	\end{figure}
 	
-	Finally, the paper ``A Theory of Animation: Cells, L-Systems, and Film" goes well beyond the scope of this thesis in its discussion.\footnote{\cite{theory2004}} It provides some insight that's more helpful for the larger questions that have been raised during this process, and less about the structure of L-Systems. It suggests a view of L-Systems and similar structures as ``animations of a \textit{theory} of cellular life." (32) This is especially interesting to me in the context of the discussion of the alive-ness of machines, and the degree to which a machine that simulates life can be said to actually \textit{be} life. I ask these questions more clearly a bit further on in section \ref{Questions}. This paper is also interesting to me for the degree to which it ties popular culture to these simulators. It is cross-discipline in the most appealing way.
+	Finally, the paper ``A Theory of Animation: Cells, L-Systems, and Film" goes well beyond the scope of this thesis in its discussion.\footnote{\cite{theory2004}} It provides some insight that's more helpful for the larger questions that have been raised during this process, and less about the structure of L-Systems. It suggests a view of L-Systems and similar structures as ``animations of a \textit{theory} of cellular life." (32) This is especially interesting to me in the context of the discussion of the alive-ness of machines, and the degree to which a machine that simulates life can be said to actually \textit{be} life. I ask these questions more clearly a bit further on in section \ref{Questions}. This paper is also interesting to me for the degree to which it ties popular culture to these simulators. It is cross-discipline in the most appealing way. Here's a paragraph from the paper that I find to be particularly exciting in how it connects seemingly distant themes in a coherent way.
 	
+	\begin{quote}
+	To quote the poet Rainer Maria Rilke, who also clearly thought through cell theory, we have sought here to follow the cell through its presence in twentieth century media as the “tangible immaterial means of representation for everything.” Scientific and artistic objects, sea urchin embryos and science fiction mountains, are “realities that emerge from handwork,” that of animators tinkering with machines and media.\footnote{\cite{theory2004}}
+	\end{quote}
 	
+	%\textcolor{blue}{[Some related image? (perhaps not, this'd be filler)]}\\
 	
-	\textcolor{blue}{[Some related image? (perhaps not, this'd be filler)]}\\
+	Another class of life simulator that's often grouped with L-Systems is the field of Cellular Automata. These structures surpass L-Systems in terms of simplicity, often operating in a simple grid or even just a line of points. Popular examples are John Conway's \textit{Game of Life}\footnote{\cite{GameOfLife1970}} and Stephen Wolfram's one-dimensional Automata.\footnote{\cite{wolfram2002}} These have been used alongside L-Systems to generate life-like effects for film and other media for a long time.\footnote{\cite{theory2004}} Their simplicity also makes them a great tool for creating emergent systems and acting as simple models for complex behavior. They also exhibit a remarkable capability for beauty, in a similar way to L-Systems.
 	
-	Another class of life simulator that's often grouped with L-Systems is the field of Cellular Automata. These structures surpass L-Systems in terms of simplicity, often operating in a simple grid or even just a line of points. Popular examples are John Conway's \textit{Game of Life}\footnote{\cite{GameOfLife1970}} and Stephen Wolfram's one-dimensional Automata.\footnote{\cite{wolfram2002}} These have been used alongside L-Systems to generate life-like effects for film and other media for a long time.\footnote{\cite{theory2004}} Their simplicity also makes them a great tool for creating emergent systems and acting as simple models for complex behavior. They can also demonstrate a remarkable capability for beauty, which I will discuss in more depth now.
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Images/Wolfram}
+	\caption{An illustration from \cite{wolfram2002}}
+	\label{Wolfram}
+	\end{figure}
 
 \section{Generative Art}
 \label{GenerativeArt}
 
 	People have been fascinated by the cooperative creations of human and machines for as long as such things have been able to be made. Many of these creations are seen as \textit{beautiful}. These structures don't necessarily have to conform to traditional standards of beauty, but they do look usually look like what we know as \textit{art}. These works just happen to be created in part by machines. One section of the creations made by machine but under some human assistance fall under the label \textit{Generative Art}. For the purposes of this thesis, I will define Generative Art as art that comes from a machine with the guidance of a human.
 	
-	With only a little searching, I've found several online communities that create beautiful collections of this work.\footnote{\cite{reddit2023}} I've also been fortunate to be near many people that are also interested in many of these same ideas and have supported me in this work more actively. I credit Trever Koch for helping me bring many of my early ideas to life. The point here is that there are resources available if you are at all interested in learning more about this. I have collected specific resources and put them in Appendix B for your perusal.\\
+	With only a little searching, I've found several online communities that create beautiful collections of this work.\footnote{\cite{reddit2023}} I've also been fortunate to be near many people that are also interested in many of these same ideas and have supported me in this work more actively. I credit Trever Koch for helping me bring many of my early ideas to life. The point here is that there are resources available if you are at all interested in learning more about this. I have collected specific resources and put them in Appendix B for your perusal.
 	
-	\textcolor{blue}{[Some weird \& different Generative Art things]}\\
+	%\textcolor{blue}{[Some weird \& different Generative Art things]}
 	
-	There is a huge variety of work that could be considered Generative Art. The art made by systems like DALL-E, MidJourney, and other AI programs might fall under some definitions of Generative Art, but it feels distanced enough from the material that I'm interested in covering here that I'll isolate them to a discussion in section \ref{AI-Art}.\\
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Images/Grid}
+	\caption{A Processing sketch of cubes, exhibiting Moiré patterns}
+	\label{Grid}
+	\end{figure}
 	
-	\textcolor{blue}{[One or two AI art things (maybe don't include this? Ethical concerns?)]}
+	There is a huge variety of work that could be considered Generative Art. The art made by systems like DALL-E, Midjourney, and other AI programs might fall under some definitions of Generative Art, but it feels distanced enough from the material that I'm interested in covering here that I'll isolate them to a discussion in section \ref{AI-Art}.
+	
+	%\textcolor{blue}{[One or two AI art things (maybe don't include this? Ethical concerns?)]}
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\linewidth]{Images/MidjourneyMathTree}
+	\caption{An image from the Midjourney Discord server (\cite{midjourney2023})}
+	\label{Midjourney}
+	\end{figure}
 	
 \subsection{My Explorations} % Should this be its own section?
 	
-	I explored a variety of systems for creating artwork with machine means during the first stages of my research process. I'll introduce some of those structures here and demonstrate how they tie into the theme of simulating life. Each of these projects are deserving of greater research in their own right, and so I won't attempt to make my explanations comprehensive. This section I hope you enjoy these objects as both the artworks and the mathematical structures that they are.\\
+	I explored a variety of systems for creating artwork with machine means during the first stages of my research process. I'll introduce some of those structures here and demonstrate how they tie into the theme of simulating life. Each of these projects are deserving of greater research in their own right, and so I won't attempt to make my explanations comprehensive. This section I hope you enjoy these objects as both the artworks and the mathematical structures that they are.
 
-	Here are some of the chronologically earliest projects that I explored. These were made in a program called OpenSCAD (pronounced ``open S cad") and were a first attempt to create artworks through software.\footnote{\cite{openSCAD}}\\
+	Here are some of the chronologically earliest projects that I explored. These were made in a program called OpenSCAD (pronounced ``open S cad") and were a first attempt to create artworks through software.\footnote{\cite{openSCAD}}
 	
-	\textcolor{blue}{[OpenSCAD projects]}\\
+	%\textcolor{blue}{[OpenSCAD projects]}
 	
 	This is a ``mesh" that I was messing around with during these early stages as well. I was curious if I would be able to modify it so that I might be able to fold paper into a physical model. This particular version never came about.\\
 	
