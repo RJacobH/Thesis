@@ -10,7 +10,7 @@ class Window extends PApplet {
   
   int w, h;
   
-  Triangle StartTriangle;
+  Triangle startTriangle;
   float startX, startY;
   
   int stW = 40; // The width of the start triangle
@@ -63,8 +63,8 @@ class Window extends PApplet {
     
     startX = w/2;
     startY = h/2;
-    StartTriangle = new Triangle(startX, startY, startX + stW/2, startY + stH, startX - stW/2, startY + stH, this);
-    StartTriangle.setMovable(true, lims, OGWindowProds);
+    startTriangle = new Triangle(startX, startY, startX + stW/2, startY + stH, startX - stW/2, startY + stH, this);
+    startTriangle.setMovable(true, lims, OGWindowProds);
   }
   
   public void setup() {
@@ -96,9 +96,9 @@ class Window extends PApplet {
       
       //setAngle(angle);
       
-      StartTriangle.adjust(lims);
+      startTriangle.adjust(lims);
     }
-    StartTriangle.Len = Len;
+    startTriangle.Len = Len;
     background(255);
     fill(255);
     strokeWeight(1);
@@ -111,38 +111,38 @@ class Window extends PApplet {
     
     //StartTriangle.setWindowProds(WindowProds);
   
-    StartTriangle.update();
-    StartTriangle.display();
-    StartTriangle.setFirstMousePress(false);
+    startTriangle.update();
+    startTriangle.display();
+    startTriangle.setFirstMousePress(false);
     
-    startX = StartTriangle.x1;
-    startY = StartTriangle.y1;
+    startX = startTriangle.x1;
+    startY = startTriangle.y1;
     
-    replacement = StartTriangle.startNode.generateSystem(); // Need to update replacement here to reflect what's going on in the window
+    replacement = startTriangle.startNode.generateSystem(); // Need to update replacement here to reflect what's going on in the window
   }
   
   public void mousePressed() {
-    StartTriangle.setFirstMousePress(true);
+    startTriangle.setFirstMousePress(true);
   }
 
   public void mouseReleased() {
-    StartTriangle.releaseEvent();  
+    startTriangle.releaseEvent();  
   }
   
   public void setWindowProds(ArrayList<String> WP) {
     //print(" hmm " + WP);
     WindowProds = WP;
-    //print(" old start triangle prods: " + StartTriangle.WindowProds);
-    ////StartTriangle.setWindowProds(WindowProds);
-    //print(" new start triangle prods: " + StartTriangle.WindowProds);
+    //print(" old start triangle prods: " + startTriangle.WindowProds);
+    ////startTriangle.setWindowProds(WindowProds);
+    //print(" new start triangle prods: " + startTriangle.WindowProds);
   }
   
   public void setAngle(float A) {
-    StartTriangle.angle = A;
+    startTriangle.angle = A;
   }
   
   public void setOffset(float O) {
-    StartTriangle.offset = O;
+    startTriangle.offset = O;
   }
   
   public String getProduction() {

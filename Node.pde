@@ -41,7 +41,7 @@ class Node {
   ArrayList<String> OGWindowProds;
   String t = " "; // The text that is in the center of the node. Only should be used for option and production nodes (and perhaps rotation nodes?)
   
-  // This first constructor makes a special node without a before node. This node is tied to the StartTriangle 
+  // This first constructor makes a special node without a before node. This node is tied to the startTriangle 
   Node(float ix, float iy, float A, float O, String Ntype, Triangle T, PApplet W, IntList limits) { // Only used once to initialize a window's tree of nodes
     w = W;
     nodeType = Ntype;
