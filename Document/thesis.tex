@@ -1091,7 +1091,7 @@ This is an L-System:
 
 	People have been fascinated by the cooperative creations of human and machines for as long as such things have been able to be made. Many of these creations are seen as \textit{beautiful}. These structures don't necessarily have to conform to traditional standards of beauty, but they do look usually look like what we know as \textit{art}. These works just happen to be created in part by machines. One section of the creations made by machine but under some human assistance fall under the label \textit{Generative Art}. For the purposes of this thesis, I will define Generative Art as art that comes from a machine with the guidance of a human.
 	
-	With only a little searching, I've found several online communities that create beautiful collections of this work.\footnote{\cite{reddit2023}} I've also been fortunate to be near many people that are also interested in many of these same ideas and have supported me in this work more actively. I credit Trever Koch for helping me bring many of my early ideas to life. The point here is that there are resources available if you are at all interested in learning more about this. I have collected specific resources and put them in Appendix B for your perusal.
+	With only a little searching, I've found several online communities that create beautiful collections of this work.\footnote{\cite{reddit2023}} I've also been fortunate to be near many people that are also interested in many of these same ideas and have supported me in this work more actively. I credit Trever Koch for helping me bring many of my early ideas to life. These resources have inspired me to create work that I feel excited about. There are resources available if you are at all interested in learning more about this compelling work. I've collected specific resources and put them in Appendix B.
 	
 	%\textcolor{blue}{[Some weird \& different Generative Art things]}
 	
@@ -1102,7 +1102,7 @@ This is an L-System:
 	\label{Grid}
 	\end{figure}
 	
-	There is a huge variety of work that could be considered Generative Art. The art made by systems like DALL-E, Midjourney, and other AI programs might fall under some definitions of Generative Art, but it feels distanced enough from the material that I'm interested in covering here that I'll isolate them to a discussion in section \ref{AI-Art}.
+	There is a huge variety of work that could be considered Generative Art. The art made by systems like DALL-E, Midjourney, and other AI programs might fall under some definitions of Generative Art, but it feels distanced enough from the material that I'm interested in covering here that I'll isolate them to a discussion in section \ref{AI-Art}. Figure \ref{Midjourney} is an example of this.
 	
 	%\textcolor{blue}{[One or two AI art things (maybe don't include this? Ethical concerns?)]}
 	\begin{figure}[h]
@@ -1116,35 +1116,129 @@ This is an L-System:
 	
 	I explored a variety of systems for creating artwork with machine means during the first stages of my research process. I'll introduce some of those structures here and demonstrate how they tie into the theme of simulating life. Each of these projects are deserving of greater research in their own right, and so I won't attempt to make my explanations comprehensive. This section I hope you enjoy these objects as both the artworks and the mathematical structures that they are.
 
-	Here are some of the chronologically earliest projects that I explored. These were made in a program called OpenSCAD (pronounced ``open S cad") and were a first attempt to create artworks through software.\footnote{\cite{openSCAD}}
+	Here are some of the chronologically earliest projects that I explored. The objects shown in Figure \ref{OpenSCAD} were made in a program called OpenSCAD (pronounced ``open S cad") and were a first attempt to create artworks through software.\footnote{\cite{openSCAD}}\\
 	
 	%\textcolor{blue}{[OpenSCAD projects]}
+	\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.48\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/OpenSCAD1}
+		\caption{An early creation}
+		\label {ThreeHollowRects}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{0.48\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/OpenSCAD2}
+		\caption{Playing with color and trigonometry}
+		\label {3dSine}
+	\end{subfigure}
+	\caption{OpenSCAD creations}
+	\label{OpenSCAD}
+	\end{figure}
 	
-	This is a ``mesh" that I was messing around with during these early stages as well. I was curious if I would be able to modify it so that I might be able to fold paper into a physical model. This particular version never came about.\\
+	Figure \ref{head} is a ``mesh" that I was messing around with during these early stages. I was curious if I would be able to modify it so that I could fold it out of paper. This particular version was unfortunately never realized.\\
 	
-	\textcolor{blue}{[Head Mesh]}\\
+	%\textcolor{blue}{[Head Mesh]}
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Images/Head}
+	\caption{A head mesh I hoped to unfold, print onto paper, then refold}
+	\label{head}
+	\end{figure}
+
+	%\textcolor{blue}{[Paper Shapes]}\\
 	
-	However, I did manage to create a few physical models of geometric solids.\\
+		However, I did manage to create a few physical models of geometric solids, shown in Figure \ref{icosohedra}. These fall into the category of ``papercraft", a medium that I feel especially connected with. The L-Systems that I've been showing off take a line and brings it into the 2nd dimension. These papercraft objects bring 2d objects into the third dimension. These paper models are descendants of a series of creations that I've been making years before embarking on this thesis project. Figure \ref{papershapes} shows some examples of those.\\
 	
-	\textcolor{blue}{[Paper icosohedra]}\\
+	%\textcolor{blue}{[Modular Origami] (If you're interested, these specific types of objects are part of a discipline called ``Modular Origami".)}
+	\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.38\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/Icosohedra}
+		\caption{Iscosohedra laser-cut from cardstock, then folded and glued}
+		\label{icosohedra}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.58\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/PaperShapes}
+		\caption{Modular Origami geometric solids (these don't use glue!)}
+		\label{papershapes}
+	\end{subfigure}
+	\end{figure}
 	
-	These fall into the category of ``papercraft", a medium that I feel especially connected with. The L-Systems that I've been showing off take a line and brings it into the 2nd dimension. These papercraft objects bring 2d objects into the third dimension. These paper models are descendants of a series of creations that I've been making years before embarking on this thesis project. Here are some examples of those.\\
 	
-	\textcolor{blue}{[Modular Origami] (If you're interested, these specific types of objects are part of a discipline called ``Modular Origami".)}\\
+	I've already mentioned my early explorations into the Python implementation of Turtle Graphics. Figure \ref{oldTurtle} shows some of the structures constructed during that time.\\
 	
-	I've already mentioned my early explorations into the native python implementation of turtle. Here are some of the systems constructed during that time.\\
+	%\textcolor{blue}{[Early turtle SVGs]}\\
+	\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.5\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/OldTurtle1}
+		\caption{An early creation}
+		\label{ThreeHollowRects}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{0.5\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/OldTurtle2}
+		\caption{Playing with color and trigonometry}
+		\label{3dSine}
+	\end{subfigure}
+	\caption{Early creations with Turtle Graphics}
+	\label{oldTurtle}
+	\end{figure}
 	
-	\textcolor{blue}{[Early turtle SVGs]}\\
+	At this point, I began to explore the possibility of bringing L-Systems into the third dimension. I used Blender and an implementation of Turtle Graphics that I constructed to build complex 3d shapes. My favorite of these is probably the 3d Hilbert Curve, in part because it made me consider how the turtle works. In a sense, the turtle doesn't move through its world, instead the world moves around it.\footnote{\cite{derose1989}} This is a part of this process that would be very fun to explore further, especially with the knowledge from a paper that I came across later in the process. Figure \ref{BlenderImages} depicts an early exploration into Blender's capabilities and a 3D Hilbert Curve made using an L-System.\\
 	
-	At this point, I began to explore the possibility of bringing L-Systems into the third dimension. I used Blender and an implementation of Turtle Graphics that I constructed to build complex 3d shapes. My favorite of these is probably the 3d Hilbert Curve, in part because it made me consider how the turtle works. In a sense, the turtle doesn't move through its world, instead the world moves around it.\footnote{\cite{derose1989}} This is a part of this process that would be very fun to explore further, especially with the knowledge from a paper that I came across later in the process. Here is the Hilbert Curve and a few other 3d constructions from L-Systems.\\
+	%\textcolor{blue}{[3d Hilbert Curve and others]}\\
 	
-	\textcolor{blue}{[3d Hilbert Curve and others]}\\
+	\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.55\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/Blender1}
+		\caption{Blender can cleanly smooth joints}
+		\label{SmoothTree}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{0.41\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/3DHilbert}
+		\caption{3D Hilbert Curve}
+		\label{3DHilbert}
+	\end{subfigure}
+	\caption{Blender Experiments}
+	\label{BlenderImages}
+	\end{figure}
 	
-	It was at this point in the thesis that I encountered Processing. Here are images of some of the projects that I made as part of this particular exploration. Note that most of these are snapshots of a program in motion, and a lot of detail will be lost when we remove the time dimension. I would like to put some of these on my website at some point to let those who are interested to experiment.\\
+	It was at this point in the thesis that I encountered Processing. Figure \ref{EarlyProcessing} shows two of the projects that I made when learning how to code in this language. The second image, Figure \ref{Simplex} is a snapshot of a program in motion, and much of the detail is lost when the time dimension is removed. I'd like to put some of these on my website at some point to let folks experiment with them.\\
 	
-	\textcolor{blue}{[Stills from Processing animations, definitely the Simplex Cloud]}\\
+	%$\textcolor{blue}{[Stills from Processing animations, definitely the Simplex Cloud]}\\
+	\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.48\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/ColorGrid}
+		\caption{Processing handles large arrays well}
+		\label{ColorGrid}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{0.48\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/SimplexImage}
+		\caption{Dynamic cube using Simplex Noise}
+		\label{Simplex}
+	\end{subfigure}
+	\caption{Early Processing Programs}
+	\label{EarlyProcessing}
+	\end{figure}
 	
-	These projects were instrumental to the development of the thesis as you see it now. Without considering them, an understanding of my thesis is incomplete.
+	These projects were instrumental to the development of the thesis as you see it now. Without acknowledging the steps that led to the final product, the story of this work would be incomplete.
 
 \section{Quandaries, Puzzlements, and Musings}
 \label{Questions}
@@ -1153,9 +1247,15 @@ This is an L-System:
 	
 	This is the sort of question that people have been asking for hundreds, if not thousands of years. Machine-makers have attempted to imitate life by different means for a similarly long period.\footnote{\cite{riskin2016}} Science Fiction authors and pioneers like Alan Turing have suggested ways in which we might learn if there is a difference between life and machines.\footnote{\cite{turing1936}} Some of those questions have borne fruit or guided our development, others have marked moments when we moved the goalposts to imagine ever-grander goals.\footnote{\cite{theory2004}}
 	
-	In the last decades, there have been tremendous advances in the simulation of life. Robots have beaten skilled human Chess, Go, and Starcraft II players, and have become indistinguishable from humans in many respects.\footnote{\cite{gamerAI2019}} We've become used to robot assistants in our homes and in our daily lives. The rise of AI-powered chatbots has thrown a wrench in the gears of several industries. There seems to be no end in sight. If anything, the development of these systems appears to be rapidly accelerating.\\
+	In the last decades, there have been tremendous advances in the simulation of life. Robots have beaten skilled human Chess, Go, and Starcraft II players, and have become indistinguishable from humans in many respects.\footnote{\cite{gamerAI2019}} We've become used to robot assistants in our homes and in our daily lives. The rise of AI-powered chatbots has thrown a wrench in the gears of several industries. There seems to be no end in sight. If anything, the development of these systems appears to be rapidly accelerating.
 	
-	\textcolor{blue}{[An especially beautiful, lifelike fern-like L-System]}\\
+	%\textcolor{blue}{[An especially beautiful, lifelike fern-like L-System]}\\
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Images/TiltedTree2}
+	\caption{Finding Chaos in Order}
+	\label{TiltedTree}
+	\end{figure}
 	
 	L-Systems are extremely simple, and I will not make the argument that they are themselves alive,\footnote{\cite{theory2004}} but I suggest that they support a specific understanding of the world. This understanding suggests that everything consists of purely physical operations and no invisible, imperceptible, separate element. L-Systems demonstrate that an intense variety of complexity can easily arise from almost nothing. I don't see any reason why people shouldn't be subject to the same rules.
 	%Back in the 1730s, Jacque von Vaucanson built an automaton in the shape of a duck that seemed to be able to eat and defecate. 
@@ -1165,15 +1265,22 @@ This is an L-System:
 
 	At the time of writing, ChatGPT has taken the world by storm.\footnote{\cite{ChatGPT}} While it doesn't appear to be destroying society yet, there's no saying what its successors will do. Regardless, it feels apparent to me that things are on the verge of changing dramatically. I believe that if we are going to be engaging with AI in any sort of meaningful way in the near future, we need to understand what that really means. How do we engage with entities that can do everything we can do, but often faster and better?
 	
-	We can try to hold onto the reins of these new creations, but so many pieces of sci-fi media emphasize why doing such a thing will only lead to cruelty, confusion, and won't even actually work. It seems right to me to suggest that people must be willing to accept that at least \textit{some} of that which an AI makes must be called art. This art might come from a human prompt and a huge human-generated dataset, but things like collages might be comparable.\footnote{\cite{NYT2023}}\\
+	We can try to hold onto the reins of these new creations, but so many pieces of sci-fi media emphasize why doing such a thing will only lead to cruelty, confusion, and won't even actually work. It seems right to me to suggest that people must be willing to accept that at least \textit{some} of that which an AI makes must be called art. This art might come from a human prompt and a huge human-generated dataset, but things like collages might be comparable.\footnote{\cite{NYT2023}}
 	
-	\textcolor{blue}{[An AI-generated image of "L-Systems". Let's see what it comes up with!]}\\
+	%\textcolor{blue}{[An AI-generated image of "L-Systems". Let's see what it comes up with!]}\\
 	
 	How does this relate to this thesis? Our definition of art has changed drastically over the years, and it might be a useless endeavor to even try to hold onto the conceit of the word in the face of a dramatically changing social dynamic with visual (and otherwise) media. The little simple shapes that can be built in the Explorer are just that, little simple shapes, but they carry with them a wealth of implication and meaning that goes far beyond their appearance. Who knows if our definitions of art will really change with the coming of AI? I'm willing to bet they will.
 
 \subsection{Is Math Art?}
 
-	\textcolor{blue}{[Beautiful fractal and otherwise L-Systems]}\\
+	%\textcolor{blue}{[Beautiful fractal and otherwise L-Systems]}\\
+	\begin{figure}[h]
+	\centering
+	\includegraphics[clip=true, viewport=4in 5.68in 7in 6.37in, scale=1]{Images/TheTimesWeLiveIn1}
+	\caption[Tile Patterns]{Tile Patterns\footnotemark}
+	\label{TilePatters}
+	\end{figure}
+	\footnotetext{A; A $\rightarrow$ +F[+F+B]–FA, B $\rightarrow$ F[+FA]–F–B; $\theta$ = -90$^{\circ}$, $\phi$ = 60$^{\circ}$; Iterations = 11}
 
 	It feels right to ask this question here as well. Where is the line between work that is created by a person as art, and similar work that is simply drawn from structures inherent in math? Would a person be able to fairly call a math structure art? What if they were responsible for choosing this particular iteration? Maybe they picked the color that it's displayed with? Would it still be art if they found the barest way to display the simplest of equations? When can we say it isn't art? Can all math be art?
 	
