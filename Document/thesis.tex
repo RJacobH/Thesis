@@ -66,7 +66,7 @@
 	%\includesvg{pretty}
 	\begin{figure}[h]
 	\centering
-	\includegraphics[clip=true, viewport=1in 5.5in 9in 11.3in, scale=0.49]{Images/Acknowledgements1}
+	\includegraphics[clip=true, viewport=1in 5.5in 9in 11in, scale=0.44]{Images/Acknowledgements1}
 	\caption[Gratitude]{Gratitude\footnotemark}
 	\label {Acknowledgements1}
 	\end{figure}
@@ -961,9 +961,9 @@ This is an L-System:
 	
 	Keeping in mind that L-Systems were proposed back in 1968, I was worried that with 55 years to develop these ideas I wouldn't be able to tread on any new ground. This is true in many respects, and I re-emphasize that a main goal of this work is to raise awareness of L-Systems and to bring together some sources that discuss these ideas at the level of an undergraduate thesis. However, this work goes a little beyond that. There are few implementations that make L-Systems easy to play with. Even those who brought L-Systems to Blender still only make them available to those who know Blender.\footnote{\cite{Leopold2017}}
 	
-	This Blender work I mention is incredible, and I found it a great source of inspiration, but our projects have fundamentally different goals. As far as I'm aware, no other program has made L-Systems this easy to play with, despite the central part of their appeal being simplicity. As far as I can tell, there has been no easy way to gain an intuition with these systems that isn't locked behind years of engagement with computer science.\\
+	This Blender work I mention is incredible, and I found it a great source of inspiration, but our projects have fundamentally different goals. As far as I'm aware, no other program has made L-Systems this easy to play with, despite the central part of their appeal being simplicity. As far as I can tell, there has been no easy way to gain an intuition with these systems that isn't locked behind years of engagement with computer science.
 	
-	\textcolor{blue}{[Some sliders, the parts of the program that are especially simple]}\\
+	%\textcolor{blue}{[Some sliders, the parts of the program that are especially simple]}\\
 	
 	My central contribution has been the development of the interactive L-System Explorer. I hope that it's clear that this project will be able to engage with people, no matter their experience with computer science. I hope that this ability to craft L-Systems will help those who are interested to overcome any wariness about engaging with digital machines as an artistic medium. Despite computer science being about much more than pretty pictures, I feel that a warm welcome will help those who were once strangers come into this place as their home. These pictures and this thesis are my attempt at creating a warm welcome.
 
@@ -1463,21 +1463,21 @@ So far, we've only been looking at L-Systems that fall into a very narrow catego
 	
 	\begin{figure}[h]
 	\centering
-	\begin{subfigure}{0.48\linewidth}
+	\begin{subfigure}{0.44\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{Images/Snowflake}
 		\caption{A Snowflake from \cite{myhrvold2021}}
-		\label{UpwardParametric}
+		\label{Snowflake}
 	\end{subfigure}%
 	\hfill
-	\begin{subfigure}{0.48\linewidth}
+	\begin{subfigure}{0.52\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/RiverValley}
-		\caption{Sideways Parametric}
-		\label{SidewaysParametric}
+		\includegraphics[width=\linewidth]{Images/ParanaRiver}
+		\caption{The Paraná River from \cite{dauphin2020}}
+		\label{ParanaRiver}
 	\end{subfigure}
-	\caption{Parametric structures from \cite{LSystems2001}}
-	\label{Parametric}
+	\caption{Structures that might be imitated with L-Systems}
+	\label{PossibleLSystems}
 	\end{figure}
 	
 	My intention with this last section is to encourage you to see that L-Systems are capable of more than what they've been used for up until now. While they've been extensively studied mathematically, that doesn't mean that they're exhausted of compelling material. I feel that we are in an especially strong position regarding L-Systems right now, seeing as so much of their power has already been documented. We can build off of the solid foundations that were first established in 1968 by Aristid Lindenmayer in his search to describe natural structures though mathematical means. We have discovered the potential of Artificial Intelligence to fly past so much of the grunt work that has been holding us back. We can create art hand-in-hand with these machines that we've built, while not forgetting the simple systems that helped get us to this point.
@@ -1489,20 +1489,49 @@ So far, we've only been looking at L-Systems that fall into a very narrow catego
 %	\setcounter{chapter}{4}
 	\setcounter{section}{0}
 	
-	L-Systems have the ability to set free the imagination. They simulate some element of what it means to be alive while still remaining an extremely simple structure. They have been a powerful object to demonstrate the complexity of life but also to show that much of what we might imagine to be beyond description is in fact capable of being described, and described succinctly. I have introduced the L-System Explorer, a tool that brings L-Systems into the hands of anyone who is remotely interested. This tool brings full circle the promise of L-Systems as simple complexity; their possibilities can finally be taught with this Explorer in simple terms.
+	L-Systems can set free the imagination. They simulate some element of what it means to be alive while still remaining an extremely simple structure. They have been a powerful object to demonstrate the complexity of life but also to show that much of what we might imagine to be beyond description is in fact capable of being described, and described succinctly. I have introduced the L-System Explorer, a tool that brings L-Systems into the hands of anyone who is remotely interested. This tool brings full circle the promise of L-Systems as simple complexity; their possibilities can finally be taught with this Explorer in simple terms.
 	
 	I'm deeply thankful for both the research and the opportunity to do the research that have brought me to this point. I hope that I've been able to convince you of the value of this subject as well as the importance of the methods with which I've discussed it. As every resource that I've come across has acknowledged, it wouldn't be right to try to understand L-Systems in any way other than an interdisciplinary way. I encourage my readers to see that this awareness goes beyond these systems and into more everyday realms. I hope you've enjoyed this work. Take care.
+	
+	%\begin{figure}[h]
+	%\centering
+	%\includegraphics[width=0.8\linewidth]{Images/pretty}
+	%\caption{An alternative interpretation of L-Systems}
+	%\label{Hansmeyer}
+	%\end{figure}
 
     \appendix
-      \chapter{Extra Images}
-      \textcolor{blue}{[Put some of the reaction diffusion tests here]}\\
-      \textcolor{blue}{[Also the Perlin Cloud]}\\
-      \textcolor{blue}{[Lorenz Attractor as well]}\\
+      \chapter{Early Processing Experiments}
+      	\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.47\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/ColorCube}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{0.47\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/CubeofCubes}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.47\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/Living}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.47\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/Stars}
+	\end{subfigure}
+	\end{figure}
+      
       \chapter{Generative Art Resources}
       \label{Resources}
-      Citation to the generative art subreddit\\
-      Citations to some of the cool youtube channels\\
-      Instagram, Twitter, etc tags of some relevant artists\\
+      The subreddit, r/generative has been a treasure trove of intriguing projects. There is a constant influx of new content that continues to push the envelope of what I think could be possible. I especially appreciate the genre of generative art where it feels like the media is coming out of the page. You can sort by ``Top All Time" to find some of the best.\\
+      
+      Beyond the Coding Train, which I've already mentioned, there are a few YouTube channels that have some especially solid pearls of wisdom to share in areas related to this Thesis. Of course, I'd like to mention 3Blue1Brown and Numberphile first, as their videos on nearly every topic are engaging, thoughtfully constructed, and often some combination of witty and beautiful. Stuff Made Here and Mark Rober have been inspirations in regards to the coding aspects of this work especially, though I would be remiss to not mention Vihart as one of my first major introductions to the beautiful relationship between art and math. There are many others who have helped this happen, and the communities that this thesis owes some credit to are constantly evolving. I recommend these channels especially.\\
+      
+      There are some other artists and presences that I recommend you engage with. Many of these are Instagram artists that often post interesting visual graphics, sometimes even L-Systems. Another artist that works heavily in this area between art and math is Luke Shannon. He works with the line between intentional design and random chance in the creation of many of his works. Much of the art he makes blurs the boundary between the maker and the machine, asking us to consider how much control we actually have over the process of creation when machines are involved. It's wonderfully invigorating stuff.
 
 \backmatter 
 
