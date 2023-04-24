@@ -1,8 +1,13 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{32}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{}\fi
+
+\bibitem[{Academia.edu(2023)}]{manyPapers}
+Academia.edu (2023).
+\newblock (99+) {Academia}.edu {\textbar} {Search} {\textbar} {L}-{Systems}.
+\urlprefix\url{https://www.academia.edu/search?q=L-Systems}
 
 \bibitem[{Adamson \& Jenson(2001)}]{shrek2001}
 Adamson, A., \& Jenson, V. (2001).
@@ -32,12 +37,21 @@ Cook, S.~A. (1971).
   Computing Machinery.
 \urlprefix\url{https://doi.org/10.1145/800157.805047}
 
+\bibitem[{Dauphin(2020)}]{dauphin2020}
+Dauphin, L. (2020).
+\newblock Paraná {River}.
+\urlprefix\url{https://www.nasa.gov/feature/amazing-earth-satellite-images-from-2020/}
+
 \bibitem[{DeRose(1989)}]{derose1989}
 DeRose, T.~D. (1989).
 \newblock A {Coordinate}-{Free} {Approach} to {Geometric} {Programming}.
 \newblock In W.~Straßer, \& H.-P. Seidel (Eds.), {\em Theory and {Practice} of
   {Geometric} {Modeling}\/}, (pp. 291--305). Berlin, Heidelberg: Springer
   Berlin Heidelberg.
+
+\bibitem[{Discord \& Bot(2023)}]{midjourney2023}
+Discord, S., \& Bot, M. (2023).
+\newblock Midjourney {Math} {Tree}.
 
 \bibitem[{Fincher(1999)}]{FightClub1999}
 Fincher, D. (1999).
@@ -63,6 +77,11 @@ Garisto, D. (2019).
 Goldwasser, S., Micali, S., \& Rackoff, C. (1989).
 \newblock The {Knowledge} {Complexity} of {Interactive} {Proof} {Systems}.
 \newblock {\em Society for Industrial and Applied Mathematics\/}.
+
+\bibitem[{Hansmeyer(2003)}]{hansmeyer2003}
+Hansmeyer, M. (2003).
+\newblock {L}-{Systems} in {Architecture}.
+\urlprefix\url{http://www.michael-hansmeyer.com/l-systems}
 
 \bibitem[{Harris(2023)}]{NYT2023}
 Harris, E.~A. (2023).
@@ -93,15 +112,20 @@ Lindenmayer, A. (1967).
   {II}. {Simple} and {Branching} {Filaments} with {Two}-sided {Inputs}.
 \newblock {\em Journal of Theoretical Biology\/}.
 
-\bibitem[{none(2023)}]{manyPapers}
-none (2023).
-\newblock (99+) {Academia}.edu {\textbar} {Search} {\textbar} {L}-{Systems}.
-\urlprefix\url{https://www.academia.edu/search?q=L-Systems}
+\bibitem[{Myhrvold(2021)}]{myhrvold2021}
+Myhrvold, N. (2021).
+\newblock Snowflake.
+\urlprefix\url{https://www.nytimes.com/2021/03/10/science/snowflakes-photos-nathan-myhrvold.html}
 
 \bibitem[{OpenAI(2023)}]{ChatGPT}
 OpenAI (2023).
 \newblock {ChatGPT}.
 \urlprefix\url{https://chat.openai.com}
+
+\bibitem[{Papert(1980)}]{papert1980}
+Papert, S. (1980).
+\newblock {\em Mindstorms\/}.
+\newblock Basic Books Inc.
 
 \bibitem[{Prusinkiewicz et~al.(2001)Prusinkiewicz, Hanan, Hammel, \&
   Mech}]{LSystems2001}
@@ -126,16 +150,22 @@ Reddit (2023).
 \newblock r/generative.
 \urlprefix\url{https://www.reddit.com/r/generative/wiki/index/}
 
+\bibitem[{Reeves \& Blau(1985)}]{pixar1985}
+Reeves, W.~T., \& Blau, R. (1985).
+\newblock Approximate and {Probabilistic} {Algorithms} for {Shading} and
+  {Rendering} {Structured} {Particle} {Systems}.
+\newblock {\em SIGGRAPH 1985\/}, (pp. 313--322).
+
 \bibitem[{Riskin(2016)}]{riskin2016}
 Riskin, J. (2016).
 \newblock {\em The {Restless} {Clock}: {A} history of the centuries-long
   argument over what makes living things tick\/}.
 \newblock Chicago: The University of Chicago Press.
 
-\bibitem[{Train(2023)}]{codingTrain}
-Train, C. (2023).
+\bibitem[{Shiffman(2023)}]{codingTrain}
+Shiffman, D. (2023).
 \newblock The {Coding} {Train} - {YouTube}.
-\urlprefix\url{https://www.youtube.com/}
+\urlprefix\url{https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw}
 
 \bibitem[{Turing(1936)}]{turing1936}
 Turing, A.~M. (1936).

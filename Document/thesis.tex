@@ -16,6 +16,8 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc,through,backgrounds}
+\usetikzlibrary{shapes,arrows.meta,positioning}
+
 
 \usepackage{etoolbox}
 \AtBeginEnvironment{quote}{\par\singlespacing\small}
@@ -446,7 +448,7 @@ This is an L-System:
 	\label {Turtle}
 	\end{figure}
 
-	My early attempts to make L-System drawing programs all utilized a concept called ``Turtle Graphics". [cite Seymour paper "Mindstorms"] Turtle Graphics is a simple program that is often used in introductory Computer Science classes to help get students familiar with the basics of coding. It's used in \textit{The Algorithmic Beauty of Plants} to draw most of their L-Systems. I've also seen it used in other L-System implementations online. Turtle Graphics operates by reading a series of instructions and drawing according to those instructions. This is particularly applicable for L-Systems, where each symbol can be associated with a specific operation, such as drawing a straight line or turning to face in a different direction. Even while making my Explorer from the ground up, I've kept in mind the Turtle Graphics strategy.
+	My early attempts to make L-System drawing programs all utilized a concept called ``Turtle Graphics".\footnote{\cite{papert1980}} Turtle Graphics is a simple program that is often used in introductory Computer Science classes to help get students familiar with the basics of coding. It's used in \textit{The Algorithmic Beauty of Plants} to draw most of their L-Systems. I've also seen it used in other L-System implementations online. Turtle Graphics operates by reading a series of instructions and drawing according to those instructions. This is particularly applicable for L-Systems, where each symbol can be associated with a specific operation, such as drawing a straight line or turning to face in a different direction. Even while making my Explorer from the ground up, I've kept in mind the Turtle Graphics strategy.
 	
 	%\textcolor{blue}{[A few simple turtle programs]}
 	\begin{figure}[h]
@@ -469,7 +471,7 @@ This is an L-System:
 	
 	The central feature that Turtle Graphics uses to great effect is ``state". ``State" here means ``condition" or ``status". The ``Turtle" keeps track of its position and rotation. With an x-position, a y-position, and an angle, the Turtle is uniquely placed in its window. By manipulating these values with the code and choosing whether to draw or not draw between positions, the Turtle is able to seamlessly turn abstract code into clear visualizations. This is also particularly powerful because it physicalizes the process of coding that's often purely digital and accessible only through difficult-to-engage-with abstraction.
 	
-	Figure \ref{TurtleFractals} shows some fractals created with Turtle Graphics and L-Systems. Each of these could also be created with the L-System Explorer I introduce in the next chapter. L-Systems lend themselves particularly well to constructing fractals, due in part to their own recursive nature. 
+	Figure \ref{TurtleFractals} shows some fractals created with Turtle Graphics and L-Systems. Each of these could also be created with the L-System Explorer I introduce in the next chapter. L-Systems lend themselves particularly well to constructing fractals, due in part to their own recursive nature.
 	
 	%\textcolor{blue}{[A variety of turtle-produced programs, some in color]}
 	\begin{figure}[h]
@@ -624,13 +626,23 @@ This is an L-System:
 	\end{subfigure}
 	\begin{subfigure}{0.5\textwidth}
 		\centering
+		\includegraphics[height=3in]{Images/Diagram1}
 		%\includegraphics[height = 3in]{Images/HowItWorks5}
-		\begin{tikzpicture}
-		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
-		\draw (.55,.25) node{hey};
-		\draw (2.45,.25) node{whoa};
-		\draw (1.5,1.9) node{huh};
-		\end{tikzpicture}
+		%\begin{tikzpicture}[font=\small,thick]
+		%\node[draw, rounded rectangle, minimum width=2.5cm, minimum height=1cm] (block1) {start};
+		%\node[draw, rounded rectangle, below=of block1, minimum width=2.5cm, minimum height=1cm] (block2) {add};
+		
+	%	\node[draw, circle, below=of block2, minimum width=0.7cm, minimum height=0.5cm] (block3) {+};
+	%	\node[draw, circle, left=of block3, minimum width=0.7cm, minimum height=0.5cm] (block4) {f};
+	%	\node[draw, circle, left=of block4, minimum width=0.7cm, minimum height=0.5cm] (block5) {F};
+	%	\node[draw, circle, right=of block3, minimum width=0.7cm, minimum height=0.5cm] (block6) {-};
+	%	\node[draw, circle, right=of block6, minimum width=0.7cm, minimum height=0.5cm] (block7) {A};
+		
+		
+		
+	%	\draw[-latex] (block1) -| (block2) 
+	%		node[pos=0.5, fill=white, inner sep=2pt]{};
+	%	\end{tikzpicture}
 		
 		\caption{The relationships between the nodes}
 		\label {HowItWorks5B}
@@ -642,18 +654,19 @@ This is an L-System:
 	%\textcolor{blue}{[A diagram of the relationships between these nodes]}
 	
 	
-	Beyond the references, each node contains information that defines its state. One part of a code's state is the value \code{over}, which is a boolean for whether the mouse is over the node. Another main event is \code{press} which is a boolean for whether the mouse is clicking the node. The most central variable is called \code{activated}. \code{activated} is a boolean with a complicated condition. It corresponds to whether the mouse is currently over the node or was recently over the node and has not moved too far away. If \code{activated} is true, then some user interface logic ensures that no other node is activated or can become activated while this node is activated. This happens through a recursive method called in a node's \code{before} node and its \code{after} nodes, shown in Figure \ref{Recursion}. \code{option} nodes are the exception to this. They will only ever be \code{activated} when their \code{optionParent} is already \code{activated}. Each node also tracks its position and orientation, information that is referenced by this node's \code{after} nodes to ensure that every node is in the correct state.\\
+	Beyond the references, each node contains information that defines its state. One part of a code's state is the value \code{over}, which is a boolean for whether the mouse is over the node. Another main event is \code{press} which is a boolean for whether the mouse is clicking the node. The most central variable is called \code{activated}. \code{activated} is a boolean with a complicated condition. It corresponds to whether the mouse is currently over the node or was recently over the node and has not moved too far away. If \code{activated} is true, then some user interface logic ensures that no other node is activated or can become activated while this node is activated. This happens through a recursive method that is called in a node's \code{before} node. The message then propagates upwards until it reaches the \code{start} node, where it sets a boolean \code{somethingActivated}. In order for a node to be set to activated, it must first ask its \code{before} node if \code{somethingActivated} is true. This question is passed to the \code{start} node as well. This process is shown in Figure \ref{Recursion}. \code{option} nodes are the exception to this. They will only ever be \code{activated} when their \code{optionParent} is already \code{activated}. Each node also tracks its position and orientation, information that is referenced by this node's \code{after} nodes to ensure that every node is in the correct state.\\
 	
 	%\textcolor{blue}{[A diagram of the recursive-ness of the code that ensures that all the right nodes are activated]}\\
 	
 	\begin{figure}[h]
 	\centering
-		\begin{tikzpicture}
-		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
-		\draw (.55,.25) node{hey};
-		\draw (2.45,.25) node{whoa};
-		\draw (1.5,1.9) node{huh};
-		\end{tikzpicture}
+	\includegraphics[height=3.3in]{Images/Diagram2}
+		%\begin{tikzpicture}
+		%\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
+		%\draw (.55,.25) node{hey};
+		%\draw (2.45,.25) node{whoa};
+		%\draw (1.5,1.9) node{huh};
+		%\end{tikzpicture}
 	\caption{The recursive nature of \code{activated}}
 	\label {Recursion}
 	\end{figure}
@@ -662,38 +675,28 @@ This is an L-System:
 	
 	%\textcolor{blue}{[Two images showing how the deletion of a node affects the arrays and display (maybe actually four images? Two that show what is on the screen and two that show the changing relationship of the nodes behind the scenes?)]}\\
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 	\centering
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height = 2.5in]{Images/HowItWorks7A}
+		\includegraphics[height = 2in]{Images/HowItWorks7A}
 		\caption{Before deletion}
 		\label {HowItWorks7A}
 	\end{subfigure}%
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\begin{tikzpicture}
-		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
-		\draw (.55,.25) node{hey};
-		\draw (2.45,.25) node{whoa};
-		\draw (1.5,1.9) node{huh};
-		\end{tikzpicture}
+		\includegraphics[height=2in]{Images/Diagram3}
 		\caption{Before deletion (behind the scenes)}
 	\end{subfigure}
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height = 2.5in]{Images/HowItWorks7C}
+		\includegraphics[height = 2in]{Images/HowItWorks7C}
 		\caption{After deletion}
 		\label {HowItWorks7C}
 	\end{subfigure}%
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\begin{tikzpicture}
-		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
-		\draw (.55,.25) node{hey};
-		\draw (2.45,.25) node{whoa};
-		\draw (1.5,1.9) node{huh};
-		\end{tikzpicture}
+		\includegraphics[height=2in]{Images/Diagram4}
 		\caption{After deletion (behind the scenes)}
 	\end{subfigure}
 	\caption{Effects of a node deletion}
@@ -703,66 +706,36 @@ This is an L-System:
 	 Each sub-window has a function to turn its tree of nodes into a string that uniquely describes it. Figure \ref{RuleMaking} shows this process of depth-first search, where each branch of the tree is explored down to its end, adding elements to the string as it does. The tree is explored through the \code{before} and \code{after} linkages. Any time the tree branches, the function adds an \code{[}, and any time the tree finishes reading a branch, the function adds a \code{]}. These brackets allows complex branching structures to be accurately described in only one string. Most nodes have an associated character that is added to the string whenever the node is seen on the tree. \code{rotation} nodes have either a \code{+} or a \code{-}. \code{forward} nodes have either an \code{F} or an \code{f}. \code{production} nodes have the character of their associated production. (These might be \code{A}, \code{B}, etc.) The \code{start} node and \code{option} nodes are not read by the function and so do not have associated characters. At the end of this process, the sub-window has a string that is the production rule for the production of that sub-window.\\
 	 
 	% \textcolor{blue}{[Images showing the creation of a string based on some L-System]}\\
-	\begin{figure}[h]
+	\begin{figure}[H]
 	\centering
 	\begin{subfigure}{0.33\textwidth}
 		\centering
-		\begin{tikzpicture}
-		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
-		\draw (.55,.25) node{hey};
-		\draw (2.45,.25) node{whoa};
-		\draw (1.5,1.9) node{huh};
-		\end{tikzpicture}
+		\includegraphics[width=\textwidth]{Images/Diagram5}
 		\caption{F}
 	\end{subfigure}%
 	\begin{subfigure}{0.33\textwidth}
 		\centering
-		\begin{tikzpicture}
-		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
-		\draw (.55,.25) node{hey};
-		\draw (2.45,.25) node{whoa};
-		\draw (1.5,1.9) node{huh};
-		\end{tikzpicture}
+		\includegraphics[width=\textwidth]{Images/Diagram6}
 		\caption{F[–}
 	\end{subfigure}%
 	\begin{subfigure}{0.33\textwidth}
 		\centering
-		\begin{tikzpicture}
-		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
-		\draw (.55,.25) node{hey};
-		\draw (2.45,.25) node{whoa};
-		\draw (1.5,1.9) node{huh};
-		\end{tikzpicture}
+		\includegraphics[width=\textwidth]{Images/Diagram7}
 		\caption{F[–F}
 	\end{subfigure}
 	\begin{subfigure}{0.33\textwidth}
 		\centering
-		\begin{tikzpicture}
-		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
-		\draw (.55,.25) node{hey};
-		\draw (2.45,.25) node{whoa};
-		\draw (1.5,1.9) node{huh};
-		\end{tikzpicture}
+		\includegraphics[width=\textwidth]{Images/Diagram8}
 		\caption{F[–F]+}
 	\end{subfigure}
 	\begin{subfigure}{0.33\textwidth}
 		\centering
-		\begin{tikzpicture}
-		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
-		\draw (.55,.25) node{hey};
-		\draw (2.45,.25) node{whoa};
-		\draw (1.5,1.9) node{huh};
-		\end{tikzpicture}
+		\includegraphics[width=\textwidth]{Images/Diagram9}
 		\caption{F[–F]+F}
 	\end{subfigure}%
 	\begin{subfigure}{0.33\textwidth}
 		\centering
-		\begin{tikzpicture}
-		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
-		\draw (.55,.25) node{hey};
-		\draw (2.45,.25) node{whoa};
-		\draw (1.5,1.9) node{huh};
-		\end{tikzpicture}
+		\includegraphics[width=\textwidth]{Images/Diagram10}
 		\caption{F[–F]+FA}
 	\end{subfigure}
 	\caption{The step-by-step creation of a production rule}
@@ -773,14 +746,9 @@ This is an L-System:
 	
 	%\textcolor{blue}{[A labelled drawing of the different strings and how they are related between the different windows]}\\
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 	\centering
-		\begin{tikzpicture}
-		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
-		\draw (.55,.25) node{hey};
-		\draw (2.45,.25) node{whoa};
-		\draw (1.5,1.9) node{huh};
-		\end{tikzpicture}
+	\includegraphics[height=2in]{Images/Diagram11}
 	\caption{The movement of the production rules between windows}
 	\label {Strings}
 	\end{figure}
@@ -789,14 +757,9 @@ This is an L-System:
 	
 	%\textcolor{blue}{[An illustration of the Explorer's stack and how the system engages with it]}\\
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 	\centering
-		\begin{tikzpicture}
-		\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
-		\draw (.55,.25) node{hey};
-		\draw (2.45,.25) node{whoa};
-		\draw (1.5,1.9) node{huh};
-		\end{tikzpicture}
+	\includegraphics[height=2in]{Images/Diagram12}
 	\caption{The structure of the stack}
 	\label {Stack}
 	\end{figure}
@@ -898,7 +861,7 @@ This is an L-System:
 	%\textcolor{blue}{[Give images for each of the following steps]}\\
 	\begin{figure}[h]
 	\centering
-	\includegraphics[height = 2in]{Images/HowToExplore3}
+	\includegraphics[height = 1.5in]{Images/HowToExplore3}
 	\caption{Adding a new branch}
 	\label{branching}
 	\end{figure}
@@ -919,7 +882,7 @@ This is an L-System:
 	
 	
 	%\textcolor{blue}{[Provide as many interesting initial inputs as I can justify, perhaps 6? Show some techniques used to great effect.]}
-	\begin{figure}[h]
+	\begin{figure}[H]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[clip=true, viewport=1.5in 4.5in 8.5in 11in, height = 0.9\textwidth]{Images/HowToExplore5A}
@@ -968,7 +931,7 @@ This is an L-System:
 	My central contribution has been the development of the interactive L-System Explorer. I hope that it's clear that this project will be able to engage with people, no matter their experience with computer science. I hope that this ability to craft L-Systems will help those who are interested to overcome any wariness about engaging with digital machines as an artistic medium. Despite computer science being about much more than pretty pictures, I feel that a warm welcome will help those who were once strangers come into this place as their home. These pictures and this thesis are my attempt at creating a warm welcome.
 
 \section{Related Work}
-	I wrote three main programs for the generation and display of L-Systems. These are a native Python program, an implementation of that program embedded in Blender, and the final L-System Explorer described in detail in this thesis. These projects were interspersed with a research process that involved investigating other implementations of L-Systems and related topics. I'll discuss a few of those related topics here before expanding the discussion to include other visual structures that I feel are worth exploration.\\
+	I wrote three main programs for the generation and display of L-Systems. These are a native Python program, an implementation of that program embedded in Blender, and the final L-System Explorer described in detail in this thesis. These projects were interspersed with a research process that involved investigating other implementations of L-Systems and related topics. I'll discuss a few of those related topics here before expanding the discussion to include other visual structures that I feel are worth exploration.
 	
 	%\textcolor{blue}{[Three images that show the three programs in action]}\\
 	
@@ -991,21 +954,21 @@ This is an L-System:
 	\label{EarlierPrograms}
 	\end{figure}
 
-	The 1990 book \textit{The Algorithmic Beauty of Plants}\footnote{\cite{ABOP1990}} grounded my study from the beginning. This opened my eyes to the beauty of L-Systems. I recommend the free version that is available online, as the book is now sadly out of print. The book is a font of compelling diagrams and images of fairly convincing computer-generated plants. It would be worth a look purely to see the pictures of plants created with L-Systems.\\
+	The 1990 book \textit{The Algorithmic Beauty of Plants}\footnote{\cite{ABOP1990}} grounded my study from the beginning. This opened my eyes to the beauty of L-Systems. I recommend the free version that is available online, as the book is now sadly out of print. The book is a font of compelling diagrams and images of fairly convincing computer-generated plants. It would be worth a look purely to see the pictures of plants created with L-Systems.
 	
 	%\textcolor{blue}{[Some images from ABOP]}\\
-	\begin{figure}[h]
+	\begin{figure}[H]
 	\centering
 	\begin{subfigure}{0.37\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/ABOP1}
+		\includegraphics[height=2.3in]{Images/ABOP1}
 		\caption{A sample tree}
 		\label {ABOP1}
 	\end{subfigure}%
 	\hfill
 	\begin{subfigure}{0.6\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/ABOP4}
+		\includegraphics[height=2.3in]{Images/ABOP4}
 		\caption{Some stochastic branching structures}
 		\label {ABOP4}
 	\end{subfigure}
@@ -1017,7 +980,7 @@ This is an L-System:
 	
 	%\textcolor{blue}{[Some images from the Coding Train]}
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{Images/CodingTrain}
 	\caption{A Coding Train video (\cite{codingTrain})}
@@ -1077,11 +1040,11 @@ This is an L-System:
 	
 	%\textcolor{blue}{[Some related image? (perhaps not, this'd be filler)]}\\
 	
-	Another class of life simulator that's often grouped with L-Systems is the field of Cellular Automata. These structures surpass L-Systems in terms of simplicity, often operating in a simple grid or even just a line of points. Popular examples are John Conway's \textit{Game of Life}\footnote{\cite{GameOfLife1970}} and Stephen Wolfram's one-dimensional Automata.\footnote{\cite{wolfram2002}} These have been used alongside L-Systems to generate life-like effects for film and other media for a long time.\footnote{\cite{theory2004}} Their simplicity also makes them a great tool for creating emergent systems and acting as simple models for complex behavior. They also exhibit a remarkable capability for beauty, in a similar way to L-Systems.
+	Another class of life simulator that's often grouped with L-Systems is the varied field of Cellular Automata. These structures surpass L-Systems in terms of simplicity, often operating in a basic grid or even just a line of points. Popular examples are John Conway's \textit{Game of Life}\footnote{\cite{GameOfLife1970}} and Stephen Wolfram's one-dimensional Automata.\footnote{\cite{wolfram2002}} These have been used alongside L-Systems to generate life-like effects for film and other media for a long time.\footnote{\cite{theory2004}} Their simplicity also makes them a great tool for creating emergent systems and acting as simple models for complex behavior. They also exhibit a remarkable capability for beauty, in a similar way to L-Systems.
 	
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\linewidth]{Images/Wolfram}
+	\includegraphics[height=2.9in]{Images/Wolfram}
 	\caption{An illustration from \cite{wolfram2002}}
 	\label{Wolfram}
 	\end{figure}
@@ -1102,7 +1065,7 @@ This is an L-System:
 	\label{Grid}
 	\end{figure}
 	
-	There is a huge variety of work that could be considered Generative Art. The art made by systems like DALL-E, Midjourney, and other AI programs might fall under some definitions of Generative Art, but it feels distanced enough from the material that I'm interested in covering here that I'll isolate them to a discussion in section \ref{AI-Art}. Figure \ref{Midjourney} is an example of this.
+	There is a huge variety of work that could be considered Generative Art. The art made by systems like DALL-E, Midjourney, and other AI programs might fall under some definitions of Generative Art, but it feels distanced enough from the material that I'm interested in covering here that I'll isolate them to a discussion in section \ref{AI-Art}. Figure \ref{Midjourney} is an example such work.
 	
 	%\textcolor{blue}{[One or two AI art things (maybe don't include this? Ethical concerns?)]}
 	\begin{figure}[h]
@@ -1116,21 +1079,21 @@ This is an L-System:
 	
 	I explored a variety of systems for creating artwork with machine means during the first stages of my research process. I'll introduce some of those structures here and demonstrate how they tie into the theme of simulating life. Each of these projects are deserving of greater research in their own right, and so I won't attempt to make my explanations comprehensive. This section I hope you enjoy these objects as both the artworks and the mathematical structures that they are.
 
-	Here are some of the chronologically earliest projects that I explored. The objects shown in Figure \ref{OpenSCAD} were made in a program called OpenSCAD (pronounced ``open S cad") and were a first attempt to create artworks through software.\footnote{\cite{openSCAD}}\\
+	Here are some of the chronologically earliest projects that I explored. The objects shown in Figure \ref{OpenSCAD} were made in a program called OpenSCAD (pronounced ``open S cad") and were a first attempt to create artworks through software.\footnote{\cite{openSCAD}}
 	
 	%\textcolor{blue}{[OpenSCAD projects]}
 	\begin{figure}[H]
 	\centering
 	\begin{subfigure}{0.48\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/OpenSCAD1}
+		\includegraphics[height = 1.8in]{Images/OpenSCAD1}
 		\caption{An early creation}
 		\label {ThreeHollowRects}
 	\end{subfigure}%
 	\hfill
 	\begin{subfigure}{0.48\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/OpenSCAD2}
+		\includegraphics[height=1.8in]{Images/OpenSCAD2}
 		\caption{Playing with color and trigonometry}
 		\label {3dSine}
 	\end{subfigure}
@@ -1138,7 +1101,7 @@ This is an L-System:
 	\label{OpenSCAD}
 	\end{figure}
 	
-	Figure \ref{head} is a ``mesh" that I was messing around with during these early stages. I was curious if I would be able to modify it so that I could fold it out of paper. This particular version was unfortunately never realized.\\
+	Figure \ref{head} is a ``mesh" that I was messing around with during these early stages. I was curious if I would be able to modify it so that I could fold it out of paper. This particular version was unfortunately never realized.
 	
 	%\textcolor{blue}{[Head Mesh]}
 	\begin{figure}[H]
@@ -1150,42 +1113,42 @@ This is an L-System:
 
 	%\textcolor{blue}{[Paper Shapes]}\\
 	
-		However, I did manage to create a few physical models of geometric solids, shown in Figure \ref{icosohedra}. These fall into the category of ``papercraft", a medium that I feel especially connected with. The L-Systems that I've been showing off take a line and brings it into the 2nd dimension. These papercraft objects bring 2d objects into the third dimension. These paper models are descendants of a series of creations that I've been making years before embarking on this thesis project. Figure \ref{papershapes} shows some examples of those.\\
+		However, I did manage to create a few physical models of geometric solids, shown in Figure \ref{icosohedra}. These fall into the category of ``papercraft", a medium that I feel especially connected with. The L-Systems that I've been showing off take a line and brings it into the 2nd dimension. These papercraft objects bring 2d objects into the third dimension. These paper models are descendants of a series of creations that I've been making years before embarking on this thesis project. Figure \ref{papershapes} shows some examples of those.
 	
 	%\textcolor{blue}{[Modular Origami] (If you're interested, these specific types of objects are part of a discipline called ``Modular Origami".)}
 	\begin{figure}[h]
 	\centering
 	\begin{subfigure}{0.38\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/Icosohedra}
+		\includegraphics[height=2.7in]{Images/Icosohedra}
 		\caption{Iscosohedra laser-cut from cardstock, then folded and glued}
 		\label{icosohedra}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.58\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/PaperShapes}
-		\caption{Modular Origami geometric solids (these don't use glue!)}
+		\includegraphics[height=2.7in]{Images/PaperShapes}
+		\caption{Modular Origami geometric solids (these don't use glue!) Also surrounded by other projects.}
 		\label{papershapes}
 	\end{subfigure}
 	\end{figure}
 	
 	
-	I've already mentioned my early explorations into the Python implementation of Turtle Graphics. Figure \ref{oldTurtle} shows some of the structures constructed during that time.\\
+	I've already mentioned my early explorations into the Python implementation of Turtle Graphics. Figure \ref{oldTurtle} shows some of the structures constructed during that time.
 	
 	%\textcolor{blue}{[Early turtle SVGs]}\\
 	\begin{figure}[h]
 	\centering
 	\begin{subfigure}{0.5\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/OldTurtle1}
+		\includegraphics[width=0.8\linewidth]{Images/OldTurtle1}
 		\caption{An early creation}
 		\label{ThreeHollowRects}
 	\end{subfigure}%
 	\hfill
 	\begin{subfigure}{0.5\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/OldTurtle2}
+		\includegraphics[width=0.8\linewidth]{Images/OldTurtle2}
 		\caption{Playing with color and trigonometry}
 		\label{3dSine}
 	\end{subfigure}
@@ -1193,7 +1156,7 @@ This is an L-System:
 	\label{oldTurtle}
 	\end{figure}
 	
-	At this point, I began to explore the possibility of bringing L-Systems into the third dimension. I used Blender and an implementation of Turtle Graphics that I constructed to build complex 3d shapes. My favorite of these is probably the 3d Hilbert Curve, in part because it made me consider how the turtle works. In a sense, the turtle doesn't move through its world, instead the world moves around it.\footnote{\cite{derose1989}} This is a part of this process that would be very fun to explore further, especially with the knowledge from a paper that I came across later in the process. Figure \ref{BlenderImages} depicts an early exploration into Blender's capabilities and a 3D Hilbert Curve made using an L-System.\\
+	At this point, I began to explore the possibility of bringing L-Systems into the third dimension. I used Blender and an implementation of Turtle Graphics that I constructed to build complex 3d shapes. My favorite of these is probably the 3d Hilbert Curve, in part because it made me consider how the turtle works. In a sense, the turtle doesn't move through its world, instead the world moves around it.\footnote{\cite{derose1989}} This is a part of this process that would be very fun to explore further, especially with the knowledge from a paper that I came across later in the process. Figure \ref{BlenderImages} depicts an early exploration into Blender's capabilities and a 3D Hilbert Curve made using an L-System.
 	
 	%\textcolor{blue}{[3d Hilbert Curve and others]}\\
 	
@@ -1201,14 +1164,14 @@ This is an L-System:
 	\centering
 	\begin{subfigure}{0.55\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/Blender1}
-		\caption{Blender can cleanly smooth joints}
+		\includegraphics[height=2in]{Images/Blender1}
+		\caption{Blender can smoothly attach joints}
 		\label{SmoothTree}
 	\end{subfigure}%
 	\hfill
 	\begin{subfigure}{0.41\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/3DHilbert}
+		\includegraphics[height=2in]{Images/3DHilbert}
 		\caption{3D Hilbert Curve}
 		\label{3DHilbert}
 	\end{subfigure}
@@ -1216,7 +1179,7 @@ This is an L-System:
 	\label{BlenderImages}
 	\end{figure}
 	
-	It was at this point in the thesis that I encountered Processing. Figure \ref{EarlyProcessing} shows two of the projects that I made when learning how to code in this language. The second image, Figure \ref{Simplex} is a snapshot of a program in motion, and much of the detail is lost when the time dimension is removed. I'd like to put some of these on my website at some point to let folks experiment with them.\\
+	It was at this point in the thesis that I encountered Processing. Figure \ref{EarlyProcessing} shows two of the projects that I made when learning how to code in this language. The second image, Figure \ref{Simplex} is a snapshot of a program in motion, and much of the detail is lost when the time dimension is removed. I'd like to put some of these on my website at some point to let folks experiment with them.
 	
 	%$\textcolor{blue}{[Stills from Processing animations, definitely the Simplex Cloud]}\\
 	\begin{figure}[H]
@@ -1224,7 +1187,7 @@ This is an L-System:
 	\begin{subfigure}{0.48\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{Images/ColorGrid}
-		\caption{Processing handles large arrays well}
+		\caption{Processing handling a large array}
 		\label{ColorGrid}
 	\end{subfigure}%
 	\hfill
@@ -1343,7 +1306,7 @@ This is an L-System:
 	
 	\textit{The Algorithmic Beauty of Plants} was an important source in the development of this thesis. It has guided my thinking and helped point me in directions that I've since explored. It develops a narrative around increasingly complex descriptions and implementations of L-Systems. It starts with much of the material I cover in this thesis and dives deeper into the foundations of this work.
 	
-	There are some compelling parts of the book that I mention in section \ref{Generalizations}, specifically regarding extensions to L-Systems that dramatically increase their capabilities and functionality. It contains an abundance of thoughtfully demonstrated resources and examples, as well, of course, many compelling pictures. If this work has been interesting to you so far, I strongly suggest taking a look at \textit{ABOP} and deepening your understanding.
+	There are some compelling parts of the book that I mention in section \ref{Generalizations}, specifically regarding extensions to L-Systems that dramatically increase their capabilities and functionality. It contains an abundance of thoughtfully demonstrated resources and examples, as well as, of course, many compelling pictures. If this work has been interesting to you so far, I strongly suggest taking a look at \textit{ABOP} and deepening your understanding.
 	
 	%\textcolor{blue}{[Share some more images from the book]}
 	\begin{figure}[h]
@@ -1379,7 +1342,7 @@ This is an L-System:
 	\begin{figure}[h]
 	\centering
 	\includegraphics[height = 0.4\linewidth]{Images/BuggyBehavior}
-	\caption[Unintended Behavior]{Unintended behavior (the \code{A} node is under the rotation node. Multiple nodes are also activated at the same time, which should be impossible.)}
+	\caption[Unintended Behavior]{Unintended behavior (the \code{A} node is under the rotation node. It should not be able to be selected right now. Multiple nodes are also activated at the same time, which should be impossible.)}
 	\label{Buggy}
 	\end{figure}
 	
@@ -1405,24 +1368,24 @@ So far, we've only been looking at L-Systems that fall into a very narrow catego
 	\end{figure}
 	
 	
-	\textit{Parametric L-Systems} are the most appealing and powerful L-System variation to me. You can see two examples in Figure \ref{Parametric}. They permit the different operations that the L-System do to no longer necessarily be discrete. It does this by allowing the parameters to be defined as continuous values defined by mathematical equations. They also can include logical operators like ``and" and ``or" as parts of conditions that must be satisfied for some part of the L-System to be created. This freedom of expression allows the width and length of the lines drawn to be dynamically changed \textit{partway through} the drawing of the L-System. A parametric L-System allows for some fantastically organic-looking images to be generated.\\
+	\textit{Parametric L-Systems} are the most appealing and powerful L-System variation to me. You can see two examples in Figure \ref{Parametric}. They permit the different operations that the L-System do to no longer necessarily be discrete. It does this by allowing the parameters to be defined as continuous values defined by mathematical equations. They also can include logical operators like ``and" and ``or" as parts of conditions that must be satisfied for some part of the L-System to be created. This freedom of expression allows the width and length of the lines drawn to be dynamically changed \textit{partway through} the drawing of the L-System. A parametric L-System allows for some fantastically organic-looking images to be generated.
 	
 	%\textcolor{blue}{[A parametric L-System or two (probably the set of images from Prusinkieweicz 1997 paper)]}\footnote{\cite{LSystems2001}}\\
 	\begin{figure}[h]
 	\centering
 	\begin{subfigure}{0.5\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/Parametric1}
+		\includegraphics[width=0.8\linewidth]{Images/Parametric1}
 		\caption{Upwards Parametric}
 		\label{UpwardParametric}
 	\end{subfigure}%
 	\begin{subfigure}{0.5\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/Parametric2}
+		\includegraphics[width=0.8\linewidth]{Images/Parametric2}
 		\caption{Sideways Parametric}
 		\label{SidewaysParametric}
 	\end{subfigure}
-	\caption{Parametric structures from \cite{LSystems2001}}
+	\caption{Parametric L-Systems from \cite{LSystems2001}}
 	\label{Parametric}
 	\end{figure}
 	
@@ -1466,14 +1429,14 @@ So far, we've only been looking at L-Systems that fall into a very narrow catego
 	\begin{subfigure}{0.44\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{Images/Snowflake}
-		\caption{A Snowflake from \cite{myhrvold2021}}
+		\caption{A Snowflake, \cite{myhrvold2021}}
 		\label{Snowflake}
 	\end{subfigure}%
 	\hfill
 	\begin{subfigure}{0.52\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{Images/ParanaRiver}
-		\caption{The Paraná River from \cite{dauphin2020}}
+		\caption{The Paraná River, \cite{dauphin2020}}
 		\label{ParanaRiver}
 	\end{subfigure}
 	\caption{Structures that might be imitated with L-Systems}

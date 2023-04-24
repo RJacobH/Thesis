@@ -30,12 +30,43 @@
 \contentsline {figure}{\numberline {2.6}{\ignorespaces The \texttt {StartTriangle} and the \texttt {StartNode}\relax }}{19}{}%
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Mouse interactions with nodes\relax }}{20}{}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces The \texttt {option} nodes of the \texttt {option} node named ``add"\relax }}{21}{}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces The recursive nature of \texttt {activated}\relax }}{21}{}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces The recursive nature of \texttt {activated}\relax }}{22}{}%
 \contentsline {figure}{\numberline {2.10}{\ignorespaces Effects of a node deletion\relax }}{22}{}%
 \contentsline {figure}{\numberline {2.11}{\ignorespaces The step-by-step creation of a production rule\relax }}{23}{}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces The structure of the stack\relax }}{23}{}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces The movement of the production rules between windows\relax }}{24}{}%
 \contentsline {figure}{\numberline {2.13}{\ignorespaces The structure of the stack\relax }}{24}{}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces The Github page\relax }}{25}{}%
+\contentsline {figure}{\numberline {2.15}{\ignorespaces The code for the program\relax }}{26}{}%
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Clicking Nodes\relax }}{26}{}%
+\contentsline {figure}{\numberline {2.17}{\ignorespaces Adjusting the Angle\relax }}{27}{}%
+\contentsline {figure}{\numberline {2.18}{\ignorespaces Adding a new branch\relax }}{27}{}%
+\contentsline {figure}{\numberline {2.19}{\ignorespaces Adding a new production rule\relax }}{28}{}%
+\contentsline {figure}{\numberline {2.20}{\ignorespaces Some L-Systems to create and change\relax }}{29}{}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Earlier Programs\relax }}{32}{}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Trees displayed in ABOP (\cite {ABOP1990})\relax }}{32}{}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces A Coding Train video (\cite {codingTrain})\relax }}{33}{}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Images from \cite {Leopold2017}\relax }}{34}{}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Images from \cite {LSystems2001}\relax }}{34}{}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces An illustration from \cite {wolfram2002}\relax }}{35}{}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces A Processing sketch of cubes, exhibiting Moiré patterns\relax }}{36}{}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces An image from the Midjourney Discord server (\cite {midjourney2023})\relax }}{37}{}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces OpenSCAD creations\relax }}{37}{}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces A head mesh I hoped to unfold, print onto paper, then refold\relax }}{38}{}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Early creations with Turtle Graphics\relax }}{39}{}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Blender Experiments\relax }}{39}{}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Early Processing Programs\relax }}{40}{}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Finding Chaos in Order\relax }}{41}{}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Tile Patterns}}{42}{}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces One of the first diagrams of an L-System\relax }}{45}{}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Pop Culture appearances of L-Systems\relax }}{46}{}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Tree-like structures from \cite {ABOP1990}\relax }}{47}{}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Unintended Behavior}}{49}{}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Stochastic L-Systems from \cite {LSystems2001}\relax }}{50}{}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Parametric L-Systems from \cite {LSystems2001}\relax }}{50}{}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Limited Propagation L-System from \cite {LSystems2001}}}{51}{}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces An alternative interpretation of L-Systems\relax }}{52}{}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Structures that might be imitated with L-Systems\relax }}{53}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

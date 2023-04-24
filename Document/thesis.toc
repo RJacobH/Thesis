@@ -6,20 +6,20 @@
 \contentsline {section}{\numberline {2.1}What is \textit {Processing}?}{16}{}%
 \contentsline {section}{\numberline {2.2}Program Development}{16}{}%
 \contentsline {section}{\numberline {2.3}How it works}{17}{}%
-\contentsline {section}{\numberline {2.4}Using the L-Systems Explorer}{24}{}%
-\contentsline {subsection}{\numberline {2.4.1}How to Explore}{25}{}%
-\contentsline {chapter}{Chapter 3: Contribution}{27}{}%
-\contentsline {section}{\numberline {3.1}Related Work}{28}{}%
-\contentsline {section}{\numberline {3.2}Generative Art}{30}{}%
-\contentsline {subsection}{\numberline {3.2.1}My Explorations}{30}{}%
-\contentsline {section}{\numberline {3.3}Quandaries, Puzzlements, and Musings}{32}{}%
-\contentsline {subsection}{\numberline {3.3.1}The Times We Live In}{33}{}%
-\contentsline {subsection}{\numberline {3.3.2}Is Math Art?}{33}{}%
-\contentsline {chapter}{Chapter 4: Past, Present, Future}{35}{}%
-\contentsline {section}{\numberline {4.1}The work of Przemyslaw Prusinkiewicz and Aristid Lindenmayer}{36}{}%
-\contentsline {section}{\numberline {4.2}Extending the Program}{36}{}%
-\contentsline {section}{\numberline {4.3}Generalizing L-Systems}{37}{}%
-\contentsline {subsection}{\numberline {4.3.1}Interpretations}{39}{}%
-\contentsline {chapter}{Appendix A: Extra Images}{43}{}%
-\contentsline {chapter}{Appendix B: Generative Art Resources}{45}{}%
-\contentsline {chapter}{References}{47}{}%
+\contentsline {section}{\numberline {2.4}Using the L-Systems Explorer}{25}{}%
+\contentsline {subsection}{\numberline {2.4.1}How to Explore}{26}{}%
+\contentsline {chapter}{Chapter 3: Contribution}{31}{}%
+\contentsline {section}{\numberline {3.1}Related Work}{32}{}%
+\contentsline {section}{\numberline {3.2}Generative Art}{36}{}%
+\contentsline {subsection}{\numberline {3.2.1}My Explorations}{37}{}%
+\contentsline {section}{\numberline {3.3}Quandaries, Puzzlements, and Musings}{40}{}%
+\contentsline {subsection}{\numberline {3.3.1}The Times We Live In}{41}{}%
+\contentsline {subsection}{\numberline {3.3.2}Is Math Art?}{42}{}%
+\contentsline {chapter}{Chapter 4: Past, Present, Future}{45}{}%
+\contentsline {section}{\numberline {4.1}The work of Przemyslaw Prusinkiewicz and Aristid Lindenmayer}{47}{}%
+\contentsline {section}{\numberline {4.2}Extending the Program}{47}{}%
+\contentsline {section}{\numberline {4.3}Generalizing L-Systems}{49}{}%
+\contentsline {subsection}{\numberline {4.3.1}Interpretations}{51}{}%
+\contentsline {chapter}{Appendix A: Early Processing Experiments}{57}{}%
+\contentsline {chapter}{Appendix B: Generative Art Resources}{59}{}%
+\contentsline {chapter}{References}{61}{}%
