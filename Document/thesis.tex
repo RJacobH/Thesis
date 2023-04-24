@@ -17,6 +17,9 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc,through,backgrounds}
 
+\usepackage{etoolbox}
+\AtBeginEnvironment{quote}{\par\singlespacing\small}
+
 % pdflatex --shell-escape svg.tex;
 
 \newcommand{\code}[1]{\texttt{#1}}
@@ -807,33 +810,150 @@ This is an L-System:
 
 	This project has what I feel is necessary to get a basic understanding of L-Systems. There were many judgement calls in the design of the work, though I hope that this program has achieved what I set out to do.\\
 	
-	\textcolor{blue}{[An image of the github page with the files and the processing website with all the relevant areas emphasized]}\\
+	%\textcolor{blue}{[An image of the github page with the files and the processing website with all the relevant areas emphasized]}\\
 	
-	To access this program, you need to download both the program and the framework to support it. The program can be downloaded at \textit{github.com/RJacobH/Thesis}. You will need the four files, \code{L\_Systems\_Explorer.pde}, \code{Helpful\_Functions.pde}, \code{Node.pde}, and \code{Window.pde}. Download these and put them in the same folder. Next, go to \textit{processing.org} and download Processing. At the time that this was written, this program works in Processing version 4.2. From here, you can open any of the four files you just downloaded and you should something that looks like the image below. Click the play button in the top left corner and get started exploring!\\
+	\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{Images/Github}
+	\caption{The Github page}
+	\label {Github}
+	\end{figure}
 	
-	\textcolor{blue}{[An image of the screen when the program is opened]}
+	To access this program, you need to download both the program and the framework to support it. The program can be downloaded at \textit{github.com/RJacobH/Thesis}. The page should look something like Figure \ref{Github}. You will need the four files, \code{L\_Systems\_Explorer.pde}, \code{Helpful\_Functions.pde}, \code{Node.pde}, and \code{Window.pde}. Download these and put them in the same folder. Next, go to \textit{processing.org} and download Processing. At the time of writing, this program works in Processing 4.2. From here, you can open any of the four files you just downloaded and you should something that looks like Figure \ref{OpenProgram}. Click the play button in the top left corner and get started exploring!\\
+	
+	%\textcolor{blue}{[An image of the screen when the program is opened]}
+	
+	\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.35]{Images/OpenProgram}
+	\caption{The code for the program}
+	\label {OpenProgram}
+	\end{figure}
 	
 	%To access this program, go to ``rjacobh.github.io/website" and click on the tab on the top of the page that says ``Processing".\\ % This is assuming I successfully manage to put the program on my website. :8| We'll see
 \subsection{How to Explore}
+	%\textcolor{blue}{[Give images for each of the following steps]}\\
+	\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.25\textwidth}
+		\centering
+		\includegraphics[trim={5cm 6cm 2cm 4cm}, clip, width=\textwidth]{Images/HowToExplore1A}
+		\caption{Over F}
+		\label {HowToExplore1A}
+	\end{subfigure}%
+	\begin{subfigure}{0.25\textwidth}
+		\centering
+		\includegraphics[trim={5cm 6cm 2cm 4cm}, clip, width=\textwidth]{Images/HowToExplore1B}
+		\caption{Clicked F, Over +}
+		\label {HowToExplore1B}
+	\end{subfigure}%
+	\begin{subfigure}{0.25\textwidth}
+		\centering
+		\includegraphics[trim={5cm 6cm 2cm 4cm}, clip, width=\textwidth]{Images/HowToExplore1C}
+		\caption{Clicked +, Over F}
+		\label {HowToExplore1C}
+	\end{subfigure}%
+	\begin{subfigure}{0.25\textwidth}
+		\centering
+		\includegraphics[trim={5cm 6cm 2cm 4cm}, clip, width=\textwidth]{Images/HowToExplore1D}
+		\caption{Clicked F}
+		\label {HowToExplore1D}
+	\end{subfigure}
+	\caption{Clicking Nodes}
+	\label{ClickingNodes}
+	\end{figure}
+	
+	The first time you use the L-Systems Explorer, hover over any of the circles in one of the smaller windows. When you do this, you'll see several more circles appear, each with a different symbol inside of them. These are buttons. Click on the button that says \code{F} and a line will appear on the small screen as well as the larger screen. Hover over the new line in the small window and click the \code{+} button. This creates a new shape in the small window. Hover over this new shape and click the \code{F} button that appears. This will make another line appear in both the small window and the big window. You can see the production rule of the small window running along its lower edge. This process is also illustrated in Figure \ref{ClickingNodes}. Also notice how the title of the window is ``Production rule for A". Creating these elements has changed the production rule for \code{A}.\\
+	
+	%\textcolor{blue}{[Give images for each of the following steps]}\\
+	
+	\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.3\linewidth}
+		\centering
+		\includegraphics[height = 2in]{Images/HowToExplore2A}
+		\caption{Moving the slider}
+		\label {HowToExplore2A}
+	\end{subfigure}%
+	%parbox
+	\begin{subfigure}{.3\linewidth}
+		\centering
+		\includegraphics[width=1in]{Images/HowToExplore2B}
+		\caption{Adding a new \code{A}}
+		\label {HowToExplore2B}
+	\end{subfigure}%
+	\begin{subfigure}{.4\linewidth}
+		\centering
+		\includegraphics[width=1.5in]{Images/HowToExplore2C}
+		\caption{Incrementing the Iterations}
+		\label {HowToExplore2C}
+	\end{subfigure}
+	\caption{Adjusting the Angle}
+	\label{AdjustingAngle}
+	\end{figure}
 	
 	
-	\textcolor{blue}{[Give images for each of the following steps]}\\
+	Look for a slider that says ``Angle" on the right side of the page. Moving this slider, you'll see your lines move. Try going back over to the small window and hovering over the second line you drew. It doesn't need to be vertical. Click the button that pops up that says \code{A}. Now find the box that says ``Iterations" in the bottom right corner of the large window. Click the triangle that points to the right. You'll see the number in the box go from 1 to 2, and the size of your line in the big box get much longer. Look at Figure \ref{AdjustingAngle} if you get lost. Try clicking the rightward-facing triangle a few more times. Also try moving the angle slider. Look at what's happening!\\
 	
-	The first time you use the L-Systems Explorer, hover over any of the circles in one of the smaller windows. When you do this, you'll see several more circles appear, each with a different symbol inside of them. These are buttons. Clicking on the button that says \code{F} will cause a line to appear on the small screen as well as the larger screen. Hover over the new line in the small window and click the \code{+} button. This creates a new shape in the small window. Hover over this new shape and click the \code{F} button that appears. This will make another line appear in both the small window and the big window. You can see the production rule of the small window running along its lower edge. Also notice how the title of the window is ``Production rule for A". Creating these elements has changed the production rule for \code{A}.\\
+	%\textcolor{blue}{[Give images for each of the following steps]}\\
+	\begin{figure}[h]
+	\centering
+	\includegraphics[height = 2in]{Images/HowToExplore3}
+	\caption{Adding a new branch}
+	\label{branching}
+	\end{figure}
 	
-	\textcolor{blue}{[Give images for each of the following steps]}\\
+	From here, you can go back to the small window and hover over the first line you drew. Click the \code{-} button that appears. Now hover over the new \code{-} node and click its \code{F} button. Make sure that you were hovering over the \code{-} button and not the \code{+} button that is in the same space. Hover over this new line and click its \code{A} button. At this point, the production rule window for \code{A} should look something like Figure \ref{branching}. If your Iterations box says 1, increase it. Move the angle slider and see what's happening. Move the slider that says ``offset" and see how that changes things. Try changing the production and seeing what interesting shapes you can produce.\\
 	
-	Look for a slider that says ``Angle" on the right side of the page. Moving this slider, you'll see your lines move. Try going back over to the small window and hovering over the second line you drew. It doesn't need to be vertical. Click the button that pops up that says \code{A}. Now find the box that says ``Iterations" in the bottom right corner of the large window. Click the triangle that points to the right. You'll see the number in the box go from 1 to 2, and the size of your line in the big box get much longer. Try clicking the rightward-facing triangle a few more times. Also try moving the angle slider. Look at what's happening!\\
+	%\textcolor{blue}{[Give images for each of the following steps]}\\
+	\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{Images/HowToExplore4}
+	\caption{Adding a new production rule}
+	\label{newProductions}
+	\end{figure}
 	
-	\textcolor{blue}{[Give images for each of the following steps]}\\
+	The last essential thing to learn about this program is how to add more productions and production rules. Look for a box that says ``Productions" like the one in Figure \ref{newProductions}. Click on the small \code{+} box. A new small window should appear. The original small window continues to correspond to the production rule for \code{A} and this new window will correspond with the production rule for the new production \code{B}. You can reference \code{B} within the \code{A} production rule window and vice-versa. One final point, you can stack rotation nodes by hovering over a rotation node (\code{+} or \code{-}) and clicking the button for the same type of rotation node. Choosing the other direction of rotation node will cancel its effect but choosing the same type will double the effect. This can be repeated any number of times. Some of the most interesting L-Systems I've found have used this strategy.
 	
-	From here, you can go back to the small window and hover over the first line you drew. Click the \code{–} button that appears. Now hover over the new \code{–} node and click its \code{F} button. Hover over this new line and click its \code{A} button. If your Iterations box says 1, increase it. Move the angle slider and see what's happening. Move the slider that says ``offset" and see how that changes things. Try changing the production and seeing what interesting shapes you can produce.\\
+	There are several other tools that you can use to extend your experience of the program. Try adjusting the Initial Width and Width Change panels, then varying the angle and offset so that you get something that looks more like a real tree. You could set the angle to 90$^{\circ}$ and see how the central branches vary in thickness so much from the branches nearer to the edge. Try creating an interesting L-System then clicking the `Make PDF' button. You can print out your creations in detail!
 	
-	\textcolor{blue}{[Give images for each of the following steps]}\\
 	
-	The last essential thing to learn about this program is how to add more productions and production rules. Look for a box that says ``Productions". Click on the small \code{+} box. A new small window should appear. The original small window continues to correspond to the production rule for \code{A} and this new window will correspond with the production rule for the new production \code{B}. You can reference \code{B} within the \code{A} production rule window and vice-versa. One final point, you can stack rotation nodes by hovering over a rotation node (\code{+} or \code{–}) and clicking the button for the same type of rotation node. Choosing the other direction of rotation node will cancel its effect but choosing the same type will double the effect. This can be repeated any number of times. Some of the most interesting L-Systems I've found have used this effect.\\
+	%\textcolor{blue}{[Provide as many interesting initial inputs as I can justify, perhaps 6? Show some techniques used to great effect.]}
+	\begin{figure}[h]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[clip=true, viewport=1.5in 4.5in 8.5in 11in, height = 0.9\textwidth]{Images/HowToExplore5A}
+		\caption{Organic\footnotemark}
+		\label {HowToExplore5A}
+	\end{subfigure}%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[clip=true, viewport=2.5in 4in 8.5in 8.5in, height = 0.9\textwidth]{Images/HowToExplore5B}
+		\caption{Condensed Organic\footnotemark}
+		\label {HowToExplore5B}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[clip=true, viewport=0.8in 3in 9in 11in, height = 0.9\textwidth]{Images/HowToExplore5C}
+		\caption{Curves and Edges\footnotemark}
+		\label {HowToExplore5C}
+	\end{subfigure}%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[clip=true, viewport=1.5in 3.5in 8.5in 10in, height = 0.9\textwidth]{Images/HowToExplore5D}
+		\caption{Sharper Curves and Edges\footnotemark}
+		\label {HowToExplore5D}
+	\end{subfigure}
+	\caption{Some L-Systems to create and change}
+	\label{Possibilities}
+	\end{figure}
 	
-	\textcolor{blue}{[Provide as many interesting initial inputs as I can justify, perhaps 6? Show some techniques used to great effect.]}
+	\addtocounter{footnote}{-3}\footnotetext{A; A $\rightarrow$ F[+F[FA]++FA]F–F– –A; $\theta$ = 14$^{\circ}$; Iterations = 5; IW = 3.5, WC = 0.85}
+	\addtocounter{footnote}{1}\footnotetext{A; A $\rightarrow$ F[+F[FA]++FA]F–F– –A; $\theta$ = 90$^{\circ}$; Iterations = 5; IW = 3.5, WC = 0.85}
+	\addtocounter{footnote}{1}\footnotetext{A; A $\rightarrow$ F[–FB]F+FA, B $\rightarrow$ F[+F[–FA]+FB]–C, C $\rightarrow$ FFB; $\theta$ = 60$^{\circ}$; Iterations = 7}
+	\addtocounter{footnote}{1}\footnotetext{A; A $\rightarrow$ F[–FB]F+FA, B $\rightarrow$ F[+F[–FA]+FB]–C, C $\rightarrow$ FFB; $\theta$ = 84$^{\circ}$, $\phi$ = 6; Iterations = 7, IW = 10, WC = 0.85}
+	
+	
 
 \chapter{Contribution}
 	A primary goal of this work is to make L-Systems, and by extension Generative Art and Computer Science broadly, more approachable. This is not the only goal. I want folks who haven't used computers as an artistic tool before to create things in this medium. I even want my peers, who have been immersed in the depths of CS for years, to be able to approach the discipline with a fresh awe and changed understanding. I want everyone to be amazed and inspired by the possibilities and to feel capable of creating their own new work.  I feel that these are all very attainable without having to engage with the complexity of modern design software.
@@ -850,25 +970,108 @@ This is an L-System:
 \section{Related Work}
 	I wrote three main programs for the generation and display of L-Systems. These are a native Python program, an implementation of that program embedded in Blender, and the final L-System Explorer described in detail in this thesis. These projects were interspersed with a research process that involved investigating other implementations of L-Systems and related topics. I'll discuss a few of those related topics here before expanding the discussion to include other visual structures that I feel are worth exploration.\\
 	
-	\textcolor{blue}{[Three images that show the three programs in action]}\\
+	%\textcolor{blue}{[Three images that show the three programs in action]}\\
+	
+	\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.475\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/PythonImage}
+		\caption{The Python Program}
+		\label {PythonProgram}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{0.475\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/BlenderImage}
+		\caption{The Blender Program}
+		\label {BlenderProgram}
+	\end{subfigure}
+	\caption{Earlier Programs}
+	\label{EarlierPrograms}
+	\end{figure}
 
-	The 1990 book \textit{The Algorithmic Beauty of Plants}\footnote{\cite{ABOP1990}} grounded my study from the beginning. This opened my eyes to the beauty of L-Systems. I recommend the free version that is available online, as the book is now sadly out of print. The book is a font of compelling diagrams and images of fairly convincing computer-generated plants. It would be worth a look purely to see the pictures of plant created with L-Systems.\\
+	The 1990 book \textit{The Algorithmic Beauty of Plants}\footnote{\cite{ABOP1990}} grounded my study from the beginning. This opened my eyes to the beauty of L-Systems. I recommend the free version that is available online, as the book is now sadly out of print. The book is a font of compelling diagrams and images of fairly convincing computer-generated plants. It would be worth a look purely to see the pictures of plants created with L-Systems.\\
 	
-	\textcolor{blue}{[Some images from ABOP]}\\
+	%\textcolor{blue}{[Some images from ABOP]}\\
+	\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.37\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/ABOP1}
+		\caption{A sample tree}
+		\label {ABOP1}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{0.6\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/ABOP4}
+		\caption{Some stochastic branching structures}
+		\label {ABOP4}
+	\end{subfigure}
+	\caption{Trees displayed in ABOP (\cite{ABOP1990})}
+	\label{ABOPtrees}
+	\end{figure}
 	
-	Another useful resource for me has been the YouTube channel \textit{The Coding Train},\footnote{\cite{codingTrain}} and I'm grateful for the wide variety and expansive content of their videos. They were my introduction to some of the ideas that I talk about more in the following Generative Art section, and they're responsible for much of my foundational learning about Processing. If you have an interest in taking the next step in your computer science journey, I would highly recommend these videos, especially the tutorials on getting started in Processing. I would be hard-pressed to find a better resource than this channel. I've followed along many of the tutorials and discovered some fantastically interesting concepts that I hadn't come across in school, such as Perlin and Simplex noise, strange attractors, and space-filling curves.\\
+	Another useful resource for me has been the YouTube channel \textit{The Coding Train}.\footnote{\cite{codingTrain}} I'm grateful for the wide variety and expansive content of their videos. They were my introduction to some of the ideas that I talk about more in the following Generative Art section, and they're responsible for much of my foundational learning about Processing. If you have an interest in taking the next step in your computer science journey, I would highly recommend these videos, especially the tutorials on getting started in Processing. I would be hard-pressed to find a better resource than this channel. I've followed along many of the tutorials and discovered some fantastically interesting concepts that I hadn't come across in school, such as Perlin and Simplex noise, strange attractors, and space-filling curves.
 	
-	\textcolor{blue}{[Some images from the Coding Train]}\\
+	%\textcolor{blue}{[Some images from the Coding Train]}
 	
-	Nikole Leopold wrote a Bachelor's thesis about an implementation of L-System graphics in Blender in 2017 at the Technical University in Vienna.\footnote{\cite{Leopold2017}} This work informed some of the later discussions that I've had as part of this thesis. Leopold gives a comprehensive overview of the advantages of using a 3d modeling software like Blender to display L-Systems. They also introduce an add-on which enables the user to immediately see the results of their changes, a strategy I admire and have worked to make an essential component of my own project. One of the pieces of that research that I found especially interesting was the inclusion of methods by which the L-System can interact with its environment. The structure grows, finds an obstacle, and appears to go around it. (The program actually just cuts off the branches that intersect the object, but the effect is still compelling.) The discussion of Differential L-Systems was also fascinating. These are L-Systems which can be animated continuously, by which I mean \textit{between} production steps. [Include some footnote about how cool this is - it's animation to a crazy degree!] I'm grateful for the resources that Leopold included as well, as they pointed me in the direction of additional compelling sources.\\
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{Images/CodingTrain}
+	\caption{A Coding Train video (\cite{codingTrain})}
+	\label{CodingTrain}
+	\end{figure}
 	
-	\textcolor{blue}{[Some images from Leopold's paper]}\\
+	Nikole Leopold wrote a Bachelor's thesis about an implementation of L-System graphics in Blender in 2017 at the Technical University in Vienna.\footnote{\cite{Leopold2017}} This work informed some of the later discussions that I've had as part of this thesis. Leopold gives a comprehensive overview of the advantages of using a 3d modeling software like Blender to display L-Systems. They also introduce an add-on which enables the user to immediately see the results of their changes, a strategy I admire and have worked to make an essential component of my own project. One of the pieces of that research that I found especially interesting was the inclusion of methods by which the L-System can interact with its environment. The structure grows, finds an obstacle, and appears to go around it. (The program actually just cuts off the branches that intersect the object, but the effect is still compelling.) The discussion of Differential L-Systems was also fascinating. These are L-Systems which can be animated continuously, by which I mean \textit{between} production steps. [Include some footnote about how cool this is - it's animation to a crazy degree!] I'm grateful for the resources that Leopold included as well, as they pointed me in the direction of additional compelling sources.
 	
-	Przemyslaw Prusinkiewicz, who worked with Aristid Lindenmayer on \textit{The Algorithmic Beauty of Plants}, produced a handbook in 2001, titled \textit{L-Systems: from the Theory to Visual Models of Plants}\footnote{\cite{LSystems2001}} that I view as something of a sequel to the work presented in \textit{ABOP}. It goes into depth on some of the ideas presented in \textit{ABOP} but with new pictures that bring wonder in all the right ways. It discusses different forms of L-Systems, a few of which I discuss in the next chapter. It also explores hypothetical models that I'd never considered, such as simulating an attack on a plant by an insect, and displaying how the system reacts.\\
+	%\textcolor{blue}{[Some images from Leopold's paper]}\\
+	\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.5\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/Leopold3}
+		\caption{Growth steps}
+		\label {Growth}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{0.5\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/Leopold2}
+		\caption{Leopold's pruning algorithm in action}
+		\label {Pruning}
+	\end{subfigure}
+	\caption{Images from \cite{Leopold2017}}
+	\label{LeopoldTrees}
+	\end{figure}
 	
-	\textcolor{blue}{[Some images from this text]}\\
+	Przemyslaw Prusinkiewicz, who worked with Aristid Lindenmayer on \textit{The Algorithmic Beauty of Plants}, produced a handbook in 2001, titled \textit{L-Systems: from the Theory to Visual Models of Plants}\footnote{\cite{LSystems2001}} that I view as something of a sequel to the work presented in \textit{ABOP}. It goes into depth on some of the ideas presented in \textit{ABOP} but with new pictures that bring wonder in all the right ways. It discusses different forms of L-Systems, a few of which I discuss in the next chapter. It also explores hypothetical models that I'd never considered, such as simulating an attack on a plant by an insect, and displaying how the system reacts.
 	
-	Finally, the paper ``A Theory of Animation: Cells, L-Systems, and Film" goes well beyond the scope of this thesis in its discussion.\footnote{\cite{theory2004}} It provides some insight that's more helpful for the larger questions that have been raised during this process, and less about the structure of L-Systems. It suggests a view of L-Systems and similar structures as ``animations of a \textit{theory} of cellular life." (32) This is especially interesting to me in the context of the discussion of the alive-ness of machines, and the degree to which a machine that simulates life can be said to actually \textit{be} life. I ask these questions more clearly a bit further on in section \ref{Questions}. This paper is also interesting to me for the degree to which it ties popular culture to these simulators. It is cross-discipline in the most appealing way.\\
+	%\textcolor{blue}{[Some images from this text]}\\
+	
+	\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.5\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/Prusinkiewicz1}
+		\caption{The effects of changing angle}
+		\label {AngleChange}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{0.5\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{Images/Prusinkiewicz2}
+		\caption{L-Systems with more growth rules}
+		\label {MesotonicAcrotonic}
+	\end{subfigure}
+	\caption{Images from \cite{LSystems2001}}
+	\label{LeopoldTrees}
+	\end{figure}
+	
+	Finally, the paper ``A Theory of Animation: Cells, L-Systems, and Film" goes well beyond the scope of this thesis in its discussion.\footnote{\cite{theory2004}} It provides some insight that's more helpful for the larger questions that have been raised during this process, and less about the structure of L-Systems. It suggests a view of L-Systems and similar structures as ``animations of a \textit{theory} of cellular life." (32) This is especially interesting to me in the context of the discussion of the alive-ness of machines, and the degree to which a machine that simulates life can be said to actually \textit{be} life. I ask these questions more clearly a bit further on in section \ref{Questions}. This paper is also interesting to me for the degree to which it ties popular culture to these simulators. It is cross-discipline in the most appealing way.
+	
+	
 	
 	\textcolor{blue}{[Some related image? (perhaps not, this'd be filler)]}\\
 	
