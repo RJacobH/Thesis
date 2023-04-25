@@ -18,6 +18,8 @@
 \usetikzlibrary{calc,through,backgrounds}
 \usetikzlibrary{shapes,arrows.meta,positioning}
 
+\usepackage[export]{adjustbox}
+
 
 \usepackage{etoolbox}
 \AtBeginEnvironment{quote}{\par\singlespacing\small}
@@ -85,7 +87,7 @@
 % The abstract is not required if you're writing a creative thesis (but aren't they all?)
 % If your abstract is longer than a page, there may be a formatting issue.
 \chapter*{Abstract}
-	The world is a mess of systems. I hope to establish the context for one system that interests me and build it up for you so that you may be as interested in it as I have been. There will be an overview of the structure and function of L-Systems, later followed by the brief introduction of some different types of L-Systems. I'll explain the program that allows users to learn about and explore L-Systems, followed by a demonstration of its capabilities and its development. I will also discuss some related work, and go on to explain possible extensions. Wrapping things up, I take a step back from the program to ask some larger questions.
+	The world is a mess of systems. I hope to establish the context for one system that interests me and build it up for you so that you may feel the same wonder that I have felt. There will be an overview of the structure and function of L-Systems, later followed by the brief introduction of some different types of L-Systems. I'll explain the program that allows users to learn about and explore L-Systems, followed by a demonstration of its capabilities and its development. I will also discuss some related work, and go on to explain possible extensions. Wrapping things up, I take a step back from the program to ask some larger questions.
 	
 	%\textcolor{blue}{[Another large, beautiful L-System]}
 	\begin{figure}[h]
@@ -136,7 +138,7 @@
 
 The world of Computer Science can seem like a wilderness, teeming with complex and specialized topics like Zero-knowledge proofs,\footnote{\cite{ZeroKnowledge1989}} NP-Completeness,\footnote{\cite{PvsNP1971}}  Finite State Machines,\footnote{\cite{FSMs2018}}  and the Halting Problem,\footnote{\cite{turing1936}}  but I hope to help show how approachable this discipline can be. Specifically at the hands of those from distant disciplines, like Anthropology, Economics, and Psychology, as well as the locals, pure Math, Bio, Chem, and Physics. The tool I introduce here will demonstrate the accessibility of this powerful, subtle, yet familiar discipline: Computer Science. The ideas that I employ in the program were named L-Systems, and their capabilities and beauty can astound.
 	
-Before we jump in, there are some things that must be said. This is a Computer Science Thesis, and so (essentially by necessity,) there will be code. I would like to keep this Thesis as accessible as possible to those who don’t code, and so I have tried to design it so that anyone with the ability to feel wonder and joy can find something of value between these covers. The code is accessible on my github, \textit{github.com/RJacobH/Thesis} as well as my website, \textit{rjacobh.github.io/website}. Some parts of the code of the central project will also be discussed at a later point in the thesis. However! I have included pictures at every moment I could, and I’d like to imagine that they tell enough of a story by themselves that to some extent the words are ultimately unnecessary.
+Before we jump in, there are some things that must be said. This is a Computer Science thesis, and so (essentially by necessity,) there will be code. I would like to keep this thesis as accessible as possible to those who don’t code, and so I have tried to design it so that anyone with the ability to feel wonder and joy can find something of value between these covers. The code is accessible on my github, {\tt github.com/RJacobH/Thesis} as well as my website, {\tt rjacobh.github.io/website}. Some parts of the code of the central project will also be discussed at a later point in the thesis. However! I have included pictures at every moment I could, and I’d like to imagine that they tell enough of a story by themselves that to some extent the words are ultimately unnecessary.
 
 %\textcolor{blue}{[An L-System that's mirrored across a horizontal line]}\\
 	\begin{figure}[h]
@@ -149,9 +151,9 @@ Before we jump in, there are some things that must be said. This is a Computer S
 
 The structures that I will be discussing throughout this thesis are \textit{Lindenmayer Systems}, usually called \textit{L-Systems}. They are a type of ``rewriting" system that have a distinct visual flavor. Introduced by Aristid Lindenmayer in 1968\footnote{\cite{OG1967}} , they were first imagined as a framework for understanding the development of simple multicellular organisms. They were soon applied to larger systems, such as the structures of plants. A publication of Lindenmayer and others, \textit{The Algorithmic Beauty of Plants},\footnote{\cite{ABOP1990}} was written in 1990 and has been an invaluable resource for me in the formation of this thesis. It introduces L-Systems as a tool to celebrate and understand the beautiful complexity of plants, as well as to understand complex developments with limited arguments. Beyond this book, there have been a number of other vital resources in this process which I will discuss as they become relevant.
 
-The images that appear throughout this thesis that look like Figure \ref{Introduction2} are specific examples of L-Systems. If you look at the footnotes that I've included with all of these images, you'll see a line of strange characters. I'll briefly describe here what those are, though I'll go into more detail in Section \ref{Understanding-through-Definitions}. Right now, all that's important to know is that they're fundamentally recipes for creating each of these L-Systems.\footnote{Beyond the discussion in Section \ref{Understanding-through-Definitions}, I direct you to Section \ref{Interpretations} to learn more about about the fifth part specifically.} If you'd like, you can create any of these L-System images on your own or in my program by following the recipe.  Also, unless otherwise noted, every image in this thesis was created or generated by me. The L-Systems that I show have almost always been created by one of my programs. 
+The images that appear throughout this thesis that look like Figure \ref{Introduction2} are specific demonstrations of L-Systems. If you look at the footnotes that I've included with all of these images, you'll see a line of strange characters. I'll briefly describe here what those are, though I'll go into more detail in Section \ref{Understanding-through-Definitions}. Right now, all that's important to know is that they're fundamentally recipes for creating each of the visualized L-Systems.\footnote{Beyond the discussion in Section \ref{Understanding-through-Definitions}, I direct you to Section \ref{Interpretations} to learn more about about the fifth part specifically.} If you'd like, you can create any of these images on your own or in my program by following the recipe.  Also, unless otherwise noted, every image in this thesis was created or generated by me. Except where noted, all the L-System images that I show have been created by me in one of my programs. 
 
-L-Systems are fundamentally a collaborative topic, they cannot be understood from the perspective of just one discipline. An idea of their structure and abilities can only be sufficient if a variety of fields are consulted. I've tried to reflect this awareness in the form of my thesis as well as its content. I've tried to write something that would be as interesting for an artist to read as a computer scientist. If you're here for the pictures, please enjoy! But if you're here for the discussion of the systems that create those pictures, I urge you to stay and engage with some of the larger questions that I've asked about life, computers, and the place this thesis has in that discussion. But regardless of what brought you here, I hope you have a fun time looking through this thesis, and it warms my heart to know that there are people interested in this work which has captured by imagination so completely.
+L-Systems are fundamentally a multi-subject topic, they cannot be understood from the perspective of just one discipline. An idea of their structure and abilities can only be sufficient if a variety of fields are consulted. I've tried to reflect this awareness in the form of my thesis as well as its content. I've tried to write something that would be as interesting for an artist to read as a computer scientist. If you're here for the pictures, please enjoy! But if you're here for the discussion of the systems that create those pictures, I urge you to stay and engage with some of the larger questions that I've asked about life, computers, and the place this thesis has in that discussion. But regardless of what brought you here, I hope you have a fun time looking through this thesis, and it warms my heart to know that there are people interested in this work which has captured by imagination so completely.
 
 
 %\textcolor{blue}{[Illustration of an L-System, something that parallels the first one, and yet does something dramatically different (maybe the same image, just upside down? Inverted somehow?) Maybe just another cool L-System.]}
@@ -193,7 +195,7 @@ L-Systems are fundamentally a collaborative topic, they cannot be understood fro
 	\addtocounter{footnote}{1}\footnotetext{A; A $\rightarrow$ [F[+F+FA]FA[F–FA]+FA]-FA; $\theta$ = 32$^{\circ}$; Iterations = 4}
 
 
-	The second main motivation is the simple beauty of many of the patterns that emerge when working with L-Systems. This is the motivation that I imagine might be the most interesting to artists, be they visual artists or otherwise. It is also the reason I became aware of L-Systems and their relatives in the first place, so it is as essential a part of this story as the first motivation. It should be noted that it feels like the division between these fields is not nearly as dramatic as one might imagine. There are varied connections between the Art aspects of this work and the Computer Science and Math aspects, some of which I will explore later in the thesis. 
+	The second motivation is the simple beauty of many of the patterns that emerge when working with L-Systems. This is the motivation that I imagine might be the most interesting to artists, be they visual artists or otherwise. It is also the reason I became aware of L-Systems and their relatives in the first place, so it is as essential a part of this story as the first motivation. It should be noted that it feels like the division between these fields is not nearly as dramatic as one might imagine. There are varied connections between the Art aspects of this work and the Computer Science and Math aspects, some of which I will explore later in the thesis. 
 	
 	\begin{figure}[h!]
 	\centering
@@ -203,7 +205,7 @@ L-Systems are fundamentally a collaborative topic, they cannot be understood fro
 	\end{figure}
 	\footnotetext{A; A $\rightarrow$ +F[A]F–FA--FA; $\theta$ = -156$^{\circ}$; Iterations = 6}
 	
-	The third motivation is tied in with a philosophical understanding of these structures. As I delved deeper into L-Systems, I came across the claim that these structures themselves were \textit{alive}.\footnote{\cite{theory2004}} This felt absurd, but I understood how a person could see life within the symmetry. I found that it was extremely difficult for me to draw the line between living and non-living matter without the choice feeling somewhat arbitrary. A conventional definition, that the smallest unit of life is the cell due in part to its ability to self-replicate, felt insufficient. These structures I was in the process of investigating do replicate themselves to some extent, so why shouldn't they live? These questions on the nature of life stuck with me, and I found myself asking the same questions of life in the context of other machines. I ask address larger issues of the place of machines in the creation of art and the creative process. It also feels like these questions about the border between living and non-living things are essential when we're experiencing what may be the first great wave of AI systems.
+	The third motivation is tied in with a philosophical understanding of these structures. As I delved deeper into L-Systems, I came across the claim that these structures themselves were \textit{alive}.\footnote{\cite{theory2004}} This felt absurd, but I understood how a person could see life within the symmetry and complexity. I found that it was extremely difficult for me to draw the line between living and non-living matter without the choice feeling somewhat arbitrary. A conventional definition, that the smallest unit of life is the cell due in part to its ability to self-replicate, felt insufficient. These structures I was in the process of investigating do replicate themselves to some extent, so why shouldn't they live? These questions on the nature of life stuck with me, and I found myself asking the same questions of life in the context of other machines. I ask address larger issues of the place of machines in the creation of art and the creative process. It also feels like these questions about the border between living and non-living things are essential when we're experiencing what may be the first great wave of AI systems.
 
 	\begin{figure}[h]
 	\centering
@@ -236,7 +238,7 @@ L-Systems are fundamentally a collaborative topic, they cannot be understood fro
 	\end{figure}
 	\footnotetext{A; A $\rightarrow$ F[F+FA]–FA; $\theta$ = -120$^{\circ}$; Iterations = 12}
 	
-	In Section \ref{GenerativeArt} I go on to talk about Generative Art and the broad crossover between Art and Computer Science that has fueled this thesis and the work of many other contemporary artists. I talk about some of my earlier explorations into L-Systems and Generative Art, and connect those experiments with the resulting thesis. After that, I talk about some of the questions I've asked during this research, in Computer Science and in areas beyond. I place this thesis within its historical moment and suggest some broad extensions that aren't direct continuations of this work.
+	In Section \ref{GenerativeArt} I go on to talk about \textit{generative art} and the broad crossover between Art and Computer Science that has fueled my explorations and the work of many other contemporary artists. I talk about some of my earlier explorations into L-Systems and generative art, and connect those experiments with the resulting thesis. After that, I talk about some of the questions I've asked during this research, in Computer Science and in areas beyond. I place this thesis within its historical moment and suggest some broad extensions that aren't direct continuations of this work.
 	
 	I explore the origin of L-Systems and their early connection to simulations of living structures, especially those of plants. \textit{The Algorithmic Beauty of Plants},\footnote{\cite{ABOP1990}} or \textit{ABOP}, written by Aristid Lindenmayer, their progenitor, and Przemyslaw Prusinkiewicz, has been an invaluable resource for me in the development of this thesis. In this section, I touch on some of the ways that this book guided parts of my research and helped me make judgement calls about what I'd be focusing on. There are some types of L-Systems that I don't include in my program. This is the point where I talk about those types of L-Systems and why I decided to not include them.
 	
@@ -262,7 +264,7 @@ L-Systems are fundamentally a collaborative topic, they cannot be understood fro
 		
 	This last section returns to explore more carefully bound L-Systems and articulate their capabilities. I discuss how every depiction of an L-System depends on choices made by a designer and that it's hard to understand an L-System in its raw text form. I talk about some different possible interpretations that can and have been used to make L-Systems comprehensible. 
 	
-	I then conclude the thesis with a brief summary of the understanding I've gained through this process, the concrete objects that I have pulled into being, and the exploration of the larger ideas that lie under this whole process. I summarize my ideas of how L-Systems might be investigated in the future and what there might still be to be learned about these structures. I end by encouraging my readers to mess around with my program, explore L-Systems and the larger world of Generative Art, and to be excited by work like this.
+	I then conclude the thesis with a brief summary of the understanding I've gained through this process, the concrete objects that I have created, and the exploration of the larger ideas that lie under this whole process. I summarize my ideas of how L-Systems might be investigated in the future and what there might still be to be learned about these structures. I end by encouraging my readers to mess around with my program and explore L-Systems and the larger world of generative art.
 	
 	\begin{figure}[h]
 	\begin{subfigure}{0.5\textwidth}
@@ -286,8 +288,6 @@ L-Systems are fundamentally a collaborative topic, they cannot be understood fro
 
 	
 	%\textcolor{blue}{[Two L-Systems on the left and right, facing each other]}
-
-	
 	
 \chapter{What is an L-System?}
 
@@ -302,7 +302,7 @@ This is an L-System:
 	\end{figure}
 	\footnotetext{A; A $\rightarrow$ F[+A]–A; $\theta$ = 30$^{\circ}$; Iterations = 12}
 
-	Well, it would be more right to say that this is the \textit{output} of an L-System. L-Systems are a \textit{technique} with which one can describe a complex, changing system with a few letters and symbols. This chapter will cover a few main ideas. The first, and most central, is a discussion of the mechanics of how they work, how to interpret them, and how to create them. I’ll illustrate particularly effective ways these systems can be used, how I’ve used them, (including some early experimentations before the central project,) and end with a lead-in to the central coding portion of this thesis, the L-Systems Explorer.
+	Well, it would be more correct to say that this is the \textit{output} of an L-System. L-Systems are a \textit{technique} with which one can describe a complex, changing system with a few letters and symbols. This chapter will cover a few main ideas. The first, and most central, is a discussion of the mechanics of how they work, how to interpret them, and how to create them. I’ll illustrate particularly effective ways these systems can be used, how I’ve used them, (including some early experimentations before the central project,) and end with a lead-in to the central coding portion of this thesis, the L-Systems Explorer.
 
 	There are a few effective ways I've found to introduce L-Systems to people. I'll go through each of these different strategies to give you some solid footing before we really dig into the material.
 
@@ -310,16 +310,16 @@ This is an L-System:
 \section{Understanding through Definitions}
 \label{Understanding-through-Definitions}
 
-	Before I describe the structure of an L-System, I'd like to introduce you to the idea of a \textit{string}. A \textit{string} in Computer Science is a more expansive way of saying a \textit{word}. A string does not need to be in any dictionary, however, and it can include essentially any character that can be written on a computer. This includes numbers, symbols like \code{\&}, \code{\%}, and \code{+}, as well as some other special characters. When I say ``string", I mean a word that consists of some combination of these characters, for example: \code{DFS\&2*|:09} or \code{!!n./?;}. Strings do not need to be able to be spoken aloud to be valid. A string can also be ``empty", meaning that it contains no characters, though it is still a string. They may also be only one character long.
+	Before I describe the structure of an L-System, I'd like to introduce you to the idea of a \textit{string}. A \textit{string} in Computer Science is a more succinct way of saying \textit{a sequence of symbols}. Any word is a string, but a string does not need to be in any dictionary, and it can include essentially any character that can be written on a computer. This includes numbers, symbols like \code{\&}, \code{\%}, and \code{+}, as well as some other special characters. When I say ``string", I mean a word that consists of some combination of these characters, for example: \code{DFS\&2*|:09} or \code{!!n./?;}. A string can also be ``empty", meaning that it contains no characters, though it is still a string. They may also be only one character long.
 	
-	L-Systems have four essential parts. The first part is the \code{start} variable. It is usually just a character, we'll call it \code{A} here. This will be the initial value of the structure, something akin to a ``seed". The second part is a set of rules that describe how the L-System grows (which is explained more in the next paragraph). These rules are usually written like \code{A} $\rightarrow$ \code{AB} or \code{B} $\rightarrow$ \code{AA}, where each of these is a different rule. In this thesis, I will call \code{A}, \code{B}, and other values with rules, ``productions". Similarly, each of these rules is called a ``production rule". The third part of an L-System is the angle or angles that it uses to change its state. Some of the L-Systems I show in this thesis use a second angle $\phi$ in addition to the required $\theta$. This $\phi$ establishes a baseline difference for values that use $\theta$ so that an L-System isn't just reduced to a line when $\theta$ = 0. The fourth part is the \code{Iterations}, which is the number of times the production rules are applied to a string. Some L-Systems I made for this thesis use an entirely optional fifth part, which has two values and governs the width of the lines. Initial Width (IW) is the pixel width of the first line. Width Change (WC) is the multiplier applied to the line width of each successive line. Unless otherwise stated, the value for $\phi$ is 0 and the value for both IW and WC is 1.
+	L-Systems have four essential parts. We'll break apart the recipe for Figure \ref{Octagon} to clarify our example. The first part is the \code{start} variable. It is usually just a character; in Figure \ref{Octagon} it is \code{A}. This will be the initial value of the structure, something akin to a ``seed". The second part is a set of rules that describe how the L-System grows (which is explained more in the next paragraph). These rules are usually written like \code{A} $\rightarrow$ \code{AB} or \code{B} $\rightarrow$ \code{AA}, where each of these is a different rule mapping a character to a string. In Figure \ref{Octagon}, the one production rule is \code{A} $\rightarrow$ \code{F+A}. In this thesis, I will call \code{A}, \code{B}, and other values with rules, ``productions". Similarly, each of these rules is called a ``production rule". As \code{+} does not have a production rule in Figure \ref{Octagon}, it is therefore not a production. The third part of an L-System is the angle or angles that it uses to change its state. In Figure \ref{Octagon}, this is \code{$\theta$ = -45$^{\circ}$}. Some of the L-Systems I show in this thesis use a second angle \code{$\phi$} in addition to the required \code{$\theta$}. This \code{$\phi$} establishes a baseline difference for values that use \code{$\theta$} so that an L-System isn't just reduced to a line when \code{$\theta$} = 0. The fourth part is the \code{Iterations}, which is the number of times the production rules are applied to a string. This is \code{Iterations = 7} in Figure \ref{Octagon}. Some L-Systems I made for this thesis use an entirely optional fifth part, which has two values and governs the width of the lines. Figure \ref{Octagon} does not use this part. Initial Width (IW) is the pixel width of the first line. Width Change (WC) is the multiplier applied to the line width of each successive line. Unless otherwise stated, the value for \code{$\phi$} is 0 and the value for both IW and WC is 1.
 	
 	%\textcolor{blue}{[(filler?) L-System that looks like a word]}
 	\begin{figure}[h!]
 	\centering
 	\includegraphics[clip=true, viewport=4in 5.68in 7in 6.37in, scale=1]{Images/UnderstandingThroughDefinitions1}
 	\caption[Almost an Octagon]{Almost an Octagon\footnotemark}
-	\label {UnderstandingThroughDefinitions1}
+	\label {Octagon}
 	\end{figure}
 	\footnotetext{A; A $\rightarrow$ F+A; $\theta$ = -45$^{\circ}$; Iterations = 7}
 	
@@ -346,11 +346,11 @@ This is an L-System:
 \section{Understanding through Images}
 \label{Understanding-through-Images}
 
-	L-Systems can be slippery if there's no visual output to latch onto. I think that one of the best ways to engage with these structures is through connecting the images with the strings that describe them. One can see that everything in the image has an origin in the string, and that there is nothing lost between the image and the string. No information is lost. I suggest alternative visualization strategies in Section \ref{Interpretations}.
+	L-Systems can be opaque if there's no visual output to latch onto. I think that one of the best ways to engage with these structures is through connecting the images with the strings that describe them. One can see that everything in the image has an origin in the string, and that there is nothing lost between the image and the string. I demonstrate alternative visualization strategies in Section \ref{Interpretations}.
 	
 	Figure \ref{Simple1} shows the appearance of an L-System as the number of iterations increases from 0 to 3. There is a sense that the L-System is ``growing" here, fittingly tied to their origin as plant-modeling software. The text below each set of images is the L-string that constructed those images.
 
-	The info of this L-System: ``start: A; rules: A $\rightarrow$ –FB, B $\rightarrow$ +FA; $\theta$: 45$^{\circ}$".
+	This L-System's info: ``start: A; rules: A $\rightarrow$ –FB, B $\rightarrow$ +FA; angle: $\theta$ = 45$^{\circ}$".
 
 %\textcolor{blue}{[Image A0]}: \code{Iterations = 0, current string: A}\\
 %\textcolor{blue}{[Image A1]}: \code{Iterations = 1, current string: -FB}\\
@@ -390,7 +390,7 @@ This is an L-System:
 
 	Figure \ref{Simple2} uses the same start variable and angle, but different production rules. Each image still displays the appearance of the L-System as the number of iterations goes from 0 to 3. 
 
-	The info for this L-System: ``start: A; rules: A $\rightarrow$ F–B, B $\rightarrow$ F+A; $\theta$: 45$^{\circ}$".
+	This L-System's info: ``start: A; rules: A $\rightarrow$ F–B, B $\rightarrow$ F+A; angle: $\theta$ = 45$^{\circ}$".
 
 %\textcolor{blue}{[Image B0]}: \code{Iterations = 0, current string: A}\\
 %\textcolor{blue}{[Image B1]}: \code{Iterations = 1, current string: F-B}\\
@@ -469,28 +469,28 @@ This is an L-System:
 	\end{figure}
 	
 	
-	The central feature that Turtle Graphics uses to great effect is ``state". ``State" here means ``condition" or ``status". The ``Turtle" keeps track of its position and rotation. With an x-position, a y-position, and an angle, the Turtle is uniquely placed in its window. By manipulating these values with the code and choosing whether to draw or not draw between positions, the Turtle is able to seamlessly turn abstract code into clear visualizations. This is also particularly powerful because it physicalizes the process of coding that's often purely digital and accessible only through difficult-to-engage-with abstraction.
+	The central feature that Turtle Graphics uses to great effect is ``state". ``State" here means ``condition" or ``status". The state of the ``Turtle" is its position, rotation, and whether its ``pen" is up or down. This last part controls if it draws as it moves. With an x-position, a y-position, and an angle, the Turtle is uniquely placed in its window. By manipulating these values with the code, the Turtle turns abstract code into clear visualizations. This is also particularly powerful because it physicalizes the process of coding that's often purely digital and accessible only through difficult-to-engage-with abstraction.
 	
-	Figure \ref{TurtleFractals} shows some fractals created with Turtle Graphics and L-Systems. Each of these could also be created with the L-System Explorer I introduce in the next chapter. L-Systems lend themselves particularly well to constructing fractals, due in part to their own recursive nature.
+	Figure \ref{TurtleFractals} shows some fractals created with Turtle Graphics and L-Systems. Each of these could also be created with the L-System Explorer I introduce in the next chapter. L-Systems lend themselves particularly well to constructing fractals, due in part to their own recursive nature, but without requiring understanding of the concepts of functions or the often vexing concept of recursively defined functions.
 	
 	%\textcolor{blue}{[A variety of turtle-produced programs, some in color]}
 	\begin{figure}[h]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height = 0.9\textwidth]{Images/TurtleGraphics4}
+		\includegraphics[height = 0.85\textwidth]{Images/TurtleGraphics4}
 		\caption{Islands \& Lakes\footnotemark}
 		\label {TurtleGraphics4}
 	\end{subfigure}%
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height = 0.9\textwidth]{Images/TurtleGraphics5}
+		\includegraphics[height = 0.85\textwidth]{Images/TurtleGraphics5}
 		\caption{Frame\footnotemark}
 		\label {TurtleGraphics5}
 	\end{subfigure}
 	\centering
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height = 0.9\textwidth]{Images/TurtleGraphics6}
+		\includegraphics[height = 0.85\textwidth]{Images/TurtleGraphics6}
 		\caption{Space-filling Hex\footnotemark}
 		\label {TurtleGraphics6}
 	\end{subfigure}
@@ -510,12 +510,12 @@ This is an L-System:
 
 \chapter{The L-Systems Explorer}
 
-	In order to share my understanding about and my excitement for L-Systems, I wrote a program that allows users to interactively and graphically edit L-Systems and immediately see them visualized. My goal was to create a program that would reduce the barrier to entry of understanding these systems. My first explorations into making this space more accessible were done through turtle implementations in a basic Python program and later in a Blender program.\footnote{\cite{Blender2018}} I'll talk about these in more detail later in the thesis. Both of these strategies still heavily relied on the user to type input. It might as well have been code. It became clear that if I was to create something that was as accessible as I wanted that it to be, I would have to change my approach. In conversation with my advisor and through resources online for projects like mine, I found \textit{Processing}.\footnote{\cite{processing2014}}
+	In order to share my understanding about and my excitement for L-Systems, I wrote a program that allows users to interactively and graphically edit L-Systems and immediately see them visualized. My goal was to create a program that would reduce the barrier to entry of understanding these systems. My first explorations into making this space more accessible were done through turtle implementations in a basic Python program and later in a Blender program.\footnote{\cite{Blender2018}} I'll talk about these in more detail later in the thesis. Both of these programs essentially involved \textit{teaching the users to code}, and I wanted this system to be more accessible than that. In conversation with my advisor and through looking at resources online for projects like mine, I found \textit{Processing}.\footnote{\cite{processing2014}}
 	
 		
 	\begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.3]{Images/ProcessingWindow}
+	\includegraphics[scale=0.3, frame]{Images/ProcessingWindow}
 	\caption{A blank Processing window}
 	\label {ProcessingWindow}
 	\end{figure}
@@ -523,7 +523,6 @@ This is an L-System:
 \section{What is \textit{Processing}?}
 
 	%\textcolor{blue}{[A blank Processing window]}
-
 
 	\textit{Processing} is a programming language and development environment written in Java and optimized for image generation. It was released by Casey Reas and Ben Fry in 2001 and has since found popular use as an art and educational tool. I chose to work with Processing because it was easy to use and appealed to my sensibilities as it is an open-source, free software. It also engages with the act of coding in the same way that artists have traditionally engaged with their mediums, which I also appreciated. In other programming languages, it often takes some time to go beyond just printing \code{hello world}. The first programs that people write in Processing produce concrete objects that can interact with the user, like a square that changes color when you hover over it. In Processing, coding \textit{is} art.
 	
@@ -536,7 +535,7 @@ This is an L-System:
 		
 	\begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.3]{Images/EarlyExplorer}
+	\includegraphics[scale=0.3, frame]{Images/EarlyExplorer}
 	\caption{An early version of the Explorer}
 	\label {EarlyExplorer}
 	\end{figure}
@@ -549,7 +548,7 @@ This is an L-System:
 		
 	\begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.3]{Images/CurrentExplorer}
+	\includegraphics[scale=0.3, frame]{Images/CurrentExplorer}
 	\caption{The current version of the Explorer}
 	\label {CurrentExplorer}
 	\end{figure}
@@ -561,50 +560,50 @@ This is an L-System:
 	%\textcolor{blue}{[Empty main window and empty sub-window]}
 	\begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.5]{Images/HowItWorks1}
+	\includegraphics[scale=0.5, frame]{Images/HowItWorks1}
 	\caption{The Main Window}
 	\label {MainWindow}
 	\end{figure}
 
 	
-	The main window is initialized upon startup. Some number of sub-windows, one for each production that the program starts with. More productions can be added, and more windows are created for productions when needed. Windows are similarly removed when not needed. Each sub-window contains a reference to a `starting' triangle that I fittingly named the \code{StartTriangle}. This is an instance of a class that can be moved up to the boundaries of its window. The start triangle has a reference to the \code{startNode}, which is the root of a linked list structure of nodes. I've made a class to describe the nodes as well. When the \code{StartTriangle} is moved, the \code{startNode} is moved similarly, and then recursive calls down the node tree move all the nodes to the correct positions. Shown in Figure \ref{HowItWorks3}, \code{StartTriangle} and its closely-tied \code{startNode} provide the foundation on top of which each of the production rule displays are constructed.
+	The main window is initialized upon startup along with some number of sub-windows, one for each production that the program starts with. More productions can be added, and more windows are created for productions when needed. Windows are similarly removed when their production is removed in the main window. Each sub-window contains a reference to a `starting' triangle that I named the \code{startTriangle}. This is an instance of a class that can be moved up to the boundaries of its window. The \code{startTriangle} has a reference to the \code{startNode}, which is the root of a linked list structure of nodes. I've made a class to describe the nodes as well. When the \code{startTriangle} is moved, the \code{startNode} is moved similarly, and then recursive calls down the node tree move all the nodes to the correct positions. Shown in Figure \ref{HowItWorks3}, \code{startTriangle} and its closely-tied \code{startNode} provide the foundation on top of which each of the production rule displays are constructed.
 	
 		
 	\begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.5]{Images/HowItWorks2}
-	\caption{A sub-window}
+	\includegraphics[scale=0.5, frame]{Images/HowItWorks2}
+	\caption{The sub-window for the production rule of A}
 	\label {Sub-Window}
 	\end{figure}
 	
-	%\textcolor{blue}{[Start Triangle and Start Node]}
+	%\textcolor{blue}{[startTriangle and startNode]}
 	\begin{figure}[h]
 	\centering
-	\includegraphics[scale=1]{Images/HowItWorks3}
-	\caption{The \code{StartTriangle} and the \code{StartNode}}
+	\includegraphics[scale=1, frame]{Images/HowItWorks3}
+	\caption{The \code{startTriangle} and the \code{startNode}}
 	\label {HowItWorks3}
 	\end{figure}
 	
-	There are five subtypes among the node class, each node belongs to only one of these subtypes. These aren't subclasses, the different nodes have some different functionality, but they're only differentiated with a string. The start node is the only element of the \code{start} subtype; I use this as a signpost to stop calls from nodes to their parents from going too far. There are \code{production} and \code{rotation} nodes, the main difference being that rotation nodes have a point that shows which direction they're oriented. The fourth subtype is \code{forward} nodes. These are displayed as lines, unlike the other types of nodes, which are displayed as circles. The final subtype is \code{option} nodes. These are a special type of node with some unique characteristics. They have a pointer to an \code{optionParent} node, which may be a member of any subtype of node, including another option node. They will only appear if their \code{optionParent} node is being hovered over by the mouse or their \code{optionParent} has recently been hovered over by the mouse and the mouse has not left its vicinity or the vicinity of any of its \code{option} nodes. This is pictured in Figure \ref{MouseInteraction}.
+	There are five subtypes among the node class, each node belongs to only one of these subtypes. These aren't subclasses, the different nodes have some different functionality, but they're only differentiated with a string. The \code{startNode} is the only element of the \code{start} subtype; I use this as a signpost to stop calls from nodes to their parents from going too far. There are \code{production} and \code{rotation} nodes, the main difference being that rotation nodes have a point that shows which direction they're oriented. The fourth subtype is \code{forward} nodes. These are displayed as lines, unlike the other types of nodes, which are displayed as circles. The final subtype is \code{option} nodes. These are a special type of node with some unique characteristics. They have a pointer to an \code{optionParent} node, which may be a member of any subtype of node, including another option node. They will only appear if their \code{optionParent} node is being hovered over by the mouse or their \code{optionParent} has recently been hovered over by the mouse and the mouse has not left its vicinity or the vicinity of any of its \code{option} nodes. This is pictured in Figure \ref{MouseInteraction}.
 	
 	%\textcolor{blue}{[Images that show how the mouse interacts with the nodes]}
 	\begin{figure}[h]
 	\centering
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height = 2.5in]{Images/HowItWorks4A}
+		\includegraphics[height = 2.5in, frame]{Images/HowItWorks4A}
 		\caption{Mouse near a node}
 		\label {HowItWorks4A}
 	\end{subfigure}%
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height = 2.5in]{Images/HowItWorks4B}
+		\includegraphics[height = 2.5in, frame]{Images/HowItWorks4B}
 		\caption{Mouse over a node}
 		\label {HowItWorks4B}
 	\end{subfigure}
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height = 2.5in]{Images/HowItWorks4C}
+		\includegraphics[height = 2.5in, frame]{Images/HowItWorks4C}
 		\caption{Mouse nearby after being over a node}
 		\label {HowItWorks4C}
 	\end{subfigure}
@@ -620,13 +619,13 @@ This is an L-System:
 	\begin{figure}[h]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height = 3in]{Images/HowItWorks5}
+		\includegraphics[height = 3in, frame]{Images/HowItWorks5}
 		\caption{Multiple nodes}
 		\label {HowItWorks5}
 	\end{subfigure}
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height=3in]{Images/Diagram1}
+		\includegraphics[height=3in, frame]{Images/Diagram1}
 		%\includegraphics[height = 3in]{Images/HowItWorks5}
 		%\begin{tikzpicture}[font=\small,thick]
 		%\node[draw, rounded rectangle, minimum width=2.5cm, minimum height=1cm] (block1) {start};
@@ -654,13 +653,15 @@ This is an L-System:
 	%\textcolor{blue}{[A diagram of the relationships between these nodes]}
 	
 	
-	Beyond the references, each node contains information that defines its state. One part of a code's state is the value \code{over}, which is a boolean for whether the mouse is over the node. Another main event is \code{press} which is a boolean for whether the mouse is clicking the node. The most central variable is called \code{activated}. \code{activated} is a boolean with a complicated condition. It corresponds to whether the mouse is currently over the node or was recently over the node and has not moved too far away. If \code{activated} is true, then some user interface logic ensures that no other node is activated or can become activated while this node is activated. This happens through a recursive method that is called in a node's \code{before} node. The message then propagates upwards until it reaches the \code{start} node, where it sets a boolean \code{somethingActivated}. In order for a node to be set to activated, it must first ask its \code{before} node if \code{somethingActivated} is true. This question is passed to the \code{start} node as well. This process is shown in Figure \ref{Recursion}. \code{option} nodes are the exception to this. They will only ever be \code{activated} when their \code{optionParent} is already \code{activated}. Each node also tracks its position and orientation, information that is referenced by this node's \code{after} nodes to ensure that every node is in the correct state.\\
+	Beyond the references, each node contains information that defines its state. One part of a code's state is the value \code{over}, which is a boolean for whether the mouse is over the node. Another important variable is \code{press} which is a boolean for whether the mouse is clicking the node. The variable that has the most control over the state of the program is called \code{activated}. \code{activated} is a boolean with a complicated condition. It corresponds to whether the mouse is currently over the node or was recently over the node and has not moved too far away. 
+	
+	If \code{activated} is true for some node, then some user interface logic ensures that no other node is activated or can become activated while this node is activated. This happens through a recursive method that is called in a node's \code{before} node. The message then propagates upwards until it reaches the \code{start} node, where it sets a boolean \code{somethingActivated}. In order for a node to be set to activated, it must first ask its \code{before} node if \code{somethingActivated} is true. This question is passed to the \code{start} node as well. This process is shown in Figure \ref{Recursion}. \code{option} nodes are the exception to this. They will only ever be \code{activated} when their \code{optionParent} is already \code{activated}. Each node also tracks its position and orientation, information that is referenced by its \code{after} nodes to ensure that every node is in the correct state.
 	
 	%\textcolor{blue}{[A diagram of the recursive-ness of the code that ensures that all the right nodes are activated]}\\
 	
 	\begin{figure}[h]
 	\centering
-	\includegraphics[height=3.3in]{Images/Diagram2}
+	\includegraphics[height=3.3in, frame]{Images/Diagram2}
 		%\begin{tikzpicture}
 		%\draw [line width=1.5pt] (0,0) -- (60:3) -- (3,0) -- cycle;
 		%\draw (.55,.25) node{hey};
@@ -671,7 +672,7 @@ This is an L-System:
 	\label {Recursion}
 	\end{figure}
 	
-	There are specific ways for users to engage with this process. The user is able to click on the \code{option} nodes of an \code{activated} node, and if the node has an associated action and some conditions are fulfilled, the action happens. Usually, this action is the creation of a new node whose \code{before} node is set to be the current node (the node whose \code{option} node was just clicked). The other case is that the \code{option} node that was clicked will trigger the deletion of that \code{option} node's \code{optionParent} node. Deletion is described in more detail in Figure \ref{NodeDeletion}. For both of these possibilities, the current node's \code{after} array and the display are both updated.\\
+	The user is able to click on the \code{option} nodes of an \code{activated} node, and if the node has an associated action and some conditions are fulfilled, the action happens. Usually this action is the creation of a new node whose \code{before} node is set to be the current node (the node whose \code{option} node was just clicked). The other case is that the \code{option} node that was clicked will trigger the deletion of that \code{option} node's \code{optionParent} node. Deletion is described in more detail in Figure \ref{NodeDeletion}. For both of these possibilities, the current node's \code{after} array and the display are both updated.
 	
 	%\textcolor{blue}{[Two images showing how the deletion of a node affects the arrays and display (maybe actually four images? Two that show what is on the screen and two that show the changing relationship of the nodes behind the scenes?)]}\\
 	
@@ -679,99 +680,105 @@ This is an L-System:
 	\centering
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height = 2in]{Images/HowItWorks7A}
+		\includegraphics[height = 2in, frame]{Images/HowItWorks7A}
 		\caption{Before deletion}
 		\label {HowItWorks7A}
 	\end{subfigure}%
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height=2in]{Images/Diagram3}
+		\includegraphics[height=2in, frame]{Images/Diagram3}
 		\caption{Before deletion (behind the scenes)}
 	\end{subfigure}
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height = 2in]{Images/HowItWorks7C}
+		\includegraphics[height = 2in, frame]{Images/HowItWorks7C}
 		\caption{After deletion}
 		\label {HowItWorks7C}
 	\end{subfigure}%
 	\begin{subfigure}{0.5\textwidth}
 		\centering
-		\includegraphics[height=2in]{Images/Diagram4}
+		\includegraphics[height=2in, frame]{Images/Diagram4}
 		\caption{After deletion (behind the scenes)}
 	\end{subfigure}
 	\caption{Effects of a node deletion}
 	\label{NodeDeletion}
 	\end{figure}
 	
-	 Each sub-window has a function to turn its tree of nodes into a string that uniquely describes it. Figure \ref{RuleMaking} shows this process of depth-first search, where each branch of the tree is explored down to its end, adding elements to the string as it does. The tree is explored through the \code{before} and \code{after} linkages. Any time the tree branches, the function adds an \code{[}, and any time the tree finishes reading a branch, the function adds a \code{]}. These brackets allows complex branching structures to be accurately described in only one string. Most nodes have an associated character that is added to the string whenever the node is seen on the tree. \code{rotation} nodes have either a \code{+} or a \code{-}. \code{forward} nodes have either an \code{F} or an \code{f}. \code{production} nodes have the character of their associated production. (These might be \code{A}, \code{B}, etc.) The \code{start} node and \code{option} nodes are not read by the function and so do not have associated characters. At the end of this process, the sub-window has a string that is the production rule for the production of that sub-window.\\
+	 Each sub-window has a function to turn its tree of nodes into a string that uniquely describes it. Figure \ref{RuleMaking} shows this process of depth-first search, where each branch of the tree is explored down to its end, adding elements to the string as it does. The tree is explored through the \code{before} and \code{after} linkages. Any time the tree branches, the function adds an \code{[}, and any time the tree finishes reading a branch, the function adds a \code{]}. These brackets allows complex branching structures to be accurately described in only one string. They are used by the Explorer internally when interpreting the L-string to make an image, which is described more in Section \ref{Rendering}. Most nodes have an associated character that is added to the string whenever the node is seen on the tree. \code{rotation} nodes have either a \code{+} or a \code{-}. \code{forward} nodes have either an \code{F} or an \code{f}. \code{production} nodes have the character of their associated production. (These might be \code{A}, \code{B}, etc.) The \code{start} node and \code{option} nodes are not read by the function and so do not have associated characters. At the end of this process, the sub-window has a string that is the production rule for the production of that sub-window.
 	 
 	% \textcolor{blue}{[Images showing the creation of a string based on some L-System]}\\
 	\begin{figure}[H]
 	\centering
-	\begin{subfigure}{0.33\textwidth}
+	\begin{subfigure}{0.3\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Images/Diagram5}
+		\includegraphics[width=\textwidth, frame]{Images/Diagram5}
 		\caption{F}
-	\end{subfigure}%
-	\begin{subfigure}{0.33\textwidth}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.3\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Images/Diagram6}
+		\includegraphics[width=\textwidth, frame]{Images/Diagram6}
 		\caption{F[–}
-	\end{subfigure}%
-	\begin{subfigure}{0.33\textwidth}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.3\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Images/Diagram7}
+		\includegraphics[width=\textwidth, frame]{Images/Diagram7}
 		\caption{F[–F}
 	\end{subfigure}
-	\begin{subfigure}{0.33\textwidth}
+	\begin{subfigure}{0.3\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Images/Diagram8}
+		\includegraphics[width=\textwidth, frame]{Images/Diagram8}
 		\caption{F[–F]+}
 	\end{subfigure}
-	\begin{subfigure}{0.33\textwidth}
+	\hfill
+	\begin{subfigure}{0.3\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Images/Diagram9}
+		\includegraphics[width=\textwidth, frame]{Images/Diagram9}
 		\caption{F[–F]+F}
-	\end{subfigure}%
-	\begin{subfigure}{0.33\textwidth}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.3\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Images/Diagram10}
+		\includegraphics[width=\textwidth, frame]{Images/Diagram10}
 		\caption{F[–F]+FA}
 	\end{subfigure}
-	\caption{The step-by-step creation of a production rule}
+	\caption{The steps the Explorer takes to create a production rule}
 	\label{RuleMaking}
 	\end{figure}
 	
-	Similar to how each node's \code{after} nodes will have a way to access their \code{before} node, each sub-window is able to access some information from the main window. The main window is also able to change some information in the sub-windows. However, there is no way for the main window to directly affect the start triangle or nodes within any of the sub-windows. It must have each sub-window do that. Some information must still be transferred between layers, information such as the production rules. The main window is able to reference the production rules from each sub-window. It applies the L-System recursive replacement process described in section \ref{Understanding-through-Images} a number of times equal to \code{Iterations}. This value can be changed by the user. The output of this process is the L-string, which is used to draw the L-System.\\
+	Similar to how each node's \code{after} nodes will have a way to access their \code{before} node, each sub-window is able to access some information from the main window. The main window is also able to change some information in the sub-windows. However, there is no way for the main window to directly affect the \code{startTriangle} or nodes within any of the sub-windows. It calls a method called \code{getProdRule} in each sub-window to do that. Some information must still be transferred between layers, information such as the production rules. The main window accesses the production rules from each sub-window's \code{getProdRule} method. It then applies the L-System recursive replacement process described in section \ref{Understanding-through-Images} a number of times equal to \code{Iterations}, a value which can be changed by the user with the buttons in the main window. The output of this process is the L-string, which is used to draw the L-System.
 	
 	%\textcolor{blue}{[A labelled drawing of the different strings and how they are related between the different windows]}\\
 	
 	\begin{figure}[H]
 	\centering
-	\includegraphics[height=2in]{Images/Diagram11}
+	\includegraphics[height=2in, frame]{Images/Diagram11}
 	\caption{The movement of the production rules between windows}
 	\label {Strings}
 	\end{figure}
 	
-	In the process of drawing the L-System, the Explorer reads the L-string character-by-character and performs actions depending on that character. It acts very much like the Turtle Graphics described in Section \ref{Turtle-Graphics}. It also has another data structure called a ``stack", shown in Figure \ref{Stack}. The Explorer is only allowed to interact with the top item on the stack, and it can choose to read it or to remove it. It can also add a new item to the top of the stack. (It cannot add a new item in the middle.) In this case, the kind of item that we're putting on the top of the stack is a snapshot of the current state.\\
+\subsection{Rendering L-strings}
+\label{Rendering}
+	In the process of drawing the L-System, the Explorer reads the L-string character-by-character and performs actions depending on that character. The Explorer interpreting the L-string acts very much like the turtle described in Section \ref{Turtle-Graphics}. It adds a data structure called a ``stack", to the turtle's state. The structure of this stack is shown in Figure \ref{Stack}. The Explorer only interacts with the top item on the stack, and it can choose to read it or to remove it. It can also add a new item to the top of the stack. In this case, the kind of item that we're putting on the top of the stack is a snapshot of the current state.
 	
 	%\textcolor{blue}{[An illustration of the Explorer's stack and how the system engages with it]}\\
 	
 	\begin{figure}[H]
 	\centering
-	\includegraphics[height=2in]{Images/Diagram12}
+	\includegraphics[height=2in, frame]{Images/Diagram12}
 	\caption{The structure of the stack}
 	\label {Stack}
 	\end{figure}
 	
 	When the Explorer processes a \code{[}, it puts the current state onto the stack. Whenever it processes a \code{]}, it sets the current state to the state that is on top of the stack, then it removes the state on the top of the stack. If it processes an \code{F}, it goes a given distance in the direction it's facing and draws a line between its starting and ending point. When it processes an \code{f}, it goes that distance in that direction, but doesn't draw a line. A \code{+} adds the given angle value to its stored orientation. \code{–} does the same, but subtracts the angle from the orientation instead. The angle can be changed by the user to quickly see different possible views of the L-System. Reading a production like \code{A} or \code{B} doesn't change its state, nor does it draw anything. It won't change its state if the character that it reads is not among these ones.
 	
-	While this could certainly be less complicated, I feel proud to have been able to make a system that feels to me to be relatively sleek and clear in its purpose. It does succeed in hiding much of its complexity under the hood to give users as simple an experience as possible. It was shocking and yet strangely affirming to experience the intricacy of building a user interface. This was an invigorating exercise in articulating exactly what I want from the program. It was so wonderful being able to see where there were mistakes in my understanding, as the program would very explicitly tell me.
+	While this could certainly be less complicated, I am please to have been able to make a system that feels to me to be relatively sleek and clear in its purpose, while hiding the more complicated mechanisms. It was educational to engage with the intricacy of building a user interface. This was an exercise in articulating exactly what I want from the program. It was satisfying being able to see where there were mistakes in my understanding, as the program would very explicitly tell me.
 
 \section{Using the L-Systems Explorer}
 \label{Using-the-L-Systems-Explorer}
 
-	This project has what I feel is necessary to get a basic understanding of L-Systems. There were many judgement calls in the design of the work, though I hope that this program has achieved what I set out to do.\\
+	The L-Systems Explorer has what I feel is necessary to get a basic understanding of L-Systems.
 	
 	%\textcolor{blue}{[An image of the github page with the files and the processing website with all the relevant areas emphasized]}\\
 	
@@ -782,7 +789,7 @@ This is an L-System:
 	\label {Github}
 	\end{figure}
 	
-	To access this program, you need to download both the program and the framework to support it. The program can be downloaded at \textit{github.com/RJacobH/Thesis}. The page should look something like Figure \ref{Github}. You will need the four files, \code{L\_Systems\_Explorer.pde}, \code{Helpful\_Functions.pde}, \code{Node.pde}, and \code{Window.pde}. Download these and put them in the same folder. Next, go to \textit{processing.org} and download Processing. At the time of writing, this program works in Processing 4.2. From here, you can open any of the four files you just downloaded and you should something that looks like Figure \ref{OpenProgram}. Click the play button in the top left corner and get started exploring!\\
+	To run this program, you need to download both the program and the framework to support it. The program can be downloaded at \textit{github.com/RJacobH/Thesis}. The page should look something like Figure \ref{Github}. You will need the four files, \code{L\_Systems\_Explorer.pde}, \code{Helpful\_Functions.pde}, \code{Node.pde}, and \code{Window.pde}. Download these and put them in the same folder. Next, go to \textit{processing.org} and download Processing. At the time of writing, this program works in Processing 4.2. From here, you can open any of the four \code{.pde} files you just downloaded and you should something that looks like Figure \ref{OpenProgram}. Click the play button in the top left corner and get started exploring!\\
 	
 	%\textcolor{blue}{[An image of the screen when the program is opened]}
 	
@@ -826,7 +833,7 @@ This is an L-System:
 	\label{ClickingNodes}
 	\end{figure}
 	
-	The first time you use the L-Systems Explorer, hover over any of the circles in one of the smaller windows. When you do this, you'll see several more circles appear, each with a different symbol inside of them. These are buttons. Click on the button that says \code{F} and a line will appear on the small screen as well as the larger screen. Hover over the new line in the small window and click the \code{+} button. This creates a new shape in the small window. Hover over this new shape and click the \code{F} button that appears. This will make another line appear in both the small window and the big window. You can see the production rule of the small window running along its lower edge. This process is also illustrated in Figure \ref{ClickingNodes}. Also notice how the title of the window is ``Production rule for A". Creating these elements has changed the production rule for \code{A}.\\
+	The first time you use the L-Systems Explorer, hover your mouse over any of the circles in one of the smaller windows. When you do this, you'll see several more circles appear, each with a different symbol inside of them. These are buttons. Click on the button that says \code{F} and a line will appear on the small screen as well as the larger screen. Hover over the new line in the small window and click the \code{+} button. This creates a new shape in the small window. Hover over this new shape and click the \code{F} button that appears. This will make another line appear in both the small window and the big window. You can see the production rule of the small window running along its lower edge. This process is also illustrated in Figure \ref{ClickingNodes}. Also notice how the title of the window is ``Production rule for A". Creating these elements has changed the production rule for \code{A}.\\
 	
 	%\textcolor{blue}{[Give images for each of the following steps]}\\
 	
@@ -861,7 +868,7 @@ This is an L-System:
 	%\textcolor{blue}{[Give images for each of the following steps]}\\
 	\begin{figure}[h]
 	\centering
-	\includegraphics[height = 1.5in]{Images/HowToExplore3}
+	\includegraphics[height = 2.5in]{Images/HowToExplore3}
 	\caption{Adding a new branch}
 	\label{branching}
 	\end{figure}
@@ -871,18 +878,18 @@ This is an L-System:
 	%\textcolor{blue}{[Give images for each of the following steps]}\\
 	\begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.6]{Images/HowToExplore4}
+	\includegraphics[width=\textwidth]{Images/HowToExplore4}
 	\caption{Adding a new production rule}
 	\label{newProductions}
 	\end{figure}
 	
-	The last essential thing to learn about this program is how to add more productions and production rules. Look for a box that says ``Productions" like the one in Figure \ref{newProductions}. Click on the small \code{+} box. A new small window should appear. The original small window continues to correspond to the production rule for \code{A} and this new window will correspond with the production rule for the new production \code{B}. You can reference \code{B} within the \code{A} production rule window and vice-versa. One final point, you can stack rotation nodes by hovering over a rotation node (\code{+} or \code{-}) and clicking the button for the same type of rotation node. Choosing the other direction of rotation node will cancel its effect but choosing the same type will double the effect. This can be repeated any number of times. Some of the most interesting L-Systems I've found have used this strategy.
+	The last thing to learn is how to add more productions and production rules. Look for a box that says ``Productions" like the one in Figure \ref{newProductions}. Click on the small \code{+} box. A new small window should appear. The original small window continues to correspond to the production rule for \code{A} and this new window will correspond with the production rule for the new production \code{B}. You can reference \code{B} within the \code{A} production rule window and vice-versa. One final point, you can stack rotation nodes by hovering over a rotation node (\code{+} or \code{-}) and clicking the button for the same type of rotation node. Choosing the other direction of rotation node will cancel its effect but choosing the same type will double the effect. This can be repeated any number of times. Some of the most interesting L-Systems I've found have used this strategy.
 	
-	There are several other tools that you can use to extend your experience of the program. Try adjusting the Initial Width and Width Change panels, then varying the angle and offset so that you get something that looks more like a real tree. You could set the angle to 90$^{\circ}$ and see how the central branches vary in thickness so much from the branches nearer to the edge. Try creating an interesting L-System then clicking the `Make PDF' button. You can print out your creations in detail!
+	There are several other tools that you can use to extend your experience of the program. Try adjusting the Initial Width and Width Change panels, then varying the angle and offset so that you get something that looks more like a real tree. You could set the angle to 90$^{\circ}$ and see how the central branches vary in thickness so much from the branches nearer to the edge. Try creating an interesting L-System then clicking the `Make PDF' button. You can print out your creations in vector graphics quality! Figure \ref{Possibilities} shows some directions you can explore.
 	
-	
+	\clearpage
 	%\textcolor{blue}{[Provide as many interesting initial inputs as I can justify, perhaps 6? Show some techniques used to great effect.]}
-	\begin{figure}[H]
+	\begin{figure}[h]
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[clip=true, viewport=1.5in 4.5in 8.5in 11in, height = 0.9\textwidth]{Images/HowToExplore5A}
@@ -919,12 +926,12 @@ This is an L-System:
 	
 
 \chapter{Contribution}
-	A primary goal of this work is to make L-Systems, and by extension Generative Art and Computer Science broadly, more approachable. This is not the only goal. I want folks who haven't used computers as an artistic tool before to create things in this medium. I even want my peers, who have been immersed in the depths of CS for years, to be able to approach the discipline with a fresh awe and changed understanding. I want everyone to be amazed and inspired by the possibilities and to feel capable of creating their own new work.  I feel that these are all very attainable without having to engage with the complexity of modern design software.
+	A primary goal of this work is to make L-Systems, and by extension Generative Art and Computer Science broadly, more approachable. This was not my only goal. I want folks who haven't used computers as an artistic tool before to create things in this medium. I even want my peers, who have been immersed in the depths of CS for years, to be able to approach the discipline with a fresh awe and changed understanding. I want everyone to be amazed and inspired by the possibilities and to feel capable of creating their own new work.  I feel that these are all very attainable without having to engage with the complexity of modern design software.
 	%like Blender, Photoshop, Fusion 360, or others, though those absolutely have their place.\\
 	
-	Keeping in mind that L-Systems were proposed back in 1968, I was worried that with 55 years to develop these ideas I wouldn't be able to tread on any new ground. This is true in many respects, and I re-emphasize that a main goal of this work is to raise awareness of L-Systems and to bring together some sources that discuss these ideas at the level of an undergraduate thesis. However, this work goes a little beyond that. There are few implementations that make L-Systems easy to play with. Even those who brought L-Systems to Blender still only make them available to those who know Blender.\footnote{\cite{Leopold2017}}
+	Keeping in mind that L-Systems were proposed back in 1968, I was worried that with 55 years to develop these ideas I wouldn't be able to tread on any new ground. This is true in many respects, and I re-emphasize that a main goal of this work is to raise awareness of L-Systems and to bring together some sources that discuss these ideas at the level of an undergraduate thesis. However, this work goes a little beyond that. There have been few implementations that make L-Systems easy to play with. Even those who have brought L-Systems to Blender still only make them available to those who know Blender.\footnote{\cite{Leopold2017}} 
 	
-	This Blender work I mention is incredible, and I found it a great source of inspiration, but our projects have fundamentally different goals. As far as I'm aware, no other program has made L-Systems this easy to play with, despite the central part of their appeal being simplicity. As far as I can tell, there has been no easy way to gain an intuition with these systems that isn't locked behind years of engagement with computer science.
+	This Blender work I mention is incredible, and I found it a great source of inspiration, but our projects have fundamentally different goals. Leopold's work does reduce the amount of typing required, thanks in part to Blender's sturdy UI, but there is still a disconnect between the strings and the images. I haven't heard of any way to gain an intuition with these systems that isn't locked behind years of engagement with computer science, despite a central part of their appeal being simplicity.
 	
 	%\textcolor{blue}{[Some sliders, the parts of the program that are especially simple]}\\
 	
@@ -976,7 +983,7 @@ This is an L-System:
 	\label{ABOPtrees}
 	\end{figure}
 	
-	Another useful resource for me has been the YouTube channel \textit{The Coding Train}.\footnote{\cite{codingTrain}} I'm grateful for the wide variety and expansive content of their videos. They were my introduction to some of the ideas that I talk about more in the following Generative Art section, and they're responsible for much of my foundational learning about Processing. If you have an interest in taking the next step in your computer science journey, I would highly recommend these videos, especially the tutorials on getting started in Processing. I would be hard-pressed to find a better resource than this channel. I've followed along many of the tutorials and discovered some fantastically interesting concepts that I hadn't come across in school, such as Perlin and Simplex noise, strange attractors, and space-filling curves.
+	Another useful resource for me has been the YouTube channel \textit{The Coding Train}.\footnote{\cite{codingTrain}} I'm grateful for the wide and compelling variety of their videos. They were my introduction to some of the ideas that I talk about more in the following Generative Art section, and they helped me learn about Processing. If you have an interest in taking the next step in your computer science journey, I would highly recommend these videos, especially the tutorials on getting started in Processing. I've followed along many of the tutorials and discovered some fantastically interesting concepts that I hadn't come across in school, such as Perlin and Simplex noise, strange attractors, and space-filling curves.
 	
 	%\textcolor{blue}{[Some images from the Coding Train]}
 	
@@ -987,7 +994,7 @@ This is an L-System:
 	\label{CodingTrain}
 	\end{figure}
 	
-	Nikole Leopold wrote a Bachelor's thesis about an implementation of L-System graphics in Blender in 2017 at the Technical University in Vienna.\footnote{\cite{Leopold2017}} This work informed some of the later discussions that I've had as part of this thesis. Leopold gives a comprehensive overview of the advantages of using a 3d modeling software like Blender to display L-Systems. They also introduce an add-on which enables the user to immediately see the results of their changes, a strategy I admire and have worked to make an essential component of my own project. One of the pieces of that research that I found especially interesting was the inclusion of methods by which the L-System can interact with its environment. The structure grows, finds an obstacle, and appears to go around it. (The program actually just cuts off the branches that intersect the object, but the effect is still compelling.) The discussion of Differential L-Systems was also fascinating. These are L-Systems which can be animated continuously, by which I mean \textit{between} production steps. [Include some footnote about how cool this is - it's animation to a crazy degree!] I'm grateful for the resources that Leopold included as well, as they pointed me in the direction of additional compelling sources.
+	Nikole Leopold wrote a Bachelor's thesis about an implementation of L-System graphics in Blender in 2017 at the Technical University in Vienna.\footnote{\cite{Leopold2017}} This work informed some of the later discussions that I've had as part of this thesis. Leopold gives a comprehensive overview of the advantages of using a 3d modeling software like Blender to display L-Systems. They also introduce an add-on which enables the user to immediately see the results of their changes, a strategy I admire and have worked to make an essential component of my own project. One of the pieces of that research that I found especially interesting was the inclusion of methods by which the L-System can interact with its environment. The structure grows, finds an obstacle, and appears to go around it. (The program actually just cuts off the branches that intersect the object, but the effect is still compelling.) The discussion of Differential L-Systems was also fascinating. These can be animated continuously, by which I mean \textit{between} production steps.\footnote{This would mean animating discrete segments of production rules, enabling an even greater animation resolution} I'm grateful for the resources that Leopold included as well, as they pointed me in the direction of other compelling sources.
 	
 	%\textcolor{blue}{[Some images from Leopold's paper]}\\
 	\begin{figure}[h]
@@ -1061,7 +1068,7 @@ This is an L-System:
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\linewidth]{Images/Grid}
-	\caption{A Processing sketch of cubes, exhibiting Moiré patterns}
+	\caption{A Processing sketch I wrote, exhibiting Moiré patterns}
 	\label{Grid}
 	\end{figure}
 	
@@ -1197,7 +1204,7 @@ This is an L-System:
 		\caption{Dynamic cube using Simplex Noise}
 		\label{Simplex}
 	\end{subfigure}
-	\caption{Early Processing Programs}
+	\caption{Two of my early Processing programs}
 	\label{EarlyProcessing}
 	\end{figure}
 	
@@ -1208,9 +1215,9 @@ This is an L-System:
 
 	While working on this thesis and the various projects that came with it, I began to begin to see things through a peculiar lens. I was researching this type of structure that had been used for half a century to describe living things with an almost startling degree of accuracy, considering the simplicity of their construction. I started to question the line between living things and the code we write to imitate those living things. Is there actually a difference? I'm not so sure. I'll share where my thinking has been going these last few months over the course of this section.
 	
-	This is the sort of question that people have been asking for hundreds, if not thousands of years. Machine-makers have attempted to imitate life by different means for a similarly long period.\footnote{\cite{riskin2016}} Science Fiction authors and pioneers like Alan Turing have suggested ways in which we might learn if there is a difference between life and machines.\footnote{\cite{turing1936}} Some of those questions have borne fruit or guided our development, others have marked moments when we moved the goalposts to imagine ever-grander goals.\footnote{\cite{theory2004}}
+	This is the sort of question that people have been asking for hundreds, if not thousands of years. Machine-makers have attempted to imitate life by different means for a similarly long period.\footnote{\cite{riskin2016}} Science Fiction authors and computing pioneers like Alan Turing have suggested ways in which we might learn if there is a difference between life and machines.\footnote{\cite{turing1936}} Some of those questions have borne fruit or guided our development, others have marked moments when we moved the goalposts to imagine ever-grander goals.\footnote{\cite{theory2004}}
 	
-	In the last decades, there have been tremendous advances in the simulation of life. Robots have beaten skilled human Chess, Go, and Starcraft II players, and have become indistinguishable from humans in many respects.\footnote{\cite{gamerAI2019}} We've become used to robot assistants in our homes and in our daily lives. The rise of AI-powered chatbots has thrown a wrench in the gears of several industries. There seems to be no end in sight. If anything, the development of these systems appears to be rapidly accelerating.
+	In the last decades, there have been tremendous advances in the simulation of life. Robots have beaten skilled human Chess, Go, and Starcraft II players, and have become indistinguishable from humans in many respects.\footnote{\cite{gamerAI2019}} We've become used to robot assistants in our homes and in our daily lives. The rise of AI-powered chatbots seems poised to throw a wrench into the gears of several industries. There seems to be no end in sight.
 	
 	%\textcolor{blue}{[An especially beautiful, lifelike fern-like L-System]}\\
 	\begin{figure}[h]
@@ -1220,13 +1227,13 @@ This is an L-System:
 	\label{TiltedTree}
 	\end{figure}
 	
-	L-Systems are extremely simple, and I will not make the argument that they are themselves alive,\footnote{\cite{theory2004}} but I suggest that they support a specific understanding of the world. This understanding suggests that everything consists of purely physical operations and no invisible, imperceptible, separate element. L-Systems demonstrate that an intense variety of complexity can easily arise from almost nothing. I don't see any reason why people shouldn't be subject to the same rules.
+	In contrast to these massively complex systems, L-Systems are extremely simple, and I will not make the argument that they are themselves alive,\footnote{\cite{theory2004}} but I suggest that they support a specific understanding of the world. This understanding suggests that everything consists of purely physical operations and no invisible, imperceptible, separate element, like a spirit or a soul. L-Systems demonstrate that an intense variety of complexity can easily arise from almost nothing. I don't see any reason why people shouldn't be subject to the same rules.
 	%Back in the 1730s, Jacque von Vaucanson built an automaton in the shape of a duck that seemed to be able to eat and defecate. 
 
 \subsection{The Times We Live In} % Flights of Whimsy
 \label{AI-Art}
 
-	At the time of writing, ChatGPT has taken the world by storm.\footnote{\cite{ChatGPT}} While it doesn't appear to be destroying society yet, there's no saying what its successors will do. Regardless, it feels apparent to me that things are on the verge of changing dramatically. I believe that if we are going to be engaging with AI in any sort of meaningful way in the near future, we need to understand what that really means. How do we engage with entities that can do everything we can do, but often faster and better?
+	At the time of writing, ChatGPT has taken the world by storm.\footnote{\cite{ChatGPT}} While it doesn't appear to be destroying society yet, there's no saying what its successors will do. I believe that if we are going to be engaging with AI in any sort of meaningful way in the near future, we need to understand what that really means. How do we engage with entities that can do almost anything we can do, but often faster and better?
 	
 	We can try to hold onto the reins of these new creations, but so many pieces of sci-fi media emphasize why doing such a thing will only lead to cruelty, confusion, and won't even actually work. It seems right to me to suggest that people must be willing to accept that at least \textit{some} of that which an AI makes must be called art. This art might come from a human prompt and a huge human-generated dataset, but things like collages might be comparable.\footnote{\cite{NYT2023}}
 	
@@ -1249,7 +1256,7 @@ This is an L-System:
 	
 	Where does the simulation of life fall into this? Physicists might have you believe that everything can be governed by some set of equations and everything that exists is as it is because of the results of those equations. Would it then be believable to call some of the fundamental physical structures artistic? Does art need an artist? Does this then preclude non-living things from producing art? Perhaps this suggests that AI would never be able to create art so long as it remains non-living.
 	
-	I would be so bold to suggest that the products of the L-System Explorer \textit{are} art. They qualify themselves enough for me to feel satisfied including them under that umbrella. I couldn't say for sure why I feel the way I do, although I suspect part of it relates to the user's involvement in their creation, and that they wouldn't have existed without the intervention of a person.
+	I would be so bold to suggest that the products of the L-System Explorer \textit{are} art. I couldn't say for sure why I feel the way I do, although I suspect part of it relates to the user's involvement in their creation, and that they wouldn't have existed without the intervention of a person.
 	
 	However, these structures are clearly just numbers and letters, all of which are directly displayed on the screen for anyone to read. A random number generator could have easily created another L-System which looks similar and probably looks pretty cool. Would that new L-System be art? Would it even be artistic? They are all just math, so what would actually make one L-System art and another not, beyond the method of their creation?\\
 	
@@ -1258,14 +1265,14 @@ This is an L-System:
 
 \chapter{Past, Present, Future}
 
-	L-Systems were introduced in 1968 in a paper by Aristid Lindenmayer, where he suggested how one could construct a mathematical model of the structure of simple cells.\footnote{\cite{OG1967}} Even in their introductory paper, L-Systems were deeply tied to the modeling of life. As could be expected, the early models generated by the first L-Systems were extremely simple. They laid the foundation for what was to come, but did not investigate the larger world of possibilities that these structures could make real. In the last 55 years, there have been many developments in this area, most of which have been deeply attached to the development of fast computer graphics. By bringing these systems onto a screen where users could easily engage with them, there was increased interest in making them more accurately reflect the growth of actual plants. He discussed the inseparability of theories from languages, which others have interpreted to mean ``Theories become like the biology they purport to describe: natural, evolving forms with dynamics and feature all their own." (46)\footnote{\cite{theory2004}} In other words, Lindenmayer was in part concerned with the creation of axioms of biological knowledge.
+	L-Systems were introduced in 1968 in a paper by Aristid Lindenmayer, where he suggested how one could construct a mathematical model of the structure of simple cells.\footnote{\cite{OG1967}} Even in this introductory paper, L-Systems were deeply tied to the modeling of life. As could be expected, the early models generated by the first L-Systems were extremely simple. They laid the foundation for what was to come, but did not investigate the larger world of possibilities that these structures could make real. In the last 55 years, there have been many developments in this area, most of which have been deeply attached to the development of fast computer graphics. By bringing these systems onto a screen where users could easily engage with them, there was increased interest in making them more accurately reflect the growth of actual plants. He discussed the inseparability of theories from languages, which others have interpreted to mean ``Theories become like the biology they purport to describe: natural, evolving forms with dynamics and feature all their own." (46)\footnote{\cite{theory2004}} In other words, Lindenmayer was in part concerned with the creation of axioms of biological knowledge.
 	
 	%\textcolor{blue}{[Images of the earliest L-Systems]}\\
 	
 	\begin{figure}[h]
 	\centering
 	\includegraphics[height = 0.4\linewidth]{Images/OGLSystem}
-	\caption{One of the first diagrams of an L-System}
+	\caption{One of the first diagrams of an L-System, from \cite{OG1967}}
 	\label{OGLSystem}
 	\end{figure}
 	
@@ -1332,9 +1339,9 @@ This is an L-System:
 
 	The L-System Explorer could be extended in many ways. An early addition would be to finish porting the processing version of the code to p5.js, so that it can be hosted on a website and accessed easily without needing to download and install anything. If I can successfully port the Explorer, I'd like to optimize the site for mobile use.
 	
-	Beyond the porting considerations, I'd like to make a number of improvements to the program itself. I'd like to the ability to change the color, length, and waviness of the lines it draws. It would be good to add some extra precision in the angles to make the transition between different angles smoother. It would also be helpful to allow the user to move around the main screen and zoom in and out. Another addition would be safeguards to make sure that the program doesn't go out of control if someone tries to simulate an L-System that the program can't handle.\footnote{When rendering a certain amount of lines, the Explorer slows dramatically and I'm unable to change anything. I'm not sure how many lines it takes to do this, but a good way to avoid having to restart is to bring the number of iterations down to a low value before adding new parts to any of the production rules.} These safeguards could come in the form of bounds on the number of generations or possibly total number of line segments drawn. It would also be nice to have the ability to print out the final system to an SVG file or a PDF.\footnote{Producing a document in either of these document types would be wonderful, as they work with vector graphics, keeping the images sharp at any level of zoom. I would much prefer this to raster graphics, which depict images as a grid of pixels. For high line-count L-Systems, raster graphics might be preferred for the implicit data cap of their pixel count.} 
+	Beyond the porting considerations, I'd like to make a number of improvements to the program itself. I'd like to the ability to change the color, length, and waviness of the lines it draws. It would be good to add some extra precision in the angles to make the transition between different angles smoother. It would also be helpful to allow the user to move around the main screen and zoom in and out. Another addition would be safeguards to make sure that the program doesn't go out of control if someone tries to simulate an L-System that the program can't handle.\footnote{When rendering a certain amount of lines, the Explorer slows dramatically and I'm unable to change anything. I'm not sure how many lines it takes to do this, but a good way to avoid having to restart is to bring the number of iterations down to a low value before adding new parts to any of the production rules.} These safeguards could come in the form of bounds on the number of generations or possibly total number of line segments drawn. 
 	
-	I'd also like to make it possible for users to type in the production rules for an L-System directly and bypass the interactive editing process. While I see the drawing through node selection as the main attraction of my program, I understand that it would be extremely useful to be able to copy and paste productions directly into any instance of the Explorer. It would also be nice to have a small library of cool L-Systems that every user could access. On that note, it would be good to make some sort of tutorial about how to work the program within the program itself. This last point is especially important. My goal is for the Explorer to be intuitive enough to understand purely from individual exploration, I don't expect it to be. I also don't want to force users to read this thesis before engaging with the Explorer.
+	I'd also like to make it possible for users to type in the production rules for an L-System directly and bypass the interactive editing process. While I see the drawing through node selection as the main attraction of my program, I understand that it would be extremely useful to be able to copy and paste productions directly into the Explorer. It would also be nice to include a library of cool L-Systems that every user could access. On that note, it would be good to make some sort of tutorial about how to work the program within the program itself. This last point is especially important. My goal is for the Explorer to be intuitive enough to understand purely from individual exploration, however it doesn't seem to be there yet. I also don't want to force users to read this thesis before engaging with the Explorer.
 	
 	One user interface problem I would like to solve is the awkward overlap of control nodes. When one node is selected immediately after another node, it's often impossible to select the earlier of those nodes. This is a problem for mostly rotation and production nodes. It happens because each of the nodes are the same size and my code will only select the most recently created node if the mouse is over multiple nodes. I might resolve this by making the earlier node larger than the more recent node, but then it might make it difficult to select the most recently placed node. This solution would spiral into a dramatically worse situation the more production nodes are put directly on top of one another. With 5 such nodes, it might be nearly impossible to access the middle one. Another solution to this problem could come from making a list of nodes pop up whenever the mouse is hovering over their stack. This would look very much like the menu for adding a node, but perhaps vertically so the two systems could co-exist.
 	
@@ -1351,7 +1358,7 @@ This is an L-System:
 \section{Generalizing L-Systems}
 \label{Generalizations}
 
-So far, we've only been looking at L-Systems that fall into a very narrow category. Prusinkiewicz and Lindenmayer go into detail about a number of variations on L-Systems that increase not only their complexity but also their capabilities. I've avoided these extensions for two reasons, one reason being time and the other being a desire to keep the complexity of the L-Systems Explorer low so as to invite in people who might otherwise feel intimidated. I'll focus on three main variations that were discussed in length in \textit{ABOP}, and I invite the reader to explore them if you feel so led.
+So far, we've only been looking at L-Systems that fall into a very narrow category. Prusinkiewicz and Lindenmayer go into detail about a number of variations on L-Systems that increase not only their complexity but also their capabilities. I've avoided these extensions for two reasons, one reason being time and the other being a desire to keep the complexity of the L-Systems Explorer low in order to keep it approachable. I'll focus on three main variations that were discussed in length in \textit{ABOP}, and I invite the reader to explore them if you feel so led.
 
 	The first of these is \textit{context-sensitive L-Systems}. In the L-Systems that I've shown up until this point, each production variable does not depend on the surrounding values when determining what its production will be. If we choose to explore what L-Systems can look like when they are context-sensitive, we can see straightaway that there will be more possibilities than with the context-free L-Systems we've seen up to this point.\footnote{Any basic context-free L-System can be made by a context-sensitive L-System where none of the productions actually depend on context.} This type of L-System can build structures that look more like something you might expect from a cellular automata, like John Conway's Game of Life.
 	
@@ -1360,7 +1367,7 @@ So far, we've only been looking at L-Systems that fall into a very narrow catego
 	\textit{Stochastic L-Systems} are a type of L-System that introduce randomness as part of the construction process, resulting in different structures each time a particular L-System is drawn. The randomness might be used to vary the angle of rotation by some amount or vary the length of the drawn lines. It might even play a role in the placement of productions in the L-string. These L-Systems contradict a fundamental aspect that are part of what makes L-Systems so compelling to me. That aspect being the rise of apparent complexity out of a set of simple rules, and specifically complexity that is deterministic. However I admit that there is something interesting about how this L-System variation might demonstrate the effects of mutation in an organism. These are often the L-Systems that look most natural, as a random factor can sometimes imitate the near infinite complex factors that affect plant structures out in the world. Some examples are shown in Figure \ref{Stochastic}.
 	
 	%\textcolor{blue}{[A stochastic L-System or two]}\\
-	\begin{figure}[h]
+	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\linewidth]{Images/Stochastic}
 	\caption{Stochastic L-Systems from \cite{LSystems2001}}
@@ -1414,7 +1421,7 @@ So far, we've only been looking at L-Systems that fall into a very narrow catego
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\linewidth]{Images/Hansmeyer}
-	\caption{An alternative interpretation of L-Systems}
+	\caption{An alternative interpretation of L-Systems, from \cite{hansmeyer2003}}
 	\label{Hansmeyer}
 	\end{figure}
 	
@@ -1428,8 +1435,8 @@ So far, we've only been looking at L-Systems that fall into a very narrow catego
 	\centering
 	\begin{subfigure}{0.44\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Images/Snowflake}
-		\caption{A Snowflake, \cite{myhrvold2021}}
+		\includegraphics[width=\linewidth]{Images/Snowflake2}
+		\caption{A Snowflake, \cite{bentley}}
 		\label{Snowflake}
 	\end{subfigure}%
 	\hfill
@@ -1490,11 +1497,11 @@ So far, we've only been looking at L-Systems that fall into a very narrow catego
       
       \chapter{Generative Art Resources}
       \label{Resources}
-      The subreddit, r/generative has been a treasure trove of intriguing projects. There is a constant influx of new content that continues to push the envelope of what I think could be possible. I especially appreciate the genre of generative art where it feels like the media is coming out of the page. You can sort by ``Top All Time" to find some of the best.\\
+      The subreddit, r/generative has been a treasure trove of intriguing projects. There is a constant stream of new content that continues to push the envelope of what I think could be possible. I especially appreciate the genre of generative art where it feels like the media is coming out of the page. You can sort by ``Top All Time" to find some of the best.\\
       
-      Beyond the Coding Train, which I've already mentioned, there are a few YouTube channels that have some especially solid pearls of wisdom to share in areas related to this Thesis. Of course, I'd like to mention 3Blue1Brown and Numberphile first, as their videos on nearly every topic are engaging, thoughtfully constructed, and often some combination of witty and beautiful. Stuff Made Here and Mark Rober have been inspirations in regards to the coding aspects of this work especially, though I would be remiss to not mention Vihart as one of my first major introductions to the beautiful relationship between art and math. There are many others who have helped this happen, and the communities that this thesis owes some credit to are constantly evolving. I recommend these channels especially.\\
+      Beyond the Coding Train, which I've already mentioned, there are a few YouTube channels that have some especially solid pearls of wisdom to share in areas related to this thesis. Of course, I'd like to mention {\tt 3Blue1Brown} and {\tt Numberphile} first, as their videos on nearly every topic are engaging, thoughtfully constructed, and often some combination of witty and beautiful. {\tt Stuff Made Here} and {\tt Mark Rober} have been inspirations in regards to the coding aspects of this work especially, though I would be remiss to not mention {\tt Vihart} as one of my first major introductions to the beautiful relationship between art and math. There are many others who have helped this happen, and the communities that this thesis owes some credit to are constantly evolving.\\
       
-      There are some other artists and presences that I recommend you engage with. Many of these are Instagram artists that often post interesting visual graphics, sometimes even L-Systems. Another artist that works heavily in this area between art and math is Luke Shannon. He works with the line between intentional design and random chance in the creation of many of his works. Much of the art he makes blurs the boundary between the maker and the machine, asking us to consider how much control we actually have over the process of creation when machines are involved. It's wonderfully invigorating stuff.
+      There are some other digital artists that I recommend you engage with. Many of these are Instagram artists that often post interesting visual graphics, sometimes even L-Systems. Another artist that works heavily in this area between art and math is {\tt Luke Shannon}. His work can be found online at {\tt https://www.lukeshannon.xyz/}. He works with the line between intentional design and random chance in the creation of many of his works. Much of the art he makes blurs the boundary between the maker and the machine, asking us to consider how much control we actually have over the process of creation when machines are involved. It's wonderfully invigorating stuff.
 
 \backmatter 
 
