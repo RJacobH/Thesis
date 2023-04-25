@@ -149,7 +149,7 @@ class Window extends PApplet {
     return production;
   }
   
-  public String getReplacement() {
+  public String getProdRule() {
     return replacement;
   }
   

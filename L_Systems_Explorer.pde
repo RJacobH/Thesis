@@ -40,7 +40,7 @@ IntList lims;
 IntList windowBounds;
 
 String Productions; // A list of the productions that have a replacement rule
-StringList Replacements; // A list of the replacement rules
+StringList ProdRules; // A list of the replacement rules
 
 ArrayList<Window> subWindows = new ArrayList<Window>(); // The windows that control the different production rules
 int maxSubWindows = 4;
@@ -121,7 +121,7 @@ void settings() {
   windowBounds.append(0);
   windowBounds.append(h);
   
-  Replacements = new StringList();
+  ProdRules = new StringList();
   
 }
 
@@ -218,10 +218,10 @@ void draw() {
   
   // Productions Box
   Productions = "";
-  Replacements.clear();
+  ProdRules.clear();
   for (Window w : subWindows) {
     Productions += w.getProduction();
-    Replacements.append(w.getReplacement());
+    ProdRules.append(w.getProdRule());
   }
   //StartTriangle.setWindowProds(WindowProds);
   
@@ -232,7 +232,7 @@ void draw() {
     startVar = "none";
   }
   
-  LSystem = combineLSystem(startVar, Productions, Replacements, iters);
+  LSystem = combineLSystem(startVar, Productions, ProdRules, iters);
   
   if (record) {
     beginRecord(PDF, "frame-####.pdf");
@@ -255,7 +255,7 @@ void draw() {
   if (LSystem.length() > 30) {
     comboProdRows = min(2 + (LSystem.length() - 50) / 70, 1);
   }
-  BH = (Replacements.size() + 1 /* this +1 is for the + button */ + comboProdRows /* the other is for the combined production */) * 20;
+  BH = (ProdRules.size() + 1 /* this +1 is for the + button */ + comboProdRows /* the other is for the combined production */) * 20;
   rect(sep + edge, height - BH - edge, width - (RW + sep * 2 + edge * 2), BH);
   minProdNum = 0;
   //wIandPN = new IntList();
@@ -264,9 +264,9 @@ void draw() {
   
   
   // This gets the production rules from each of the active windows and puts them into the text box in the main window
-  for (int i = 0; i < Replacements.size() + 1 + comboProdRows; i++) {
+  for (int i = 0; i < ProdRules.size() + 1 + comboProdRows; i++) {
     float currentW = sep + edge + 4;
-    float currentH = height - BH - edge + 20*i - 3;
+    float currentH = height - BH - edge + 20*i - 4;
     fill(0);
     textAlign(LEFT,TOP);
     textSize(20);
@@ -274,17 +274,17 @@ void draw() {
     
     if (i == 0) {
       text("Start Variable : " + startVar, currentW, currentH);
-    } else if (i < Replacements.size() + 1) {
-      text(subWindows.get(i-1).production + " \u2192 " + Replacements.get(i-1), currentW, currentH);
-    } else if (i == Replacements.size() + 1) {
+    } else if (i < ProdRules.size() + 1) {
+      text(subWindows.get(i-1).production + " \u2192 " + ProdRules.get(i-1), currentW, currentH);
+    } else if (i == ProdRules.size() + 1) {
       String more = "";
       if (LSystem.length() > 30) {
         more = "...";
       }
-      text("Combo Production: " + LSystem.substring(0, min(30, LSystem.length())) + more, currentW, currentH);
+      text("L-string: " + LSystem.substring(0, min(30, LSystem.length())) + more, currentW, currentH);
     }
     //text(Productions.get(prodNum(minProdNum, maxSubWindows, subWindows)), currentW, currentH);
-    if (i < Replacements.size() + 1 && !(Replacements.size() == maxSubWindows && i == 0)) {
+    if (i < ProdRules.size() + 1 && !(ProdRules.size() == maxSubWindows && i == 0)) {
       windowButtons.get(i).x = width - RW - sep - 18 - edge;
       windowButtons.get(i).y = currentH + comboProdRows*20 - 15; /*height - edge + step*i - buttonSize - 2 - comboProdRows * 20;*/
       
